@@ -1,4 +1,3 @@
-
 import express from "express";
 import cors from "cors";
 import crypto from "crypto";
@@ -31,7 +30,6 @@ const UserSchema = new mongoose.Schema({
 });
 
 const User = mongoose.model("User", UserSchema);
-
 
 const isAuthenticated = async (req, res, next) => {
 	console.log(req);
@@ -78,24 +76,24 @@ app.get("/users", async (req, res) => {
 app.post('/register', async (req, res) => {
 	const { username, email, password } = req.body;
 	try {
-		const salt = bcrypt.genSaltSync(); // Create a randomizer to prevent to unhash it
-		const newUser = await new User({
-			username,
-			email,
-			password: bcrypt.hashSync(password, salt)
-		}).save();
-		res.status(201).json({
-			response: {
-				userId: newUser._id,
-				username: newUser.username,
-				accessToken: newUser.accessToken
-			},
-			success: true
-		});
+	  const salt = bcrypt.genSaltSync();
+	  const newUser = await new User({
+		username,
+		email,
+		password: bcrypt.hashSync(password, salt)
+	  }).save();
+	  res.status(201).json({
+		response: {
+		  userId: newUser._id,
+		  username: newUser.username,
+		  accessToken: newUser.accessToken
+		},
+		success: true
+	  });
 	} catch (error) {
-		res.status(400).json({ response: error, success: false });
+	  res.status(400).json({ response: error, success: false });
 	}
-});
+  });
 
 // app.get('/profile', isAuthenticated, (req, res) => {
 // 	app.get("/profile", async (req, res) => {

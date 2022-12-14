@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Title } from '../styles/GlobalStyle';
+import { Title } from "../styles/GlobalStyle";
 
 const NotFound = () => {
 	return (
@@ -9,6 +9,6 @@ const NotFound = () => {
 			<Title>Not-Found... </Title>;
 		</>
 	)
-}
+};
 
 export default NotFound;
