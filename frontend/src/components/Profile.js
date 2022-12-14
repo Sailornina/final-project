@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector, batch } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { /*Link,*/ useNavigate } from "react-router-dom";
 import user from "../reducers/user";
 // import styled from "styled-components/macro";
 import { API_URL } from "../utils/utils";
@@ -51,9 +51,9 @@ const Profile = () => {
 					<div className="profile-container">
 						{/* <p className="secret-text">{secret}</p> */}
 					</div>
-					<Link to="/" className="btn-back">
-						<button type="button">Go back</button>
-					</Link>
+					{/* <Link to="/login" className="btn-back">
+						Go back
+					</Link> */}
 					<button className="profile-button-logout" onClick={logout}>
 						Logout
 					</button>
