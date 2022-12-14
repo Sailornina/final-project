@@ -78,7 +78,7 @@ app.get("/users", async (req, res) => {
 app.post('/register', async (req, res) => {
 	const { username, email, password } = req.body;
 	try {
-		const salt = bcrypt.genSaltSync(); // Create a randomizer to prevent to unhash it
+		const salt = bcrypt.genSaltSync();
 		const newUser = await new User({
 			username,
 			email,
