@@ -22,13 +22,6 @@ const user = createSlice({
 		setEmail: (store, action) => {
 			store.email = action.payload;
 		},
-		setPreviousStatus: (store) => {
-			const actionArraylength = store.actions.length;
-			if (actionArraylength > 0) {
-				store.status = store.actions[actionArraylength - 1];
-				store.actions.splice(actionArraylength - 1, 1);
-			}
-		},
 		setError: (store, action) => {
 			store.error = action.payload;
 		}
