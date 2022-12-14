@@ -14,7 +14,7 @@ const StartScreen = () => {
 			backgroundSize: 'cover',
 			backgroundRepeat: 'no-repeat',
 		}}>
-			<h1>Hello, Welcome to Nasa Library</h1>
+			<h1>Hello my friend, Welcome to Nasa Library</h1>
 		</div>
 		
 	);
