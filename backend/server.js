@@ -77,7 +77,7 @@ app.post('/register', async (req, res) => {
 	const { username, email, password } = req.body;
 	try {
 		const salt = bcrypt.genSaltSync();
-		const strongPassword = /^(?!.*\s)(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[~`!@#$%^&*()--+={}\[\]|\\:;"'<>,.?/_₹]).{8,15}$/;
+		const strongPassword = /^(?!.*\s)(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[~`!@#$%^&*()--+={}\[\]|\\:;"'<>,.?/_₹]).{8,20}$/;
 		if (password.match(strongPassword)) {
 		const newUser = await new User({
 			username,
