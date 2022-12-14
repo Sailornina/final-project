@@ -1,4 +1,3 @@
-
 import express from "express";
 import cors from "cors";
 import crypto from "crypto";
@@ -31,7 +30,6 @@ const UserSchema = new mongoose.Schema({
 });
 
 const User = mongoose.model("User", UserSchema);
-
 
 const isAuthenticated = async (req, res, next) => {
 	console.log(req);
@@ -79,6 +77,8 @@ app.post('/register', async (req, res) => {
 	const { username, email, password } = req.body;
 	try {
 		const salt = bcrypt.genSaltSync();
+		const strongPassword = /^(?!.*\s)(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[~`!@#$%^&*()--+={}\[\]|\\:;"'<>,.?/_₹]).{8,15}$/;
+		if (password.match(strongPassword)) {
 		const newUser = await new User({
 			username,
 			email,
@@ -92,6 +92,9 @@ app.post('/register', async (req, res) => {
 			},
 			success: true
 		});
+	} else {
+		throw 'Password must contain at least 8 characters, at least one letter, one number and one special character';
+	  }
 	} catch (error) {
 		res.status(400).json({ response: error, success: false });
 	}
