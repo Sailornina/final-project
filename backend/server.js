@@ -31,6 +31,26 @@ const UserSchema = new mongoose.Schema({
 
 const User = mongoose.model("User", UserSchema);
 
+const EditProfileSchema = new mongoose.Schema({
+	username: {
+		type: String,
+		unique: true,
+	},
+	comments: {
+		type: String,
+	},
+	createdAt: {
+		type: Date,
+		default: () => new Date()
+	},
+	likes: {
+		type: Number,
+		default: 0
+	}
+});
+
+const EditedProfile = mongoose.model("EditProfile", EditProfileSchema);
+
 const isAuthenticated = async (req, res, next) => {
 	console.log(req);
 	const accessToken = req.header("Authorization");
@@ -95,32 +115,6 @@ app.post('/register', async (req, res) => {
 	}
   });
 
-// app.get('/profile', isAuthenticated, (req, res) => {
-// 	app.get("/profile", async (req, res) => {
-// 		res.status(200).json({ success: true, response: thoughts });
-// 	});
-// });
-
-// const ProfileSchema = new mongoose.Schema({
-// 	username: {
-// 		type: String,
-// 		unique: true,
-// 	},
-// 	comments: {
-// 		type: String,
-// 	},
-// 	createdAt: {
-// 		type: Date,
-// 		default: () => new Date()
-// 	},
-// 	likes: {
-// 		type: Number,
-// 		default: 0
-// 	}
-// });
-
-// const Profile = mongoose.model("Profile", ProfileSchema);
-
 app.post('/login', async (req, res) => {
 	const { username, email, password } = req.body;
 	try {
@@ -144,6 +138,13 @@ app.post('/login', async (req, res) => {
 	} catch (error) {
 		res.status(400).json({ response: error, success: false });
 	}
+});
+
+app.get('/editprofile', isAuthenticated, (req, res) => {
+	app.get("/editprofile", async (req, res) => {
+		const editprofile = await EditedProfile.find({});
+		res.status(200).json({ success: true, response: editprofile });
+	});
 });
 
 // Start the server

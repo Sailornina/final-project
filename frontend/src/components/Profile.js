@@ -33,7 +33,7 @@ const Profile = () => {
 			},
 		}
 
-		fetch(API_URL('secrets'), options)
+		fetch(API_URL('editprofile'), options)
 			.then((res) => res.json())
 			.then((data) => {
 				console.log("Response: " + data);
