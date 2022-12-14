@@ -97,7 +97,7 @@ const Login = () => {
 						// required ="Required"
 						value={password}
 						onChange={e => setPassword(e.target.value)} />
-						<p>Password must contain at least 8 characters, at least one letter, one number and one special character</p>
+						<p>Password must contain at least 8 characters, at least one letter and one number.</p>
 					<button type="submit" disabled={password.length < 8 || password.length > 20}>Submit</button>
 				</form>
 			</div>

@@ -76,29 +76,24 @@ app.get("/users", async (req, res) => {
 app.post('/register', async (req, res) => {
 	const { username, email, password } = req.body;
 	try {
-		const salt = bcrypt.genSaltSync();
-		const strongPassword = /^(?!.*\s)(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[~`!@#$%^&*()--+={}\[\]|\\:;"'<>,.?/_₹]).{8,20}$/;
-		if (password.match(strongPassword)) {
-		const newUser = await new User({
-			username,
-			email,
-			password: bcrypt.hashSync(password, salt)
-		}).save();
-		res.status(201).json({
-			response: {
-				userId: newUser._id,
-				username: newUser.username,
-				accessToken: newUser.accessToken
-			},
-			success: true
-		});
-	} else {
-		throw 'Password must contain at least 8 characters, at least one letter, one number and one special character';
-	  }
+	  const salt = bcrypt.genSaltSync();
+	  const newUser = await new User({
+		username,
+		email,
+		password: bcrypt.hashSync(password, salt)
+	  }).save();
+	  res.status(201).json({
+		response: {
+		  userId: newUser._id,
+		  username: newUser.username,
+		  accessToken: newUser.accessToken
+		},
+		success: true
+	  });
 	} catch (error) {
-		res.status(400).json({ response: error, success: false });
+	  res.status(400).json({ response: error, success: false });
 	}
-});
+  });
 
 // app.get('/profile', isAuthenticated, (req, res) => {
 // 	app.get("/profile", async (req, res) => {
