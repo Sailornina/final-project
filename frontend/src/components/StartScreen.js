@@ -5,6 +5,8 @@ import background from "../assets/background-image.jpg";
 const StartScreen = () => {
 	return (
 		
+		<div className="outer-wrapper">
+		<div className="inner-wrapper">
 		<div style={{
 			backgroundImage: `url(${background})`,
 			height: '100vh',
@@ -14,7 +16,9 @@ const StartScreen = () => {
 			backgroundSize: 'cover',
 			backgroundRepeat: 'no-repeat',
 		}}>
-			<h1>Hello, Welcome to Nasa Library</h1>
+			<h1>Hello my friend, Welcome to Nasa Library</h1>
+		</div>
+		</div>
 		</div>
 		
 	);
