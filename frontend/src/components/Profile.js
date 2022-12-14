@@ -2,11 +2,10 @@ import React, { /*useState*/ useEffect } from "react";
 import { useDispatch, useSelector, batch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import user from "../reducers/user";
-// import styled from 'styled-components/macro';
+// import styled from "styled-components/macro";
 import { API_URL } from "../utils/utils";
 
 const Profile = () => {
-	// const [secret, setSecret] = useState(null);
 
 	const navigate = useNavigate();
 	const dispatch = useDispatch();

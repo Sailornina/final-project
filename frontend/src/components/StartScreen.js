@@ -18,6 +18,6 @@ const StartScreen = () => {
 		</div>
 		
 	);
-}
+};
 
 export default StartScreen;
