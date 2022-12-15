@@ -52,6 +52,11 @@ const commentSchema = new mongoose.Schema({
 const Comment = mongoose.model('Comment', commentSchema);
 
 const PostSchema = new mongoose.Schema({
+	title: {
+		type: String,
+		trim: true,
+		required: true
+	},
 	text: {
 		type: String,
 		trim: true,
@@ -73,9 +78,9 @@ const PostSchema = new mongoose.Schema({
 	},
 });
 
-PostSchema.virtual('url').get(function () {
-	return '/post/' + this._id
-});
+// PostSchema.virtual('url').get(function () {
+// 	return '/posts/' + this._id
+// });
 
 const Post = mongoose.model("Post", PostSchema);
 
@@ -140,18 +145,16 @@ app.get("/users", async (req, res) => {
 
 app.get("/posts", async (req, res) => {
 	try {
-		const posts = await Post.find().sort({ createdAt: 'desc' }).limit(20).exec();
+		const allPosts = await Post.find().sort({ createdAt: 'desc' }).limit(20).exec();
 		res.status(200).json({
 			response: {
-				posts,
+				allPosts,
 				message: "All posts"
 			},
 			success: true
 		});
 	} catch (error) {
-		res.status(400).json({
-			message: "Failed to load posts"
-		})
+		res.status(400).json({ message: "Failed to load posts" })
 	}
 });
 
@@ -225,24 +228,51 @@ app.post('/login', async (req, res) => {
 // 	});
 // });
 
+app.post("/posts/", isAuthenticated, async (req, res) => {
+	const { title, text } = req.body;
+	try {
+		const posts = await Post({ title, text }).save()
+		res.status(200).json({
+			posts,
+			response: {
+				message: "Your post was created"
+			},
+			success: true
+		});
+	} catch (error) {
+		res.status(400).json({
+			response: {
+				message: "Could not publish your post."
+			},
+			success: false
+		});
+	}
+});
+
 app.post("/posts/:id/comment", isAuthenticated, async (req, res) => { //If the user is registered in the database then they can create a post.
 	// Find out which post you are commenting.
-	const id = req.params.id;
-	const comment = new Comment({
-		text: req.body.comment,
-		post: id
-	}) // Get the comment text and record post id.
-	await comment.save(); // Save comment.
-	const postRelated = await Post.findById(id); // Get this particular post.
-	postRelated.comments.push(comment); // Push the comment into the post.comments array.
-	postRelated.save(function (err) {
-		if (err) { console.log(err) }
-		res.redirect('/')
-	}) // Save and redirect...
+	const id = req.params.id
+	try {
+		const session = await mongoose.connection.startSession()
+
+		await session.withTransaction(async () => {
+			const comment = new Comment({
+				text: req.body.text,
+				post: id
+			}) // Get the comment text and record post id.
+			await comment.save(); // Save comment.
+			await Post.findByIdAndUpdate(id, { '$push': { 'comments': comment._id } });
+			res.status(200).json(comment)
+		});
+		session.endSession();
+	} catch (error) {
+		console.log(error);
+		res.status(400).json({ message: "Couldn't comment." })
+	}
 });
 
 app.patch("/posts/:id/like", async (req, res) => {
-	const { id } = req.params
+	const id = req.params.id
 	try {
 		const likeToUpdate = await Post.findByIdAndUpdate(
 			{ _id: id },
@@ -255,7 +285,7 @@ app.patch("/posts/:id/like", async (req, res) => {
 		);
 		res.status(200).json(likeToUpdate)
 	} catch (error) {
-		res.status(400).json({ error: "Couldn't find comment by id" })
+		res.status(400).json({ message: "Couldn't find comment by id" })
 	}
 });
 
