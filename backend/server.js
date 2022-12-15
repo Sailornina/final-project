@@ -8,7 +8,6 @@ const mongoUrl = process.env.MONGO_URL || "mongodb://localhost/final-project";
 mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.Promise = Promise;
 
-
 const UserSchema = new mongoose.Schema({
 	username: {
 		type: String,
@@ -31,25 +30,27 @@ const UserSchema = new mongoose.Schema({
 
 const User = mongoose.model("User", UserSchema);
 
-const EditProfileSchema = new mongoose.Schema({
+const PostSchema = new mongoose.Schema({
 	username: {
 		type: String,
 		unique: true,
 	},
 	comments: {
 		type: String,
+		minlength: 5,
+		maxlength: 140,
+	},
+	likes: {
+		type: Number,
+		default: 0
 	},
 	createdAt: {
 		type: Date,
 		default: () => new Date()
 	},
-	likes: {
-		type: Number,
-		default: 0
-	}
 });
 
-const EditedProfile = mongoose.model("EditProfile", EditProfileSchema);
+const Post = mongoose.model("Post", PostSchema);
 
 const isAuthenticated = async (req, res, next) => {
 	console.log(req);
@@ -96,24 +97,24 @@ app.get("/users", async (req, res) => {
 app.post('/register', async (req, res) => {
 	const { username, email, password } = req.body;
 	try {
-	  const salt = bcrypt.genSaltSync();
-	  const newUser = await new User({
-		username,
-		email,
-		password: bcrypt.hashSync(password, salt)
-	  }).save();
-	  res.status(201).json({
-		response: {
-		  userId: newUser._id,
-		  username: newUser.username,
-		  accessToken: newUser.accessToken
-		},
-		success: true
-	  });
+		const salt = bcrypt.genSaltSync();
+		const newUser = await new User({
+			username,
+			email,
+			password: bcrypt.hashSync(password, salt)
+		}).save();
+		res.status(201).json({
+			response: {
+				userId: newUser._id,
+				username: newUser.username,
+				accessToken: newUser.accessToken
+			},
+			success: true
+		});
 	} catch (error) {
-	  res.status(400).json({ response: error, success: false });
+		res.status(400).json({ response: error, success: false });
 	}
-  });
+});
 
 app.post('/login', async (req, res) => {
 	const { username, email, password } = req.body;
@@ -140,12 +141,12 @@ app.post('/login', async (req, res) => {
 	}
 });
 
-app.get('/editprofile', isAuthenticated, (req, res) => {
-	app.get("/editprofile", async (req, res) => {
-		const editprofile = await EditedProfile.find({});
-		res.status(200).json({ success: true, response: editprofile });
-	});
-});
+// app.get('/editprofile', isAuthenticated, (req, res) => {
+// 	app.get("/editprofile", async (req, res) => {
+// 		const editprofile = await Post.find({});
+// 		res.status(200).json({ success: true, response: editprofile });
+// 	});
+// });
 
 // Start the server
 app.listen(port, () => {
