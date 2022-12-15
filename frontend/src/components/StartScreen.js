@@ -5,21 +5,30 @@ import background from "../assets/background-image.jpg";
 const StartScreen = () => {
 	return (
 		
-		<div className="outer-wrapper">
-		<div className="inner-wrapper">
+		// <div className="outer-wrapper">
+		// <div className="inner-wrapper">
 		<div style={{
+			// background-image: url('./assets/background-image.jpg');
 			backgroundImage: `url(${background})`,
-			height: '100vh',
-			marginTop: '-70px',
-			fontSize: '50px',
-			color: 	'#FFFFFF',
 			backgroundSize: 'cover',
-			backgroundRepeat: 'no-repeat',
+			display: 'flex',
+			justifyContent: 'center',
+			alignItems: 'center',
+			height: '100vh',
+			width: '100vw',
+			// 
+			// display: 'flex',
+			// height: '100vh',
+			// marginTop: '-70px',
+			// fontSize: '50px',
+			// color: 	'#FFFFFF',
+			// backgroundSize: 'cover',
+			// backgroundRepeat: 'no-repeat',
 		}}>
-			<h1>Hello my friend, Welcome to Nasa Library</h1>
+			<h1>Welcome to Astronomy Community</h1>
 		</div>
-		</div>
-		</div>
+		// </div>
+		// </div>
 		
 	);
 };

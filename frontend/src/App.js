@@ -6,7 +6,6 @@ import user from "./reducers/user";
 import Navbar from "./components/Navbar";
 import StartScreen from "./components/StartScreen";
 import Footer from "./components/Footer";
-// import Header from "./components/Header";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import About from "./components/About";
@@ -27,7 +26,6 @@ export const App = () => {
 		<Provider store={store}>
 			<BrowserRouter>
 				<Navbar />
-				{/* <Header /> */}
 				<Routes>
 					<Route
 						path="/"
