@@ -5,7 +5,7 @@ import bcrypt from "bcrypt";
 import mongoose from "mongoose";
 import listEndpoints from "express-list-endpoints";
 
-const mongoUrl = process.env.MONGO_URL || "mongodb://localhost/final-project";
+const mongoUrl = process.env.MONGO_URL || "mongodb://localhost:27017,localhost:27018,localhost:27019/final-project?replicaSet=rs";
 mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.Promise = Promise;
 
@@ -252,22 +252,27 @@ app.post("/posts/", isAuthenticated, async (req, res) => {
 app.post("/posts/:id/comment", isAuthenticated, async (req, res) => { //If the user is registered in the database then they can create a post.
 	// Find out which post you are commenting.
 	const id = req.params.id
+	const session = await mongoose.connection.startSession()
 	try {
-		const session = await mongoose.connection.startSession()
-
-		await session.withTransaction(async () => {
+		await session.withTransaction(async (session) => {
 			const comment = new Comment({
 				text: req.body.text,
 				post: id
-			}) // Get the comment text and record post id.
-			await comment.save(); // Save comment.
-			await Post.findByIdAndUpdate(id, { '$push': { 'comments': comment._id } });
-			res.status(200).json(comment)
+			})
+			await comment.save({ session });
+			
+			let result = await Post.findByIdAndUpdate(id, { '$push': { 'comments': comment._id } }, { session });
+			if (!result) {
+				throw new Error(`Couldn't find Post with id: ${id}`);
+			}
+			console.log("Result: " + result);
+			res.status(200).json(Comment);
 		});
-		session.endSession();
 	} catch (error) {
 		console.log(error);
-		res.status(400).json({ message: "Couldn't comment." })
+		res.status(400).json({ message: `Couldn't comment. Reason: [${error}]` })
+	} finally {
+		await session.endSession();
 	}
 });
 
