@@ -1,10 +1,13 @@
 import React from 'react';
+import {
+	FooterText,
+} from '../styles/GlobalStyle';
 
 const Footer = () => {
 	return (
-		<footer>
-			<p>About Us</p>
-		</footer>
+					<FooterText>
+						@ Created by Antonella Cardozo and Naghmeh Okhovat
+					</FooterText>
 	)
 };
 

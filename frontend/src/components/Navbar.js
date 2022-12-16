@@ -1,31 +1,56 @@
-// import React from "react";
-import React from "react";
-import { Link, useMatch, useResolvedPath } from "react-router-dom"
+import React, { useState } from "react";
+import {
+	NavbarContainer,
+	LeftContainer,
+	RightContainer,
+	NavbarExtendedContainer,
+	NavbarInnerContainer,
+	NavbarLinkContainer,
+	CustomLink,
+	Logo,
+	OpenLinksButton,
+	NavbarLinkExtended,
+} from "../styles/GlobalStyle";
+import LogoImg from "../assets/Logo.png";
 
 const Navbar = () => {
+	//represent the state of the button with boolean false
+	const [extendNavbar, setExtendNavbar] = useState(false);
 	return (
-		<nav className="nav">
-			<Link to="/" className="site-title">Nasa API</Link>
-			<ul>
-				<CustomLink to="register">Register</CustomLink>
-				<CustomLink to="login">Login</CustomLink>
-				<CustomLink to="about">About</CustomLink>
-			</ul>
-		</nav>
+		<NavbarContainer extendNavbar={extendNavbar}>
+			<NavbarInnerContainer>
+				<LeftContainer>
+					<NavbarLinkContainer>
+						<CustomLink to="/">Home</CustomLink>
+						<CustomLink to="/about">About</CustomLink>
+						<CustomLink to="/register">Register</CustomLink>
+						<CustomLink to="/login">Login</CustomLink>
+						<CustomLink to="/contact us">Contact</CustomLink>
+						<OpenLinksButton
+							onClick={() => {
+								setExtendNavbar((curr) => !curr);
+							}}
+						>
+							{extendNavbar ? <>&#10005;</> : <> &#8801;</>}
+						</OpenLinksButton>
+					</NavbarLinkContainer>
+				</LeftContainer>
+				<RightContainer>
+					<Logo src={LogoImg}></Logo>
+				</RightContainer>
+			</NavbarInnerContainer>
+			{extendNavbar && (
+				<NavbarExtendedContainer>
+					<NavbarLinkExtended to="/"> Home</NavbarLinkExtended>
+					<NavbarLinkExtended to="/about"> About</NavbarLinkExtended>
+					<NavbarLinkExtended to="/register"> Register</NavbarLinkExtended>
+					<NavbarLinkExtended to="/login"> Login</NavbarLinkExtended>
+					<NavbarLinkExtended to="/contact"> Contact</NavbarLinkExtended>
+				</NavbarExtendedContainer>
+			)}
+		</NavbarContainer>
+
 	)
 };
 
 export default Navbar;
-
-const CustomLink = ({ to, children, ...props }) => {
-	const resolvedPath = useResolvedPath(to)
-	const isActive = useMatch({ path: resolvedPath.pathname, end: true })
-
-	return (
-		<li className={isActive ? "active" : ""}>
-			<Link to={to} {...props}>
-				{children}
-			</Link>
-		</li>
-	)
-}
