@@ -18,9 +18,6 @@ const StartScreen = () => {
 			<HeroText>— Felix Baumgartner</HeroText>
 		</Container>
 	</HeroSection>
-
-
-		
 	);
 };
 
