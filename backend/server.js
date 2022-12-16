@@ -31,8 +31,12 @@ const UserSchema = new mongoose.Schema({
 
 const User = mongoose.model("User", UserSchema);
 
-// const mongoose = require('mongoose');
 const commentSchema = new mongoose.Schema({
+	author: {
+		type: mongoose.Schema.Types.ObjectId, 
+		ref: "User",
+		required: true
+	},
 	text: {
 		type: String,
 		trim: true,
@@ -78,10 +82,6 @@ const PostSchema = new mongoose.Schema({
 	},
 });
 
-// PostSchema.virtual('url').get(function () {
-// 	return '/posts/' + this._id
-// });
-
 const Post = mongoose.model("Post", PostSchema);
 
 const isAuthenticated = async (req, res, next) => {
@@ -108,7 +108,6 @@ const isAuthenticated = async (req, res, next) => {
 const port = process.env.PORT || 8080;
 const app = express();
 
-// Add middlewares to enable cors and json body parsing
 app.use(cors());
 app.use(express.json());
 
@@ -129,7 +128,6 @@ app.get("/", (req, res) => {
 			"/posts/:id/like": 'User can patch your like to a comment.'
 		}]
 	}
-
 	res.send(AllEndpointsForUser);
 });
 
@@ -205,29 +203,6 @@ app.post('/login', async (req, res) => {
 	}
 });
 
-// app.get('/editprofile', isAuthenticated, (req, res) => {
-// 	app.get("/editprofile", async (req, res) => {
-// 		try {
-// 			const editprofile = await User.find({});
-// 			res.status(200).json({
-// 				response: {
-// 					editprofile,
-// 					message: "You can edit your username if you want!"
-// 				},
-// 				success: true
-// 			});
-// 		} catch (error) {
-// 			res.status(400).json({ 
-// 				response: {
-// 					editprofile,
-// 					message: "That username already exists!"
-// 				},
-// 				success: false
-// 			 });
-// 		}
-// 	});
-// });
-
 app.post("/posts/", isAuthenticated, async (req, res) => {
 	const { title, text } = req.body;
 	try {
@@ -257,7 +232,8 @@ app.post("/posts/:id/comment", isAuthenticated, async (req, res) => { //If the u
 		await session.withTransaction(async (session) => {
 			const comment = new Comment({
 				text: req.body.text,
-				post: id
+				post: id,
+				author: req.body.userId
 			})
 			await comment.save({ session });
 			
@@ -266,7 +242,7 @@ app.post("/posts/:id/comment", isAuthenticated, async (req, res) => { //If the u
 				throw new Error(`Couldn't find Post with id: ${id}`);
 			}
 			console.log("Result: " + result);
-			res.status(200).json(Comment);
+			res.status(200).json(comment);
 		});
 	} catch (error) {
 		console.log(error);
