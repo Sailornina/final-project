@@ -96,8 +96,7 @@ export const NavbarExtendedContainer = styled.div`
 `;
 
 
-///StartScreen css
-
+//----StartScreen css----//
 export const Container = styled.div`
 	width: 100%;
 	max-width: 1300px;
@@ -118,17 +117,18 @@ export const MainHeading = styled.h1`
 `;
 
 export const HeroSection = styled.section`
-	height: 100vh;
+	height: 200vh;
 	background-position: center;
 	background-size: cover;
 	padding-top: clamp(70px, 25vh, 220px);
 	box-shadow: inset 0 0 0 1000px rgba (0, 0, 0, 0.2);
 `;
 
-export const HeroImage = styled.img`
-  //backgournd image props
-  background-image: url(${(props) => props.image.src});
+export const HeroImage = styled.div`
 	object-fit: cover;
+	/* align-items: center;
+  background-size: cover;
+  background-repeat: no-repeat; */
 	width: 100%;
 	height: 100%;
 	background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.1));
@@ -146,7 +146,7 @@ export const HeroText = styled.p`
 	color: #fff;
 `;
 
-//Footer Css
+//-----Footer Css-----//
 export const FooterText = styled.div`
 	color: white;
 	background-color: #101522;
