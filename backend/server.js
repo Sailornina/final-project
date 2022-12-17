@@ -259,7 +259,7 @@ app.patch("/posts/:id/like", async (req, res) => {
 			{ _id: id },
 			{
 				$inc: {
-					like: 1
+					likes: 1
 				}
 			},
 			{ new: true }
