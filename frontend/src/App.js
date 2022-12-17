@@ -11,6 +11,7 @@ import Register from "./components/Register";
 import About from "./components/About";
 import Profile from "./components/Profile";
 // import Loading from "./components/Loading";
+import ImageandVideo from "./components/ImageandVideo";
 import NotFound from "./components/NotFound";
 
 
@@ -48,6 +49,9 @@ export const App = () => {
 					<Route
 						path="/not-found"
 						element={<NotFound />} />
+					<Route
+						path="/imageandvideo"
+						element={<ImageandVideo />} />
 				</Routes>
 				<Footer />
 			</BrowserRouter>
