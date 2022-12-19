@@ -70,10 +70,13 @@ const Login = () => {
 	}
 	return (
 		<LoginContainer>
-			<Label htmlFor="register">Not registered yet? Register here</Label>
-			<Input type="radio" id="register" checked={mode === "register"} onChange={() => setMode("register")} />
-			<Label htmlFor="login">Already registered? Login here</Label>
-			<Input type="radio" id="login" checked={mode === "login"} onChange={() => setMode("login")} />
+			{/* <Label htmlFor="register">Not registered yet? Register here</Label>
+			<Input type="radio" id="register" checked={mode === "register"} onChange={() => setMode("register")} /> */}
+			<Label htmlFor="login">Welcome Back!</Label>
+			<Paragraph>
+				To keep connected with us, please login with your personal information!
+			</Paragraph>
+			<Input type="hidden" id="login" checked={mode === "login"} onChange={() => setMode("login")} />
 			<Form onSubmit={onFormSubmit}>
 				{/* <p className="error"> {error} </p> */}
 				<Label htmlFor="username">Username</Label>
@@ -97,8 +100,9 @@ const Login = () => {
 					// required ="Required"
 					value={password}
 					onChange={e => setPassword(e.target.value)} />
-				<Paragraph>Password must contain at least 8 characters, at least one letter and one number.</Paragraph>
-				<Button type="submit" disabled={password.length < 8 || password.length > 20}> submit </Button>
+				<Anchor href="#">Forgot your password?</Anchor>
+				{/* <Paragraph>Password must contain at least 8 characters, at least one letter and one number.</Paragraph> */}
+				<Button type="submit" disabled={password.length < 8 || password.length > 20}> Sign in</Button>
 			</Form>
 		</LoginContainer>
 		// <>
@@ -143,21 +147,13 @@ const Login = () => {
 export default Login;
 
 
-export const LoginContainer = styled.div`
-background-color: #fff;
-/* border-radius: 10px;
-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22); */
-width: 100%;
-/* width: 370px;
-	height: 700px; */
-overflow: hidden;
-/* position: relative;
-overflow: hidden; */
-/* width: 678px;
-max-width: 100%;
-min-height: 400px; */
-`;
 
+export const LoginContainer = styled.div`
+justify-content: center;
+margin-top: 80px;
+max-width: 100%;
+min-height: 100vh;
+`;
 
 export const Form = styled.form`
 background-color: #ffffff;
@@ -165,6 +161,7 @@ display: flex;
 align-items: center;
 justify-content: center;
 flex-direction: column;
+line-height: 70px;
 padding: 0 100px;
 height: 100%;
 text-align: center;
@@ -174,10 +171,22 @@ text-align: center;
 `;
 
 export const Label = styled.h1`
-/* font-weight: bold; */
-/* margin: 0; */
   display: flex;
-	width: 80%;
+	font-size: 25px;
+	width: 50%;
+	margin: 0 auto;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+`;
+
+export const Paragraph = styled.p`
+	display: flex;
+	font-size: 14px;
+	font-weight: 100;
+	line-height: 20px;
+	letter-spacing: 0.5px;
+	width: 50%;
 	margin: 0 auto;
 	flex-direction: column;
 	justify-content: center;
@@ -190,8 +199,9 @@ border: none;
 padding: 12px 15px;
 margin: 8px 0;
 width: 100%;
+border-radius: 10px;
+box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 `;
-
 
 export const Button = styled.button`
 	 border-radius: 20px;
@@ -199,17 +209,19 @@ export const Button = styled.button`
 	 background-color: #2B3A55;
 	 color: #ffffff;
 	 font-size: 12px;
-	 /* font-weight: bold; */
+	 font-weight: bold;
 	 padding: 12px 45px;
 	 letter-spacing: 1px;
 	 cursor: pointer;
 	 margin-bottom: 30%;
 `;
 
-export const Paragraph = styled.p`
-  font-size: 14px;
-	font-weight: 100;
-	line-height: 20px;
-	letter-spacing: 0.5px;
-	margin: 20px 0 30px
-`;
+
+
+export const Anchor = styled.a`
+ color: #333;
+ font-size: 14px;
+ text-decoration: none;
+ margin: 15px 0;
+ `;
+
