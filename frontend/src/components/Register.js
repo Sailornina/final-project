@@ -94,7 +94,7 @@ const Register = () => {
 					id="password"
 					value={password}
 					onChange={e => setPassword(e.target.value)} />
-				<Paragraph>Password must contain at least 8 characters, at least one letter and one number.</Paragraph>
+				<Paragraph>Password must contain at least 8 characters, one letter and one number.</Paragraph>
 				<Button type="submit" disabled={password.length < 8 || password.length > 20}> Submit </Button>
 			</Form>
 		</RegisterContainer>
