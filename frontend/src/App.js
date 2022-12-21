@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Provider } from "react-redux";
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import user from "./reducers/user";
+import GlobalStyle from "./styles/GlobalStyle.js";
 import Navbar from "./components/Navbar";
 import StartScreen from "./components/StartScreen";
 import Footer from "./components/Footer";
@@ -25,6 +26,7 @@ export const App = () => {
 	return (
 		<Provider store={store}>
 			<BrowserRouter>
+			<GlobalStyle />
 				<Navbar />
 				<Routes>
 					<Route
