@@ -1,11 +1,11 @@
 import express from "express";
 import cors from "cors";
-import bcrypt from "bcrypt";
 import mongoose from "mongoose";
 import listEndpoints from "express-list-endpoints";
 import imagesRouter from "./routes/imagesRouter";
 import postsRouter from "./routes/postsRouter";
 import registerRouter from "./routes/registerRouter";
+import loginRouter from "./routes/loginRouter";
 import User from "./schemas/User";
 
 const mongoUrl = process.env.MONGO_URL || "mongodb://localhost:27017,localhost:27018,localhost:27019/final-project?replicaSet=rs";
@@ -48,35 +48,35 @@ app.get("/users", async (req, res) => {
 	}
 });
 
-app.post('/login', async (req, res) => {
-	const { username, email, password } = req.body;
-	try {
-		const user = await User.findOne({ username, email });
-		if (user && bcrypt.compareSync(password, user.password, email, user.email)) {
-			res.status(200).json({
-				response: {
-					userId: user._id,
-					username: user.username,
-					email: user.email,
-					accessToken: user.accessToken
-				},
-				success: true
-			});
-		} else {
-			res.status(404).json({
-				response: "Username, email or password doesn't match.",
-				success: false
-			});
-		}
-	} catch (error) {
-		res.status(400).json({ response: error, success: false });
-	}
-});
+// app.post('/login', async (req, res) => {
+// 	const { username, email, password } = req.body;
+// 	try {
+// 		const user = await User.findOne({ username, email });
+// 		if (user && bcrypt.compareSync(password, user.password, email, user.email)) {
+// 			res.status(200).json({
+// 				response: {
+// 					userId: user._id,
+// 					username: user.username,
+// 					email: user.email,
+// 					accessToken: user.accessToken
+// 				},
+// 				success: true
+// 			});
+// 		} else {
+// 			res.status(404).json({
+// 				response: "Username, email or password doesn't match.",
+// 				success: false
+// 			});
+// 		}
+// 	} catch (error) {
+// 		res.status(400).json({ response: error, success: false });
+// 	}
+// });
 
 app.use("/images", imagesRouter);
 app.use("/posts", postsRouter);
 app.use("/register", registerRouter);
-
+app.use("/login", loginRouter);
 
 // Start the server
 app.listen(port, () => {
