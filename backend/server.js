@@ -6,63 +6,12 @@ import mongoose from "mongoose";
 import listEndpoints from "express-list-endpoints";
 import imagesRouter from "./routes/imagesRouter"
 import User from "./schemas/User"
+import Comment from "./schemas/Comment"
+import Post from "./schemas/Post"
 
 const mongoUrl = process.env.MONGO_URL || "mongodb://localhost:27017,localhost:27018,localhost:27019/final-project?replicaSet=rs";
 mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.Promise = Promise;
-
-const commentSchema = new mongoose.Schema({
-	author: {
-		type: mongoose.Schema.Types.ObjectId, 
-		ref: "User",
-		required: true
-	},
-	text: {
-		type: String,
-		trim: true,
-		required: true
-	},
-	createdAt: {
-		type: Date,
-		default: () => new Date()
-	},
-	// Each comment can only relates to one blog, so it's not in array.
-	post: {
-		type: mongoose.Schema.Types.ObjectId,
-		ref: 'Post'
-	}
-});
-
-const Comment = mongoose.model('Comment', commentSchema);
-
-const PostSchema = new mongoose.Schema({
-	title: {
-		type: String,
-		trim: true,
-		required: true
-	},
-	text: {
-		type: String,
-		trim: true,
-		required: true
-	},
-	// A post can have multiple comments, so it should be in a array.
-	// All comments info should be kept in this array of this blog post.
-	comments: [{
-		type: mongoose.Schema.Types.ObjectId,
-		ref: 'Comment'
-	}],
-	likes: {
-		type: Number,
-		default: 0
-	},
-	createdAt: {
-		type: Date,
-		default: () => new Date()
-	},
-});
-
-const Post = mongoose.model("Post", PostSchema);
 
 const isAuthenticated = async (req, res, next) => {
 	console.log(req);
