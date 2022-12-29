@@ -5,32 +5,11 @@ import bcrypt from "bcrypt";
 import mongoose from "mongoose";
 import listEndpoints from "express-list-endpoints";
 import imagesRouter from "./routes/imagesRouter"
+import User from "./schemas/User"
 
 const mongoUrl = process.env.MONGO_URL || "mongodb://localhost:27017,localhost:27018,localhost:27019/final-project?replicaSet=rs";
 mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.Promise = Promise;
-
-const UserSchema = new mongoose.Schema({
-	username: {
-		type: String,
-		required: true,
-		unique: true,
-	},
-	email: {
-		type: String,
-		unique: true
-	},
-	password: {
-		type: String,
-		required: true,
-	},
-	accessToken: {
-		type: String,
-		default: () => crypto.randomBytes(128).toString("hex"),
-	},
-});
-
-const User = mongoose.model("User", UserSchema);
 
 const commentSchema = new mongoose.Schema({
 	author: {
@@ -272,6 +251,7 @@ app.patch("/posts/:id/like", async (req, res) => {
 });
 
 app.use("/images", imagesRouter)
+
 
 // Start the server
 app.listen(port, () => {
