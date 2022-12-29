@@ -1,9 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { getNasaDetailsById } from ".../utils/nasa-api";
+import { getNasaDetailsById } from "../../utils/nasa-api";
 
-const ImageDetails = () => {
-    let { nasaId } = useParams();
+const ImageDetails = ({nasaId}) => {
     const [nasaDetails, setNasaDetails] = useState(null);
     const navigate = useNavigate();
 
