@@ -4,6 +4,7 @@ import crypto from "crypto";
 import bcrypt from "bcrypt";
 import mongoose from "mongoose";
 import listEndpoints from "express-list-endpoints";
+import imagesRouter from "./routes/imagesRouter"
 
 const mongoUrl = process.env.MONGO_URL || "mongodb://localhost:27017,localhost:27018,localhost:27019/final-project?replicaSet=rs";
 mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true });
@@ -269,6 +270,8 @@ app.patch("/posts/:id/like", async (req, res) => {
 		res.status(400).json({ message: "Couldn't find comment by id" })
 	}
 });
+
+app.use("/images", imagesRouter)
 
 // Start the server
 app.listen(port, () => {
