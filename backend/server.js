@@ -1,14 +1,12 @@
 import express from "express";
 import cors from "cors";
-import crypto from "crypto";
 import bcrypt from "bcrypt";
 import mongoose from "mongoose";
 import listEndpoints from "express-list-endpoints";
-import imagesRouter from "./routes/imagesRouter"
-import User from "./schemas/User"
-import Comment from "./schemas/Comment"
-import Post from "./schemas/Post"
-import isAuthenticated from "./middleware/isAuthenticated";
+import imagesRouter from "./routes/imagesRouter";
+import postsRouter from "./routes/postsRouter";
+import registerRouter from "./routes/registerRouter";
+import User from "./schemas/User";
 
 const mongoUrl = process.env.MONGO_URL || "mongodb://localhost:27017,localhost:27018,localhost:27019/final-project?replicaSet=rs";
 mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true });
@@ -50,42 +48,28 @@ app.get("/users", async (req, res) => {
 	}
 });
 
-app.get("/posts", async (req, res) => {
-	try {
-		const allPosts = await Post.find().sort({ createdAt: 'desc' }).limit(20).exec();
-		res.status(200).json({
-			response: {
-				allPosts,
-				message: "All posts"
-			},
-			success: true
-		});
-	} catch (error) {
-		res.status(400).json({ message: "Failed to load posts" })
-	}
-});
 
-app.post('/register', async (req, res) => {
-	const { username, email, password } = req.body;
-	try {
-		const salt = bcrypt.genSaltSync();
-		const newUser = await new User({
-			username,
-			email,
-			password: bcrypt.hashSync(password, salt)
-		}).save();
-		res.status(201).json({
-			response: {
-				userId: newUser._id,
-				username: newUser.username,
-				accessToken: newUser.accessToken
-			},
-			success: true
-		});
-	} catch (error) {
-		res.status(400).json({ response: error, success: false });
-	}
-});
+// app.post('/register', async (req, res) => {
+// 	const { username, email, password } = req.body;
+// 	try {
+// 		const salt = bcrypt.genSaltSync();
+// 		const newUser = await new User({
+// 			username,
+// 			email,
+// 			password: bcrypt.hashSync(password, salt)
+// 		}).save();
+// 		res.status(201).json({
+// 			response: {
+// 				userId: newUser._id,
+// 				username: newUser.username,
+// 				accessToken: newUser.accessToken
+// 			},
+// 			success: true
+// 		});
+// 	} catch (error) {
+// 		res.status(400).json({ response: error, success: false });
+// 	}
+// });
 
 app.post('/login', async (req, res) => {
 	const { username, email, password } = req.body;
@@ -112,74 +96,9 @@ app.post('/login', async (req, res) => {
 	}
 });
 
-app.post("/posts/", isAuthenticated, async (req, res) => {
-	const { title, text } = req.body;
-	try {
-		const posts = await Post({ title, text }).save()
-		res.status(200).json({
-			posts,
-			response: {
-				message: "Your post was created"
-			},
-			success: true
-		});
-	} catch (error) {
-		res.status(400).json({
-			response: {
-				message: "Could not publish your post."
-			},
-			success: false
-		});
-	}
-});
-
-app.post("/posts/:id/comment", isAuthenticated, async (req, res) => { //If the user is registered in the database then they can create a post.
-	// Find out which post you are commenting.
-	const id = req.params.id
-	const session = await mongoose.connection.startSession()
-	try {
-		await session.withTransaction(async (session) => {
-			const comment = new Comment({
-				text: req.body.text,
-				post: id,
-				author: req.body.userId
-			})
-			await comment.save({ session });
-			
-			let result = await Post.findByIdAndUpdate(id, { '$push': { 'comments': comment._id } }, { session });
-			if (!result) {
-				throw new Error(`Couldn't find Post with id: ${id}`);
-			}
-			console.log("Result: " + result);
-			res.status(200).json(comment);
-		});
-	} catch (error) {
-		console.log(error);
-		res.status(400).json({ message: `Couldn't comment. Reason: [${error}]` })
-	} finally {
-		await session.endSession();
-	}
-});
-
-app.patch("/posts/:id/like", async (req, res) => {
-	const id = req.params.id
-	try {
-		const likeToUpdate = await Post.findByIdAndUpdate(
-			{ _id: id },
-			{
-				$inc: {
-					likes: 1
-				}
-			},
-			{ new: true }
-		);
-		res.status(200).json(likeToUpdate)
-	} catch (error) {
-		res.status(400).json({ message: "Couldn't find comment by id" })
-	}
-});
-
-app.use("/images", imagesRouter)
+app.use("/images", imagesRouter);
+app.use("/posts", postsRouter);
+app.use("/register", registerRouter);
 
 
 // Start the server
