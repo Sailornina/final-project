@@ -8,31 +8,11 @@ import imagesRouter from "./routes/imagesRouter"
 import User from "./schemas/User"
 import Comment from "./schemas/Comment"
 import Post from "./schemas/Post"
+import isAuthenticated from "./middleware/isAuthenticated";
 
 const mongoUrl = process.env.MONGO_URL || "mongodb://localhost:27017,localhost:27018,localhost:27019/final-project?replicaSet=rs";
 mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.Promise = Promise;
-
-const isAuthenticated = async (req, res, next) => {
-	console.log(req);
-	const accessToken = req.header("Authorization");
-	try {
-		const user = await User.findOne({ accessToken: accessToken });
-		if (user) {
-			next();
-		} else {
-			res.status(401).json({
-				response: "Please log in",
-				success: false
-			});
-		}
-	} catch (error) {
-		res.status(400).json({
-			response: error,
-			success: false
-		});
-	}
-};
 
 const port = process.env.PORT || 8080;
 const app = express();
