@@ -1,7 +1,7 @@
 import express from "express";
-const app = express();
-const port = 3000;
-const axios = require('axios').default;
+import axios from "axios";
+
+const router = express.Router()
 
 const parseQuery = (req) => {
     let paramsConfig = {};
@@ -18,7 +18,7 @@ const parseQuery = (req) => {
     return paramsConfig
 };
 
-app.get('/images/search', async (req, res) => {
+router.get('/search', async (req, res) => {
     const query = parseQuery(req);
     if (!query.q) {
         console.error("400 Bad request");
@@ -36,7 +36,7 @@ app.get('/images/search', async (req, res) => {
     }
 });
 
-app.get('/images/nasa-details/:id', async (req, res) => {
+router.get('/nasa-details/:id', async (req, res) => {
     try {
         const nasaId = req.params.id;
         const response = await axios.get(`https://images-api.nasa.gov/search?nasa_id=${nasaId}`);
@@ -47,8 +47,4 @@ app.get('/images/nasa-details/:id', async (req, res) => {
     }
 });
 
-app.listen(port, () => {
-    console.log(`Server running on http://localhost:${port}`);
-});
-
-module.exports = app;
+export default router;
