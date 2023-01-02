@@ -3,6 +3,16 @@ import { useDispatch, useSelector, batch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import user from "../reducers/user";
 import styled from 'styled-components';
+import { 
+	Container,
+	BackgroundImage, 
+	Label, 
+	Input, 
+	Form, 
+	Button, 
+	Paragraph
+ } from "../styles/GlobalStyle";
+import Image from "../assets/background-image.jpg";
 import { API_URL } from "../utils/utils";
 
 const Login = () => {
@@ -69,7 +79,8 @@ const Login = () => {
 			})
 	}
 	return (
-		<LoginContainer>
+		<Container>
+			<BackgroundImage><img src={Image} alt="backgroundImg" /> </BackgroundImage>
 			{/* <Label htmlFor="register">Not registered yet? Register here</Label>
 			<Input type="radio" id="register" checked={mode === "register"} onChange={() => setMode("register")} /> */}
 			<Label htmlFor="login">Welcome Back!</Label>
@@ -104,7 +115,7 @@ const Login = () => {
 				{/* <Paragraph>Password must contain at least 8 characters, at least one letter and one number.</Paragraph> */}
 				<Button type="submit" disabled={password.length < 8 || password.length > 20}> Sign in</Button>
 			</Form>
-		</LoginContainer>
+		</Container>
 		// <>
 		// 	<div className="outer-wrapper">
 		// 		<div className="inner-wrapper">
@@ -147,81 +158,9 @@ const Login = () => {
 export default Login;
 
 
-
-export const LoginContainer = styled.div`
-justify-content: center;
-margin-top: 80px;
-max-width: 100%;
-min-height: 100vh;
-`;
-
-export const Form = styled.form`
-background-color: #ffffff;
-display: flex;
-align-items: center;
-justify-content: center;
-flex-direction: column;
-line-height: 70px;
-padding: 0 100px;
-height: 100%;
-text-align: center;
-@media (min-width: 1200px) {
-  padding: 0 500px;
-  }
-`;
-
-export const Label = styled.h1`
-  display: flex;
-	font-size: 25px;
-	width: 50%;
-	margin: 0 auto;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-`;
-
-export const Paragraph = styled.p`
-	display: flex;
-	font-size: 14px;
-	font-weight: 100;
-	line-height: 20px;
-	letter-spacing: 0.5px;
-	width: 50%;
-	margin: 0 auto;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-`;
-
-export const Input = styled.input`
-background-color: #eee;
-border: none;
-padding: 12px 15px;
-margin: 8px 0;
-width: 100%;
-border-radius: 10px;
-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-`;
-
-export const Button = styled.button`
-	 border-radius: 20px;
-	 border: 1px solid #2B3A55;
-	 background-color: #2B3A55;
-	 color: #ffffff;
-	 font-size: 12px;
-	 font-weight: bold;
-	 padding: 12px 45px;
-	 letter-spacing: 1px;
-	 cursor: pointer;
-	 margin-bottom: 30%;
-`;
-
-
-
 export const Anchor = styled.a`
- color: #333;
+ color: #fff;
  font-size: 14px;
  text-decoration: none;
  margin: 15px 0;
  `;
-

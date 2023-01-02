@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector, batch } from "react-redux";
 import { /*Link,*/ useNavigate } from "react-router-dom";
 import user from "../reducers/user";
+import { Title, MainContainer, MainHeading, Button } from "../styles/GlobalStyle";
 // import styled from "styled-components/macro";
 import { API_URL } from "../utils/utils";
 
@@ -44,22 +45,18 @@ const Profile = () => {
 	}, [accessToken])
 
 	return (
-		<section className="outer-wrapper">
-			<section className="inner-wrapper">
-				<div className="profile-page">
-					<h1 className="profile-title">Welcome to your page {username}</h1>
-					<div className="profile-container">
+		<MainContainer>
+			<MainHeading>
+					<Title>Welcome to your page {username}</Title>
 						{/* <p className="secret-text">{secret}</p> */}
-					</div>
 					{/* <Link to="/login" className="btn-back">
 						Go back
 					</Link> */}
-					<button className="profile-button-logout" onClick={logout}>
+					<Button className="profile-button-logout" onClick={logout}>
 						Logout
-					</button>
-				</div>
-			</section>
-		</section>
+					</Button>
+			</MainHeading>
+		</MainContainer>
 	);
 };
 
