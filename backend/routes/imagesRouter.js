@@ -4,7 +4,9 @@ import axios from "axios";
 const router = express.Router()
 
 const parseQuery = (req) => {
-    let paramsConfig = {};
+    let paramsConfig = {
+        "media_type": "image"
+    };
     const q = req.query.q;
     if (q) {
         paramsConfig.q = q
@@ -29,7 +31,29 @@ router.get('/search', async (req, res) => {
         const response = await axios.get(`https://images-api.nasa.gov/search`, {
             params: query
         });
-        res.json(response.data);
+        const images = await Promise.all(response.data.collection.items.map(async (item) => {
+            const imageResponse = await axios.get(item.href);
+
+            const filterImage = imageResponse.data.find(size => size.includes("~small.jpg"))
+
+            if(!filterImage) {
+                return null;
+            }
+
+            return {
+                "id": item.data[0].nasa_id,
+                "description": item.data[0].description,
+                "title": item.data[0].title,
+                "date_created": item.data[0].date_created,
+                "url": filterImage
+            }
+        }));
+
+        res.json({
+            page: parseInt(query.page),
+            total_pages: Math.min(Math.ceil(response.data.collection.metadata.total_hits / 100), 100),
+            images: images.filter(image => image !== null)
+        });
     } catch (error) {
         console.error(error);
         res.status(500);
