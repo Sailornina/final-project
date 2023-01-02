@@ -6,6 +6,7 @@ import { StartContainer, MainHeading } from '../styles/GlobalStyle';
 import { HeroImage, HeroSection, HeroText } from '../styles/GlobalStyle';
 import backgroundImage from "../assets/background-image1.jpg";
 
+
 const StartScreen = () => {
 	return (
 		<HeroSection>

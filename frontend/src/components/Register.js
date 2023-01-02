@@ -34,10 +34,11 @@ const Register = () => {
 
   useEffect(() => {
     if (isUnavailable) {
-      navigate("/not-found");
+      // navigate("/not-found");
+			alert("Oops! You already have an account in our community!")
       setIsUnavailable(false);
     }
-  }, [isUnavailable, navigate]);
+  }, [isUnavailable, alert]);
 
   const onFormSubmit = (event) => {
     event.preventDefault();

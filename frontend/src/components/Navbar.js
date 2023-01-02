@@ -41,11 +41,17 @@ const Navbar = () => {
 			</NavbarInnerContainer>
 			{extendNavbar && (
 				<NavbarExtendedContainer>
-					<NavbarLinkExtended to="/"> Home</NavbarLinkExtended>
-					<NavbarLinkExtended to="/about"> About</NavbarLinkExtended>
+					<NavbarLinkExtended onClick={() => {
+								setExtendNavbar((curr) => !curr);
+							}}to="/"> Home</NavbarLinkExtended>
+					<NavbarLinkExtended onClick={() => {
+								setExtendNavbar((curr) => !curr);
+							}} to="/about"> About</NavbarLinkExtended>
 					{/* <NavbarLinkExtended to="/register"> Register</NavbarLinkExtended>
 					<NavbarLinkExtended to="/login"> Login</NavbarLinkExtended> */}
-					<NavbarLinkExtended to="/contact"> Contact</NavbarLinkExtended>
+					<NavbarLinkExtended onClick={() => {
+								setExtendNavbar((curr) => !curr);
+							}}to="/contact"> Contact</NavbarLinkExtended>
 				</NavbarExtendedContainer>
 			)}
 		</NavbarContainer>
