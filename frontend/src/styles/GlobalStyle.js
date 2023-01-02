@@ -30,16 +30,15 @@ export const MainHeading = styled.h1`
 	text-align: center;
 `;
 
-//----Not-found text css----//
 export const Title = styled.h1`
-  font-size: 40px;
-  margin-top: 5%;
-  color: #191970;
   display: flex;
-	margin: 0 auto;
+	margin: 0 auto; 
+	font-size: 40px;
+  /* margin-top: 5%; */
+  color: #191970;
 	flex-direction: column;
 	justify-content: center;
-	align-items: center;
+	align-items: center; 
 	width: 100%;
   height: 100%;
   padding: 20px;
@@ -223,7 +222,7 @@ export const StartContainer = styled.div`
 `;
 
 export const HeroSection = styled.section`
-	height: 175vh;
+	/* height: 175vh; */
 	background-position: center;
 	background-size: cover;
 	padding-top: clamp(70px, 25vh, 220px);
@@ -255,11 +254,15 @@ export const FooterText = styled.div`
 	font-size: 0.875rem;
 	line-height: 2;
 	text-align: center;
+	position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
 	@media (max-width: 700px) {
 		margin-left: 0px;
 		text-align: center;
-		margin-right: 1rem;
-		margin: 0.4rem auto 0.4rem;
+		/* margin-right: 1rem; */
+		margin: 0.4rem auto 0.4rem;	
 	}
 `;
 

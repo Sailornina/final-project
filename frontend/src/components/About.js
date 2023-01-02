@@ -1,11 +1,11 @@
 import React from "react";
 import Image from "../assets/about.png";
 import styled from "styled-components";
-import { Title } from "../styles/GlobalStyle";
+import { Title, MainContainer } from "../styles/GlobalStyle";
 
 const About = () => {
   return (
-    <AboutContainer>
+    <	MainContainer>
       <Title>
         The purpose of our page is the investigation of the Sun, the Moon, and the heavens.
       </Title>
@@ -21,20 +21,12 @@ const About = () => {
           <img src={Image} alt="backgroundImg" />
         </AboutImage>
       </AboutSubContainer>
-    </AboutContainer>
+			</ MainContainer>
   );
 };
 
 export default About;
 
-export const AboutContainer = styled.div`
-  display: flex;
-  /* flex-direction: column;
-  justify-content: center; */
-  flex-wrap: wrap;
-  margin: 0 auto;
-  align-items: center;
-`;
 
 export const AboutSubContainer = styled.div`
   /* border: 1px solid #ccc; */

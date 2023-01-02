@@ -1,4 +1,5 @@
 import React from "react";
+import Footer from "../components/Footer";
 // import video from "../assets/video.mp4"
 import { StartContainer, MainHeading } from '../styles/GlobalStyle';
 import { HeroImage, HeroSection, HeroText } from '../styles/GlobalStyle';
@@ -16,6 +17,7 @@ const StartScreen = () => {
 			</HeroText>
 			<HeroText>— Felix Baumgartner</HeroText>
 		</StartContainer>
+		<Footer /> 
 	</HeroSection>
 	);
 };
