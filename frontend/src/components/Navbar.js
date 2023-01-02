@@ -23,8 +23,8 @@ const Navbar = () => {
 					<NavbarLinkContainer>
 						<CustomLink to="/">Home</CustomLink>
 						<CustomLink to="/about">About</CustomLink>
-						<CustomLink to="/register">Register</CustomLink>
-						<CustomLink to="/login">Login</CustomLink>
+						{/* <CustomLink to="/register">Register</CustomLink>
+						<CustomLink to="/login">Login</CustomLink> */}
 						<CustomLink to="/contact us">Contact</CustomLink>
 						<OpenLinksButton
 							onClick={() => {
@@ -43,8 +43,8 @@ const Navbar = () => {
 				<NavbarExtendedContainer>
 					<NavbarLinkExtended to="/"> Home</NavbarLinkExtended>
 					<NavbarLinkExtended to="/about"> About</NavbarLinkExtended>
-					<NavbarLinkExtended to="/register"> Register</NavbarLinkExtended>
-					<NavbarLinkExtended to="/login"> Login</NavbarLinkExtended>
+					{/* <NavbarLinkExtended to="/register"> Register</NavbarLinkExtended>
+					<NavbarLinkExtended to="/login"> Login</NavbarLinkExtended> */}
 					<NavbarLinkExtended to="/contact"> Contact</NavbarLinkExtended>
 				</NavbarExtendedContainer>
 			)}

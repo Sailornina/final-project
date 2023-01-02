@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector, batch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { ProfileLink } from "../styles/GlobalStyle";
 import user from "../reducers/user";
 import styled from 'styled-components';
 import { 
@@ -114,6 +115,9 @@ const Login = () => {
 				<Anchor href="#">Forgot your password?</Anchor>
 				{/* <Paragraph>Password must contain at least 8 characters, at least one letter and one number.</Paragraph> */}
 				<Button type="submit" disabled={password.length < 8 || password.length > 20}> Sign in</Button>
+				<Paragraph>
+          New in the community? <ProfileLink to="/register">Register</ProfileLink>
+        </Paragraph>
 			</Form>
 		</Container>
 		// <>

@@ -32,13 +32,13 @@ export const MainHeading = styled.h1`
 
 export const Title = styled.h1`
   display: flex;
-	margin: 0 auto; 
+	margin: 0 auto;
 	font-size: 40px;
   /* margin-top: 5%; */
   color: #191970;
 	flex-direction: column;
 	justify-content: center;
-	align-items: center; 
+	align-items: center;
 	width: 100%;
   height: 100%;
   padding: 20px;
@@ -102,6 +102,7 @@ export const Paragraph = styled.p`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+	margin-bottom: 5%;
 `;
 
 export const Input = styled.input`
@@ -124,9 +125,17 @@ export const Button = styled.button`
   padding: 12px 45px;
   letter-spacing: 1px;
   cursor: pointer;
-  margin-bottom: 30%;
+  margin-bottom: 10%;
 `;
 
+export const ProfileLink = styled(Link)`
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  cursor: pointer;
+  margin: auto;
+`;
 //----Navbar css----//
 export const NavbarContainer = styled.nav`
   width: 100%;
@@ -246,6 +255,37 @@ export const HeroText = styled.p`
 	color: #fff;
 `;
 
+export const LinkWrapper = styled.div`
+	width: 100%;
+	margin-top: 70px;
+	display: flex;
+	justify-content: center;
+	flex-flow: wrap;
+	gap: 2rem;
+	
+`;
+
+export const StartLink = styled(Link)`
+	color: black;
+	border: 10px solid #2b3a45;;
+	background-color: #2b3a45;
+	font-size: clamp(0.5rem, 1vw, 1.3rem);
+	line-height: 24px;
+	font-weight: bold;
+	border-radius: 10px;
+	text-decoration: none;
+	&:before {
+		background: #fff;
+		height: 500%;
+	}
+	&:hover:before {
+		height: 0%;
+	}
+	&:hover {
+		color: white;
+	}
+`;
+
 //-----Footer Css-----//
 export const FooterText = styled.div`
 	color: white;
@@ -262,7 +302,7 @@ export const FooterText = styled.div`
 		margin-left: 0px;
 		text-align: center;
 		/* margin-right: 1rem; */
-		margin: 0.4rem auto 0.4rem;	
+		margin: 0.4rem auto 0.4rem;
 	}
 `;
 

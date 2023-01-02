@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector, batch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { ProfileLink } from "../styles/GlobalStyle";
 import user from "../reducers/user";
 import { 
 	Container,
@@ -128,6 +129,9 @@ const Register = () => {
           {" "}
           Submit{" "}
         </Button>
+				<Paragraph>
+          Already have an account? <ProfileLink to="/login">Login</ProfileLink>
+        </Paragraph>
       </Form>
     </Container>
   );
