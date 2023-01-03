@@ -17,7 +17,7 @@ const SpaceCommunicate = ({ post }) => {
             }
         }
 
-        fetch(`'https://final-project-w5otwao4va-lz.a.run.app/posts/${id}/like'`, ids)
+        fetch(`https://final-project-w5otwao4va-lz.a.run.app/posts/${id}/like`, ids)
             .then((res) => {
                 if (res.status === 200) {
                     res.json()
