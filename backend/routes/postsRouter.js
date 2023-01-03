@@ -42,7 +42,7 @@ router.post("/", isAuthenticated, async (req, res) => {
 	}
 });
 
-router.post(":id/comment", isAuthenticated, async (req, res) => { 
+router.post("/:id/comment", isAuthenticated, async (req, res) => { 
 	//If the user is registered in the database then they can create a post.
 	// Find out which post you are commenting.
 	const id = req.params.id
@@ -71,7 +71,7 @@ router.post(":id/comment", isAuthenticated, async (req, res) => {
 	}
 });
 
-router.patch(":id/like", async (req, res) => {
+router.patch("/:id/like", isAuthenticated, async (req, res) => {
 	const id = req.params.id
 	try {
 		const likeToUpdate = await Post.findByIdAndUpdate(
