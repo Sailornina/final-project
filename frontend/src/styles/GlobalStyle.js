@@ -11,6 +11,16 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
+// export const ProfileImage = styled.div`
+//   position: fixed;
+//   text-align: center;
+// 	background-size: 100vw 100vh;
+// 	right: 0;
+// 	top: 0;
+// 	z-index: -1;
+// `;
+
+
 export const MainContainer = styled.div`
 	width: 100%;
 	max-width: 1300px;
@@ -32,13 +42,13 @@ export const MainHeading = styled.h1`
 
 export const Title = styled.h1`
   display: flex;
-	margin: 0 auto; 
+	margin: 0 auto;
 	font-size: 40px;
   /* margin-top: 5%; */
   color: #191970;
 	flex-direction: column;
 	justify-content: center;
-	align-items: center; 
+	align-items: center;
 	width: 100%;
   height: 100%;
   padding: 20px;
@@ -102,6 +112,7 @@ export const Paragraph = styled.p`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+	margin-bottom: 5%;
 `;
 
 export const Input = styled.input`
@@ -124,7 +135,16 @@ export const Button = styled.button`
   padding: 12px 45px;
   letter-spacing: 1px;
   cursor: pointer;
-  margin-bottom: 30%;
+  margin-bottom: 10%;
+`;
+
+export const ProfileLink = styled(Link)`
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  cursor: pointer;
+  margin: auto;
 `;
 
 //----Navbar css----//
@@ -132,7 +152,7 @@ export const NavbarContainer = styled.nav`
   width: 100%;
 	//grab all the props that were passing to this component by creating a function and send a props
   height: ${(props) => (props.extendNavbar ? "100vh" : "80px")};
-  background-color: #2B3A55;
+  background-color: #0009;
   display: flex;
   flex-direction: column;
   @media (min-width: 700px) {
@@ -180,9 +200,12 @@ export const NavbarLinkExtended = styled(Link)`
 `;
 
 export const Logo = styled.img`
-  margin: 6px;
+  background-color: #708090;
+	border-radius: 60%;
+  margin: 9px;
   max-width: 180px;
   height: auto;
+	padding: 3%;
 `;
 
 export const OpenLinksButton = styled.button`
@@ -246,6 +269,36 @@ export const HeroText = styled.p`
 	color: #fff;
 `;
 
+export const LinkWrapper = styled.div`
+	width: 100%;
+	margin-top: 70px;
+	display: flex;
+	justify-content: center;
+	flex-flow: wrap;
+	gap: 2rem;
+`;
+
+export const StartLink = styled(Link)`
+	color: black;
+	border: 10px solid #2b3a55;;
+	background-color: #2b3a55;
+	font-size: clamp(0.5rem, 1vw, 1.3rem);
+	line-height: 24px;
+	font-weight: bold;
+	border-radius: 10px;
+	text-decoration: none;
+	&:before {
+		background: #fff;
+		height: 500%;
+	}
+	&:hover:before {
+		height: 0%;
+	}
+	&:hover {
+		color: white;
+	}
+`;
+
 //-----Footer Css-----//
 export const FooterText = styled.div`
 	color: white;
@@ -262,7 +315,7 @@ export const FooterText = styled.div`
 		margin-left: 0px;
 		text-align: center;
 		/* margin-right: 1rem; */
-		margin: 0.4rem auto 0.4rem;	
+		margin: 0.4rem auto 0.4rem;
 	}
 `;
 

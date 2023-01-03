@@ -8,6 +8,7 @@ const user = createSlice({
 		accessToken: null,
 		email: null,
 		error: null,
+		isLoading: false,
 	},
 	reducers: {
 		setUsername: (store, action) => {
@@ -25,6 +26,9 @@ const user = createSlice({
 		setError: (store, action) => {
 			store.error = action.payload;
 		},
+		setLoading: (state, action) => {
+     state.isLoading = action.payload;
+    }
 	}
 });
 
