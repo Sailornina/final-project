@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+// import React, { useState, useEffect } from "react";
 
-const Pagination = () => {
-    const [pageNumber, setPageNumber] = useState([]);
-    return (
+// const Pagination = () => {
+//     const [pageNumber, setPageNumber] = useState([]);
+//     return (
 
-    );
-};
+//     );
+// };
 
-export default Pagination;
+// export default Pagination;

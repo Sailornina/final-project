@@ -11,6 +11,7 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import About from "./components/About";
 import Profile from "./components/Profile";
+import SpaceFeed from "./components/community/SpaceFeed";
 // import Loading from "./components/Loading";
 import NotFound from "./components/NotFound";
 
@@ -35,6 +36,9 @@ export const App = () => {
 					<Route
 						path="/profile"
 						element={<Profile />} />
+						<Route
+						path="/spaceFeed"
+						element={<SpaceFeed />} />
 					<Route
 						path="/login"
 						element={<Login />} />

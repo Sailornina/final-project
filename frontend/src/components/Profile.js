@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector, batch } from "react-redux";
-import { /*Link,*/ useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import user from "../reducers/user";
 import { Title, MainContainer, MainHeading, Button } from "../styles/GlobalStyle";
 // import styled from "styled-components/macro";
 // import { ProfileImage } from '../styles/GlobalStyle';
 // import background from "../assets/background-image-profile.jpg";
-import { API_URL } from "../utils/utils";
+import { API_URL } from "../apis/user";
 
 const Profile = () => {
 
@@ -50,6 +50,7 @@ const Profile = () => {
 		<MainContainer>
 			<MainHeading>
 					<Title>Welcome to your page {username}</Title>
+					<Link to= "/spaceFeed">Your Community</Link>
 					{/* <ProfileImage><img src={background} alt="backgroundImg" /> </ProfileImage> */}
 					<Button className="profile-button-logout" onClick={logout}>
 						Logout
