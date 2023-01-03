@@ -11,16 +11,6 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-// export const ProfileImage = styled.div`
-//   position: fixed;
-//   text-align: center;
-// 	background-size: 100vw 100vh;
-// 	right: 0;
-// 	top: 0;
-// 	z-index: -1;
-// `;
-
-
 export const MainContainer = styled.div`
 	width: 100%;
 	max-width: 1300px;
