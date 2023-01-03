@@ -15,7 +15,7 @@ import {
  } from "../styles/GlobalStyle";
 import Image from "../assets/background-image.jpg";
 import Swal from 'sweetalert2'
-import { API_URL } from "../utils/utils";
+import { API_URL } from "../apis/user";
 
 const Register = () => {
   const [username, setUsername] = useState("");

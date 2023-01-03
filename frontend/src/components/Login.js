@@ -14,7 +14,7 @@ import {
 	Paragraph
  } from "../styles/GlobalStyle";
 import Image from "../assets/background-image.jpg";
-import { API_URL } from "../utils/utils";
+import { API_URL } from "../apis/user";
 
 const Login = () => {
 	const [username, setUsername] = useState("");

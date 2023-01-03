@@ -6,8 +6,8 @@ import styled from 'styled-components';
 import { MainContainer, MainHeading, Button } from "../styles/GlobalStyle";
 // import styled from "styled-components/macro";
 // import { ProfileImage } from '../styles/GlobalStyle';
-import background from "../assets/background-image-profile.jpg";
-import { API_URL } from "../utils/utils";
+// import background from "../assets/background-image-profile.jpg";
+import { API_URL } from "../apis/user";
 
 const Profile = () => {
 
@@ -33,7 +33,7 @@ const Profile = () => {
 		const options = {
 			method: 'GET',
 			headers: {
-				Authorization: accessToken,
+				'Authorization': accessToken,
 			},
 		}
 
@@ -50,12 +50,14 @@ const Profile = () => {
 	return (
 		<MainContainer>
 			<MainHeading>
+
 			    <Heading> " THE DREAM IS ALIVE " </Heading>
 					<Heading> Welcome to your profile {username} </Heading>
 					{/* <Link to= "/spaceFeed">Your Community</Link> */}
 					<ProfileImage><img src={background} alt="backgroundImg" /> </ProfileImage>
 					<SubHeading> Click <CommunityLink to= "/spaceFeed">Here</CommunityLink> to find your favorite Community </SubHeading>
 					<SubHeading> Start navigate to our <CommunityLink to= "/spaceForm">Search</CommunityLink> menue </SubHeading>
+
 					<Button className="profile-button-logout" onClick={logout}>
 						Logout
 					</Button>

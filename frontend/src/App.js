@@ -11,7 +11,8 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import About from "./components/About";
 import Profile from "./components/Profile";
-// import Loading from "./components/Loading";
+import SpaceFeed from "./components/community/SpaceFeed";
+import Loading from "./components/Loading";
 import NotFound from "./components/NotFound";
 
 
@@ -26,7 +27,7 @@ export const App = () => {
 	return (
 		<Provider store={store}>
 			<BrowserRouter>
-			<GlobalStyle />
+				<GlobalStyle />
 				<Navbar />
 				<Routes>
 					<Route
@@ -36,6 +37,9 @@ export const App = () => {
 						path="/profile"
 						element={<Profile />} />
 					<Route
+						path="/space-feed"
+						element={<SpaceFeed />} />
+					<Route
 						path="/login"
 						element={<Login />} />
 					<Route
@@ -44,9 +48,9 @@ export const App = () => {
 					<Route
 						path="/about"
 						element={<About />} />
-					{/* <Route 
-            path="/Loading"
-            element={<Loading />} /> */}
+					<Route
+						path="/loading"
+						element={<Loading />} />
 					<Route
 						path="/not-found"
 						element={<NotFound />} />
