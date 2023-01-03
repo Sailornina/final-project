@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 // import { API_POST } from "apis/community/space";
 import SpaceForm from "./SpaceForm";
-import SpaceCommunicate from "./SpaceCommunicate";
+// import SpaceCommunicate from "./SpaceCommunicate";
 
 const SpaceFeed = () => {
     const [posts, setPosts] = useState([])

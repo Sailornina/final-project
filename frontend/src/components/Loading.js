@@ -1,11 +1,9 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import Lottie from 'react-lottie';
-import animationData from './lotties/planet';
+import animationData from '../lotties/planet';
 
 const Loading = () => {
-  const loading = useSelector((store) => store.user.loading)
 
   const defaultOptions = {
     loop: true,
@@ -18,14 +16,11 @@ const Loading = () => {
 
   return (
     <ChildContainer>
-      {loading
-     && <>
      <StyledHeading>Taking you there...</StyledHeading>
      <Lottie
           options={defaultOptions}
           height={400}
           width={400} />
-      </>}
     </ChildContainer>
   )
 };
