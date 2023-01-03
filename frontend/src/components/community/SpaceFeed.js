@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 // import { API_POST } from "apis/community/space";
 import SpaceForm from "./SpaceForm";
-// import SpaceCommunicate from "./SpaceCommunicate";
+import SpaceCommunicate from "./SpaceCommunicate";
 
 const SpaceFeed = () => {
     const [posts, setPosts] = useState([])
@@ -10,20 +10,23 @@ const SpaceFeed = () => {
     useEffect(() => {
         fetch('https://final-project-w5otwao4va-lz.a.run.app/posts')
             .then((res) => res.json())
-            .then((json) => setPosts(json))
+            .then((json) => setPosts(json.response))
     }, [posts.length])
+
+    console.log(`Posts: ${JSON.stringify(posts)}`)
 
     return (
         <section className="container">
             <SpaceForm onPostSubmitted={(newPost) => {
-                setPosts([newPost, posts]) // Updating the state.
+                setPosts([newPost, ...posts]) // Updating the state.
                 console.log('onPostSubmitted called')
+                
             }} />
-            {/* {posts.map((post) => (
+            {posts.map((post) => (
                 <SpaceCommunicate
                     key={post._id}
                     post={post} />
-            ))} */}
+            ))}
         </section>
     )
 };

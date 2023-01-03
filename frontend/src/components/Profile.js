@@ -50,7 +50,7 @@ const Profile = () => {
 		<MainContainer>
 			<MainHeading>
 					<Title>Welcome to your page {username}</Title>
-					<Link to= "/spaceFeed">Your Community</Link>
+					<Link to= "/space-feed">Your Community</Link>
 					{/* <ProfileImage><img src={background} alt="backgroundImg" /> </ProfileImage> */}
 					<Button className="profile-button-logout" onClick={logout}>
 						Logout
