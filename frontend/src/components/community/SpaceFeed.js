@@ -10,7 +10,7 @@ const SpaceFeed = () => {
     useEffect(() => {
         fetch('https://final-project-w5otwao4va-lz.a.run.app/posts')
             .then((res) => res.json())
-            .then((json) => setPosts(json.response))
+            .then((json) => setPosts(json.response.allPosts))
     }, [posts.length])
 
     console.log(`Posts: ${JSON.stringify(posts)}`)

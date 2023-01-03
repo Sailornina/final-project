@@ -1,17 +1,25 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 // import { API_POST } from "apis/space";
 
 const SpaceForm = ({ onPostSubmitted }) => {
   const [newPost, setNewPost] = useState('');
+
+  const accessToken = useSelector((store) => store.user.accessToken);
 
   const handleFormSubmit = (e) => {
     e.preventDefault()
 
     const message = {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ text: newPost })
+      headers: {
+        'Content-Type': 'application/json', 
+        'Authorization': accessToken
+      },
+      body: JSON.stringify({ text: newPost, title: 'title' })
     }
+
+    console.log(`Message: ${JSON.stringify(message)}`)
 
     fetch('https://final-project-w5otwao4va-lz.a.run.app/posts', message)
       .then((res) => {
