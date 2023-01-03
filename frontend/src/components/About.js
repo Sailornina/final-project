@@ -20,6 +20,9 @@ const About = () => {
         <AboutImage>
           <img src={Image} alt="backgroundImg" />
         </AboutImage>
+				{/* <footer>
+      <p>Logo is created by...</p>
+    </footer> */}
       </AboutSubContainer>
 			</ MainContainer>
   );

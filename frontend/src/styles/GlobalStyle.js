@@ -146,12 +146,13 @@ export const ProfileLink = styled(Link)`
   cursor: pointer;
   margin: auto;
 `;
+
 //----Navbar css----//
 export const NavbarContainer = styled.nav`
   width: 100%;
 	//grab all the props that were passing to this component by creating a function and send a props
   height: ${(props) => (props.extendNavbar ? "100vh" : "80px")};
-  background-color: #2B3A55;
+  background-color: #0009;
   display: flex;
   flex-direction: column;
   @media (min-width: 700px) {
@@ -199,9 +200,12 @@ export const NavbarLinkExtended = styled(Link)`
 `;
 
 export const Logo = styled.img`
-  margin: 6px;
+  background-color: #708090;
+	border-radius: 60%;
+  margin: 9px;
   max-width: 180px;
   height: auto;
+	padding: 3%;
 `;
 
 export const OpenLinksButton = styled.button`

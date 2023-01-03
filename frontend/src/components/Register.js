@@ -3,6 +3,7 @@ import { useDispatch, useSelector, batch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { ProfileLink } from "../styles/GlobalStyle";
 import user from "../reducers/user";
+import Loading from './Loading';
 import { 
 	Container,
 	BackgroundImage, 
@@ -13,18 +14,24 @@ import {
 	Paragraph
  } from "../styles/GlobalStyle";
 import Image from "../assets/background-image.jpg";
+import Swal from 'sweetalert2'
 import { API_URL } from "../utils/utils";
 
 const Register = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+	const [loading, setLoading] = useState(true)
   const [isUnavailable, setIsUnavailable] = useState(false);
   const [mode, setMode] = useState("register");
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const accessToken = useSelector((store) => store.user.accessToken);
+
+	useEffect(() => {
+    setTimeout(() => setLoading(false), 1000)
+  }, [])
 
   useEffect(() => {
     if (accessToken) {
@@ -35,7 +42,12 @@ const Register = () => {
   useEffect(() => {
     if (isUnavailable) {
       // navigate("/not-found");
-			alert("Oops! You already have an account in our community!")
+			Swal.fire({
+				icon: 'error',
+				title: 'Oops...',
+				text: 'Something went wrong! You already have an account in our community!'
+			})
+			// alert("Oops! You already have an account in our community!")
       setIsUnavailable(false);
     }
   }, [isUnavailable, alert]);
@@ -80,9 +92,12 @@ const Register = () => {
         console.log("Catch");
         setIsUnavailable(true);
       });
+			
   };
   return (
-    <Container>
+		<>
+    {loading === false ? (
+    <Container >
 				<BackgroundImage><img src={Image} alt="backgroundImg" /> </BackgroundImage>
       {/* <BackgroundImage>
         <img src={Image} alt="backgroundImg" />{" "}
@@ -135,6 +150,10 @@ const Register = () => {
         </Paragraph>
       </Form>
     </Container>
+		  ) : (
+        <Loading />
+      )}
+      </>
   );
 };
 
