@@ -8,10 +8,10 @@ const SpaceFeed = () => {
 
     /* Api Global */
     useEffect(() => {
-          fetch('https://final-project-w5otwao4va-lz.a.run.app/posts')
-             .then((res) => res.json())
-             .then((json) => setPosts(json))
-     }, [posts.length])
+        fetch('https://final-project-w5otwao4va-lz.a.run.app/posts')
+            .then((res) => res.json())
+            .then((json) => setPosts(json))
+    }, [posts.length])
 
     return (
         <section className="container">
@@ -19,11 +19,11 @@ const SpaceFeed = () => {
                 setPosts([newPost, posts]) // Updating the state.
                 console.log('onPostSubmitted called')
             }} />
-            {posts.map((post) => (
+            {/* {posts.map((post) => (
                 <SpaceCommunicate
-                    key={post._id} 
+                    key={post._id}
                     post={post} />
-            ))}
+            ))} */}
         </section>
     )
 };

@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import moment from 'moment';
 
-const SpaceCommunicate = ({post}) => {
-    const [counter, setCounter] = useState(post.hearts);
+const SpaceCommunicate = ({ post }) => {
+    const [counter, setCounter] = useState(post.likes);
+    const [comment, setComment] = useState(post.comment);
 
     const handleLikeButton = (id) => {
         const ids = {
@@ -16,7 +17,26 @@ const SpaceCommunicate = ({post}) => {
                     res.json()
                         .then((likedPost) => {
                             console.log(`Request successful: ${JSON.stringify(likedPost)}`)
-                            setCounter(likedPost.hearts)
+                            setCounter(likedPost.likes)
+                        })
+                }
+            })
+    };
+
+    const handleComment = (id) => {
+        const ids = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ comments: comment })
+        }
+
+        fetch(`'https://final-project-w5otwao4va-lz.a.run.app/posts/${id}/comment'`, ids)
+            .then((res) => {
+                if (res.status === 200) {
+                    res.json()
+                        .then((commentedPost) => {
+                            console.log(`Request successful: ${JSON.stringify(commentedPost)}`)
+                            setComment(commentedPost.comment)
                         })
                 }
             })
@@ -26,9 +46,18 @@ const SpaceCommunicate = ({post}) => {
         <section className="like-button-container">
             <div className="like-content">
                 <p key={post._id}>{post.message}</p>
-                <div className="info-like">
+                <div className="info-posted">
+                    <textarea
+                        className="input-textarea comment"
+                        id="new-comment"
+                        name="new-comment"
+                        placeholder="add a comment"
+                        value={comment}
+                        onChange={handleComment}
+                        rows="5"
+                        cols="23" />
                     <button
-                        className={post.hearts > 0 ? 'button-heart clicked' : 'button-heart'}
+                        className={post.likes > 0 ? 'button-heart clicked' : 'button-heart'}
                         onClick={() => handleLikeButton(post._id)}>
                         <span role="img" aria-label="heart">❤️</span>
                     </button>

@@ -1,30 +1,36 @@
-import React from 'react'
+import React from 'react';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
-
-
-
+import Lottie from 'react-lottie';
+import animationData from './lotties/planet';
 
 const Loading = () => {
+  const loading = useSelector((store) => store.user.loading)
+
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: animationData,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice"
+    }
+  };
 
   return (
-				<ChildContainer>
-					<StyledHeading>Taking you there...</StyledHeading>
-					<lottie-player
-						src="https://assets9.lottiefiles.com/packages/lf20_bqmgf5tx.json"
-						background="transparent"
-						speed="1"
-						style={{ width: '200px',
-							height: '200px' }}
-						loop
-						autoplay />
-				</ChildContainer>
-			)
-		}
-
+    <ChildContainer>
+      {loading
+     && <>
+     <StyledHeading>Taking you there...</StyledHeading>
+     <Lottie
+          options={defaultOptions}
+          height={400}
+          width={400} />
+      </>}
+    </ChildContainer>
+  )
+};
 
 export default Loading;
-
-
 
 export const ChildContainer = styled.div`
     box-sizing: border-box;

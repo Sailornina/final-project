@@ -10,7 +10,7 @@ const SpaceForm = ({ onPostSubmitted }) => {
     const message = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ message: newPost })
+      body: JSON.stringify({ text: newPost })
     }
 
     fetch('https://final-project-w5otwao4va-lz.a.run.app/posts', message)
@@ -32,9 +32,9 @@ const SpaceForm = ({ onPostSubmitted }) => {
         <label htmlFor="new-post">
           <textarea
             className="input-textarea text"
-            id="new-thought"
+            id="new-post"
             name="new-post"
-            placeholder="Write in the space! ^^"
+            placeholder="Write here..."
             value={newPost}
             onChange={handleOnNewPost}
             rows="5"
@@ -45,7 +45,7 @@ const SpaceForm = ({ onPostSubmitted }) => {
           className="submit-button"
           disabled={newPost.length < 5 || newPost.length > 140}>
           <span role="img" aria-label="heart">
-            ❤️ Send Happy Thought ❤️
+          🚀 Post 🚀
           </span>
         </button>
         <p className="lenght-post">{newPost.length} / 140</p>
