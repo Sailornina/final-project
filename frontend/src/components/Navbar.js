@@ -25,7 +25,7 @@ const Navbar = () => {
 						<CustomLink to="/about">About</CustomLink>
 						{/* <CustomLink to="/register">Register</CustomLink>
 						<CustomLink to="/login">Login</CustomLink> */}
-						<CustomLink to="/contact us">Contact</CustomLink>
+						<CustomLink to="/profile"> <span role="img" aria-labelledby="Alien">👽</span></CustomLink>
 						<OpenLinksButton
 							onClick={() => {
 								setExtendNavbar((curr) => !curr);
@@ -51,7 +51,7 @@ const Navbar = () => {
 					<NavbarLinkExtended to="/login"> Login</NavbarLinkExtended> */}
 					<NavbarLinkExtended onClick={() => {
 								setExtendNavbar((curr) => !curr);
-							}}to="/contact"> Contact</NavbarLinkExtended>
+							}}to="/profile"> <span role="img" aria-labelledby="Alien">👽</span></NavbarLinkExtended>
 				</NavbarExtendedContainer>
 			)}
 		</NavbarContainer>

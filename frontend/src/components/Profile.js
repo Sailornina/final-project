@@ -24,7 +24,7 @@ const Profile = () => {
 	};
 	useEffect(() => {
 		if (!accessToken) {
-			navigate('/')
+			navigate('/login')
 		}
 	}, [accessToken, navigate])
 

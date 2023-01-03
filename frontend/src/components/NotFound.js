@@ -54,7 +54,6 @@ padding: 20px;
 export const ImageBack = styled.div`
 width: 26px;
 filter: invert(100%) sepia(18%) saturate(351%) hue-rotate(149deg) brightness(100%) contrast(95%);
-/* margin-right: 4px; */
 position: absolute;
 display: inline-flex;
 color: grey;
