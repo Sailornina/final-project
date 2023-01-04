@@ -6,6 +6,7 @@ import styled from 'styled-components';
 const SpaceForm = ({ onPostSubmitted }) => {
   const [newPost, setNewPost] = useState('');
 
+
   const accessToken = useSelector((store) => store.user.accessToken);
 
   const handleFormSubmit = (e) => {
