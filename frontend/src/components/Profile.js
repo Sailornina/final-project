@@ -54,7 +54,7 @@ const Profile = () => {
 					<Heading> Welcome to your profile {username} </Heading>
 					<ProfileImage><img src={background} alt="backgroundImg" /> </ProfileImage>
 					<SubHeading> Click <CommunityLink to= "/space-feed">Here</CommunityLink> to find your favorite Community </SubHeading>
-					<SubHeading> Start navigate to our <CommunityLink to= "/spaceForm">Search</CommunityLink> menue </SubHeading>
+					<SubHeading> Start navigate to our <CommunityLink to= "/search-form">Search</CommunityLink> menue </SubHeading>
 					<Button className="profile-button-logout" onClick={logout}>
 						Logout
 					</Button>

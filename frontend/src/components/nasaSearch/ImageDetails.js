@@ -1,31 +1,31 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { getNasaDetailsById } from "../../apis/nasa-api";
+import { searchNasaImagesByPage } from "../../apis/nasa-api";
+import { useState, useEffect } from "react";
 
-const ImageDetails = ({nasaId}) => {
+const ImageDetails = () => {
     const [nasaDetails, setNasaDetails] = useState(null);
     const navigate = useNavigate();
 
-    useEffect(() => {
-        getNasaDetailsById(nasaId)
-            .then(response => 
-                setNasaDetails(response.collection.items[0]));
-    }, [nasaId]);
+    useEffect(async () => {
+        const imagesDetails = await searchNasaImagesByPage("", 1);
+        setNasaDetails(imagesDetails);
+    }, [nasaDetails]);
 
-    if (!nasaDetails) {
-        return (
+    useEffect(() => {
+        if (!nasaDetails) {
             navigate('/not-found')
-        );
-    };
+        }
+    }, [navigate])
 
     return (
         <div className='details'>
-            <div className="center-content">
-                <h3 className='title'>Title: {nasaDetails.data[0].title}</h3>
-                <img className="nasa-img" src={nasaDetails.links[0].href} />
-                <p className='description'>Description: {nasaDetails.data[0].description}</p>
-                <p className='created'>Created: {nasaDetails.data[0].date_created}</p>
-            </div>
+            {nasaDetails.map((item) => {
+                title = {item}
+                url = {item}
+                description = {item}
+                date_created = {item}
+            })}
         </div>
     );
 };

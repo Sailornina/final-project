@@ -14,6 +14,9 @@ import Profile from "./components/Profile";
 import SpaceFeed from "./components/community/SpaceFeed";
 import Loading from "./components/Loading";
 import NotFound from "./components/NotFound";
+import SearchForm from "./components/nasaSearch/SearchForm";
+import ImageDetails from "./components/nasaSearch/ImageDetails";
+
 
 
 export const App = () => {
@@ -39,6 +42,12 @@ export const App = () => {
 					<Route
 						path="/space-feed"
 						element={<SpaceFeed />} />
+					<Route
+						path="/search-form"
+						element={<SearchForm />} />
+						<Route
+						path="image-details"
+						element={<ImageDetails />} />
 					<Route
 						path="/login"
 						element={<Login />} />
