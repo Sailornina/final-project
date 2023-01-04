@@ -165,7 +165,7 @@ export const NavbarContainer = styled.nav`
   width: 100%;
 	//grab all the props that were passing to this component by creating a function and send a props
   height: ${(props) => (props.extendNavbar ? "100vh" : "80px")};
-  background-color: #0009;
+  background-color: #0005;
   display: flex;
   flex-direction: column;
   @media (min-width: 700px) {
@@ -213,9 +213,10 @@ export const NavbarLinkExtended = styled(Link)`
 `;
 
 export const Logo = styled.img`
-  background-color: #708090;
-	border-radius: 60%;
-  margin: 9px;
+  /* background-color: #708090; */
+	filter: invert(100%) sepia(18%) saturate(351%) hue-rotate(149deg) brightness(100%) contrast(95%);
+	/* border-radius: 60%; */
+  margin: 1px;
   max-width: 180px;
   height: auto;
 	padding: 3%;
