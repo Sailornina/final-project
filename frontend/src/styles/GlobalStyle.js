@@ -45,11 +45,28 @@ export const Title = styled.h1`
 `;
 
 //----Register/Login css----//
+export const Main = styled.div`
+  display: grid;
+  place-items: center;
+  text-align: center;
+  background-size: cover;
+`;
+
 export const Container = styled.div`
-  justify-content: center;
-  margin-top: 100px;
-  max-width: 100%;
-  min-height: 100vh;
+  width: 600px; 
+	height: 700px;
+  border-radius: 10px;
+  padding: 40px 30px;
+  margin-top: 10px;
+  box-shadow: -3px -3px 9px #aaa9a9a2,
+              3px 3px 7px rgba(147, 149, 151, 0.671);
+	@media (max-width: 667px) {
+    width: 300px; 
+	  height: 800px;
+		padding: 10px 0px;
+		justify-content: center;
+    flex-direction: column;
+  }
 `;
 
 export const BackgroundImage = styled.div`
@@ -72,18 +89,23 @@ export const Form = styled.form`
   line-height: 80px;
   justify-content: center;
   flex-direction: column;
-  padding: 0 100px;
-  height: 100%;
+  /* padding: 0 100px;
+  height: 100%; */
+	height: 600px;
+  width: 100%;
+  display: flex;
+  position: relative;
   text-align: center;
-  @media (min-width: 1200px) {
-    padding: 0 500px;
+	@media (max-width: 667px) {
+    width: 300px; 
+	  height: 650px;
   }
 `;
 
 export const Label = styled.h1`
   display: flex;
   color: #fff;
-  font-size: 25px;
+  font-size: 20px;
   margin: 0 auto;
   flex-direction: column;
   justify-content: center;
@@ -102,15 +124,15 @@ export const Paragraph = styled.p`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-	margin-bottom: 5%;
 `;
 
 export const Input = styled.input`
   background-color: #eee;
   border: none;
-  padding: 12px 15px;
+	padding: 12px 15px;
+  /* padding: 12px 15px;
   margin: 8px 0;
-  width: 100%;
+  width: 100%; */
   border-radius: 10px;
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 `;
@@ -128,6 +150,7 @@ export const Button = styled.button`
   margin-bottom: 10%;
 `;
 
+//----Profile CSS----//
 export const ProfileLink = styled(Link)`
   color: #ffffff;
   font-size: 12px;
