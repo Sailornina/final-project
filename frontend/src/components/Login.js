@@ -6,6 +6,7 @@ import user from "../reducers/user";
 import styled from 'styled-components';
 import { 
 	Container,
+	Main,
 	BackgroundImage, 
 	Label, 
 	Input, 
@@ -80,10 +81,9 @@ const Login = () => {
 			})
 	}
 	return (
+		<Main>
 		<Container>
 			<BackgroundImage><img src={Image} alt="backgroundImg" /> </BackgroundImage>
-			{/* <Label htmlFor="register">Not registered yet? Register here</Label>
-			<Input type="radio" id="register" checked={mode === "register"} onChange={() => setMode("register")} /> */}
 			<Label htmlFor="login">Welcome Back!</Label>
 			<Paragraph>
 				To keep connected with us, please login with your personal information!
@@ -112,7 +112,7 @@ const Login = () => {
 					// required ="Required"
 					value={password}
 					onChange={e => setPassword(e.target.value)} />
-				<Anchor href="#">Forgot your password?</Anchor>
+				<Anchor href="/register">Forgot your password? Create a new account!</Anchor>
 				{/* <Paragraph>Password must contain at least 8 characters, at least one letter and one number.</Paragraph> */}
 				<Button type="submit" disabled={password.length < 8 || password.length > 20}> Sign in</Button>
 				<Paragraph>
@@ -120,42 +120,7 @@ const Login = () => {
         </Paragraph>
 			</Form>
 		</Container>
-		// <>
-		// 	<div className="outer-wrapper">
-		// 		<div className="inner-wrapper">
-		// 			<label htmlFor="register">Not registered yet? Register here</label>
-		// 			<input type="radio" id="register" checked={mode === "register"} onChange={() => setMode("register")} />
-		// 			<label htmlFor="login">Already registered? Login here</label>
-		// 			<input type="radio" id="login" checked={mode === "login"} onChange={() => setMode("login")} />
-		// 			<form onSubmit={onFormSubmit}>
-		// 				{/* <p className="error"> {error} </p> */}
-		// 				<label htmlFor="username">Username</label>
-		// 				<input
-		// 					type="text"
-		// 					id="username"
-		// 					// required ="Required"
-		// 					value={username}
-		// 					onChange={e => setUsername(e.target.value)} />
-		// 				<label htmlFor="password">Email</label>
-		// 				<input
-		// 					type="email"
-		// 					id="email"
-		// 					// required ="Required"
-		// 					value={email}
-		// 					onChange={e => setEmail(e.target.value)} />
-		// 				<label htmlFor="password">Password</label>
-		// 				<input
-		// 					type="password"
-		// 					id="password"
-		// 					// required ="Required"
-		// 					value={password}
-		// 					onChange={e => setPassword(e.target.value)} />
-		// 				<p>Password must contain at least 8 characters, at least one letter and one number.</p>
-		// 				<button type="submit" disabled={password.length < 8 || password.length > 20}> submit </button>
-		// 			</form>
-		// 		</div>
-		// 	</div>
-		// </>
+		</Main>
 	);
 };
 
@@ -166,5 +131,8 @@ export const Anchor = styled.a`
  color: #fff;
  font-size: 14px;
  text-decoration: none;
- margin: 15px 0;
+ margin: 10px 0;
+ @media (max-width: 667px) {
+		line-height: 20px;
+  }
  `;

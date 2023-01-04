@@ -6,6 +6,7 @@ import user from "../reducers/user";
 import Loading from './Loading';
 import { 
 	Container,
+	Main,
 	BackgroundImage, 
 	Label, 
 	Input, 
@@ -97,6 +98,7 @@ const Register = () => {
   return (
 		<>
     {loading === false ? (
+			<Main>
     <Container >
 				<BackgroundImage><img src={Image} alt="backgroundImg" /> </BackgroundImage>
       {/* <BackgroundImage>
@@ -150,6 +152,7 @@ const Register = () => {
         </Paragraph>
       </Form>
     </Container>
+		</Main>
 		  ) : (
         <Loading />
       )}

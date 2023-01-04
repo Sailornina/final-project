@@ -50,7 +50,6 @@ const Profile = () => {
 	return (
 		<MainContainer>
 			<MainHeading>
-
 			    <Heading> " THE DREAM IS ALIVE " </Heading>
 					<Heading> Welcome to your profile {username} </Heading>
 					<ProfileImage><img src={background} alt="backgroundImg" /> </ProfileImage>
