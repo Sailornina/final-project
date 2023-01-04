@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Lottie from 'react-lottie';
+import Lottie from "lottie-react";
 import animationData from '../lotties/planet';
 
 const Loading = () => {
@@ -8,7 +8,7 @@ const Loading = () => {
   const defaultOptions = {
     loop: true,
     autoplay: true,
-    animationData: animationData,
+    // animationData: animationData,
     rendererSettings: {
       preserveAspectRatio: "xMidYMid slice"
     }
@@ -18,6 +18,7 @@ const Loading = () => {
     <ChildContainer>
      <StyledHeading>Taking you there...</StyledHeading>
      <Lottie
+          animationData={animationData}
           options={defaultOptions}
           height={400}
           width={400} />
