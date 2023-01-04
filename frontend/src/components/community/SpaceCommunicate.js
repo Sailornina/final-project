@@ -4,7 +4,7 @@ import moment from 'moment';
 
 const SpaceCommunicate = ({ post }) => {
     const [counter, setCounter] = useState(post.likes);
-    // const [comment, setComment] = useState(post.comment);
+    const [comment, setComment] = useState(post.comments);
 
     const accessToken = useSelector((store) => store.user.accessToken);
 
@@ -29,31 +29,34 @@ const SpaceCommunicate = ({ post }) => {
             })
     };
 
-    // const handleComment = (id) => {
-    //     const ids = {
-    //         method: 'POST',
-    //         headers: { 'Content-Type': 'application/json' },
-    //         body: JSON.stringify({ comments: comment })
-    //     }
+    const handleComment = (id) => {
+        const ids = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': accessToken 
+            },
+            body: JSON.stringify({ comments: comment })
+        }
 
-    //     fetch(`'https://final-project-w5otwao4va-lz.a.run.app/posts/${id}/comment'`, ids)
-    //         .then((res) => {
-    //             if (res.status === 200) {
-    //                 res.json()
-    //                     .then((commentedPost) => {
-    //                         console.log(`Request successful: ${JSON.stringify(commentedPost)}`)
-    //                         setComment(commentedPost.comment)
-    //                     })
-    //             }
-    //         })
-    // };
+        fetch(`https://final-project-w5otwao4va-lz.a.run.app/posts/${id}/comment`, ids)
+            .then((res) => {
+                if (res.status === 200) {
+                    res.json()
+                        .then((commentedPost) => {
+                            console.log(`Request successful: ${JSON.stringify(commentedPost)}`)
+                            setComment(commentedPost.comments)
+                        })
+                }
+            })
+    };
 
     return (
         <section className="like-button-container">
             <div className="like-content">
                 <p>{post.text}</p>
                 <div className="info-posted">
-                    {/* <textarea
+                    <textarea
                         className="input-textarea comment"
                         id="new-comment"
                         name="new-comment"
@@ -61,7 +64,7 @@ const SpaceCommunicate = ({ post }) => {
                         value={comment}
                         onChange={handleComment}
                         rows="5"
-                        cols="23" /> */}
+                        cols="23" />
                     <button
                         className={post.likes > 0 ? 'button-heart clicked' : 'button-heart'}
                         onClick={() => handleLikeButton(post._id)}>
