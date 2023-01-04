@@ -3,6 +3,7 @@ import { useDispatch, useSelector, batch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { ProfileLink } from "../styles/GlobalStyle";
 import user from "../reducers/user";
+import Loading from './Loading';
 import styled from 'styled-components';
 import { 
 	Container,
@@ -21,6 +22,7 @@ const Login = () => {
 	const [username, setUsername] = useState("");
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
+	const [loading, setLoading] = useState(true)
 	// const [error, setError] = useState(null);
 	const [isUnavailable, setIsUnavailable] = useState(false)
 	const [mode, setMode] = useState("login");
@@ -28,6 +30,10 @@ const Login = () => {
 	const navigate = useNavigate();
 
 	const accessToken = useSelector((store) => store.user.accessToken);
+
+	useEffect(() => {
+    setTimeout(() => setLoading(false), 1000)
+  }, [])
 
 	useEffect(() => {
 		if (accessToken) {
@@ -81,6 +87,8 @@ const Login = () => {
 			})
 	}
 	return (
+		<>
+    {loading === false ? (
 		<Main>
 		<Container>
 			<BackgroundImage><img src={Image} alt="backgroundImg" /> </BackgroundImage>
@@ -121,6 +129,10 @@ const Login = () => {
 			</Form>
 		</Container>
 		</Main>
+		  ) : (
+        <Loading />
+				)}
+				</>
 	);
 };
 

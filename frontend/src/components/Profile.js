@@ -1,11 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector, batch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import user from "../reducers/user";
 import styled from 'styled-components';
 import { MainContainer, MainHeading, Button } from "../styles/GlobalStyle";
-// import styled from "styled-components/macro";
-// import { ProfileImage } from '../styles/GlobalStyle';
+import Loading from './Loading';
 import background from "../assets/background-image-profile.jpg";
 import { API_URL } from "../apis/user";
 
@@ -13,8 +12,13 @@ const Profile = () => {
 
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
+	const [loading, setLoading] = useState(true)
 	const accessToken = useSelector((store) => store.user.accessToken);
 	const username = useSelector((store) => store.user.username)
+
+	useEffect(() => {
+    setTimeout(() => setLoading(false), 1000)
+  }, [])
 
 	const logout = () => {
 		batch(() => {
@@ -48,6 +52,8 @@ const Profile = () => {
 	}, [accessToken])
 
 	return (
+		<>
+    {loading === false ? (
 		<MainContainer>
 			<MainHeading>
 			    <Heading> " THE DREAM IS ALIVE " </Heading>
@@ -60,6 +66,10 @@ const Profile = () => {
 					</Button>
 			</MainHeading>
 		</MainContainer>
+		  ) : (
+        <Loading />
+				)}
+				</>
 	);
 };
 

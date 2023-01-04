@@ -16,7 +16,7 @@ const Loading = () => {
 
   return (
     <ChildContainer>
-     <StyledHeading>Taking you there...</StyledHeading>
+     <StyledHeading> WAIT ... Space is loading ... </StyledHeading>
      <Lottie
           animationData={animationData}
           options={defaultOptions}
@@ -30,7 +30,6 @@ export default Loading;
 
 export const ChildContainer = styled.div`
     box-sizing: border-box;
-    background: linear-gradient(rgba(82, 81, 81, 0.9), rgba(0, 0, 0, 0.9));
     padding: 1.5em;
     margin: 0;
     display: flex;
