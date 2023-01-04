@@ -53,7 +53,6 @@ const Profile = () => {
 
 			    <Heading> " THE DREAM IS ALIVE " </Heading>
 					<Heading> Welcome to your profile {username} </Heading>
-					<Link to= "/space-feed">Your Community</Link>
 					<ProfileImage><img src={background} alt="backgroundImg" /> </ProfileImage>
 					<SubHeading> Click <CommunityLink to= "/space-feed">Here</CommunityLink> to find your favorite Community </SubHeading>
 					<SubHeading> Start navigate to our <CommunityLink to= "/spaceForm">Search</CommunityLink> menue </SubHeading>
