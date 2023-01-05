@@ -34,9 +34,14 @@ const SearchForm = () => {
                     />
                     <button onClick={onClickSearch}>Search</button>
                 </form>
-                {result && (
-                   <ImageDetails />
-                )}
+                {result.map((item) => (
+                   <ImageDetails
+                   key={item._id}
+                   title = {item}
+                   url = {item}
+                   description = {item}
+                   date_created = {item} />
+                ))}
             </div>
         </div>
     );

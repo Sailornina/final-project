@@ -22,11 +22,12 @@ const ImageDetails = () => {
         <div className='details'>
             {nasaDetails.map((item) => {
                 return (
-                <h1>Hi</h1>
-                // title = {item}
-                // url = {item}
-                // description = {item}
-                // date_created = {item}
+                <h1 key={nasaDetails._id}>
+                {item.title}
+                {item.url}
+                {item.description}
+                {item.date_created}
+                </h1>
                 )
             })}
         </div>
