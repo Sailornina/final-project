@@ -59,16 +59,32 @@ const Login = () => {
 			body: JSON.stringify({ username: username, email: email, password: password })
 		}
 
+//LocalStorage testing
+		// useEffect(() => {
+		// 	const userData = localStorage.getItem("userData");
+		// 	if (userData) {
+		// 		navigate("/profile");
+		// 	}
+		// }, [navigate]);
+///
+
 		fetch(API_URL(mode), options)
 			.then(response => response.json())
 			.then(data => {
 				if (data.success) {
 					batch(() => {
 						dispatch(user.actions.setUsername(data.response.username));
-						dispatch(user.actions.setEmail(data.response.email));
 						dispatch(user.actions.setUserId(data.response.id))
 						dispatch(user.actions.setAccessToken(data.response.accessToken));
 						dispatch(user.actions.setError(null));
+
+						///localStorage testing
+
+						// localStorage.setItem("accessToken", data.accessToken);
+						// localStorage.setItem("userData", JSON.stringify(data));
+						// localStorage.setItem("user", data.username);
+
+						// localStorage.removeItem("user");
 					});
 				} else {
 					console.log("Unsuccessful")

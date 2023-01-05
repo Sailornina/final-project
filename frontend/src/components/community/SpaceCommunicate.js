@@ -2,39 +2,21 @@ import React, { useState } from 'react';
 import { useSelector } from "react-redux";
 import styled from 'styled-components';
 import moment from 'moment';
+// import user from 'reducers/user';
 // import communityImg from "../../assets/Rocket.png";
 
 const SpaceCommunicate = ({ post }) => {
 	// const dispatch = useDispatch();
     const [counter, setCounter] = useState(post.likes);		
-		// const accessToken = localStorage.getItem('accessToken');
+		
     // const [comment, setComment] = useState(post.comment);
 		// const [deleted, setDeleted] = useState(false)
-		// const userInfo = useSelector((store) => store.user.userInfo)
-		// const loggedInUser = useSelector((store) => store.user.userInfo)
     const accessToken = useSelector((store) => store.user.accessToken);
 
-	// 	const ondeleteClick = () => {
-	// 		setDeleted()
-	// 		console.log("delete")
-	// }
-
-	// const removeItem = post => {
-	// 	// remove it
-	// 	setPosts(posts.filter((item) => item.id !== post.id));
-	
-	// }
-
-	// useEffect(() => {
-  //   const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'))
-  //   if (loggedInUser) {
-  //     dispatch(user.actions.setLoggedInUser(loggedInUser))
-  //   }
-  // }, [dispatch])
-
-	// useEffect(() => {
-  //   localStorage.setItem('loggedInUser', JSON.stringify(userInfo))
-  // }, [userInfo])
+//LocalStorage testing
+		// const user = localStorage.getItem('user');
+//or????
+	// const post = localStorage.getItem('post');
 
     const handleLikeButton = (id) => {
         const ids = {
@@ -43,6 +25,7 @@ const SpaceCommunicate = ({ post }) => {
                 'Content-Type': 'application/json',
                 'Authorization': accessToken
             }
+						// body: JSON.stringify({ username: user, })
         }
 
         fetch(`https://final-project-w5otwao4va-lz.a.run.app/posts/${id}/like`, ids)
@@ -54,6 +37,7 @@ const SpaceCommunicate = ({ post }) => {
                             setCounter(likedPost.likes)
                         })
                 }
+								
             })
     };
 

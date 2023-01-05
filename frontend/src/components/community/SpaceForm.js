@@ -44,7 +44,7 @@ const SpaceForm = ({ onPostSubmitted }) => {
           <Input
             id="new-post"
             name="new-post"
-            placeholder="Write your comment here..."
+            placeholder="Your comment ..."
             defaultValue={newPost}
             onChange={handleOnNewPost}
             rows="5"

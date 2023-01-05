@@ -9,12 +9,16 @@ import background from "../assets/background-image-profile.jpg";
 import { API_URL } from "../apis/user";
 
 const Profile = () => {
-
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 	const [loading, setLoading] = useState(true)
 	const accessToken = useSelector((store) => store.user.accessToken);
 	const username = useSelector((store) => store.user.username)
+
+	///Localstorage testing
+	// const user = JSON.parse(localStorage.getItem("userData"));
+
+
 	
 	useEffect(() => {
     setTimeout(() => setLoading(false), 1000)
@@ -24,7 +28,6 @@ const Profile = () => {
 		batch(() => {
 			dispatch(user.actions.setUsername(null));
 			dispatch(user.actions.setAccessToken(null));
-			localStorage.removeItem("user");
 		})
 	};
 	
