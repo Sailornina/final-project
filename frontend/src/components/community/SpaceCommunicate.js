@@ -2,13 +2,12 @@ import React, { useState } from 'react';
 import { useSelector } from "react-redux";
 import styled from 'styled-components';
 import moment from 'moment';
-// import user from 'reducers/user';
-// import communityImg from "../../assets/Rocket.png";
+// import user from '../../reducers/user';
+import communityImg from "../../assets/Rocket.png";
 
 const SpaceCommunicate = ({ post }) => {
 	// const dispatch = useDispatch();
     const [counter, setCounter] = useState(post.likes);		
-		
     // const [comment, setComment] = useState(post.comment);
 		// const [deleted, setDeleted] = useState(false)
     const accessToken = useSelector((store) => store.user.accessToken);
@@ -25,7 +24,6 @@ const SpaceCommunicate = ({ post }) => {
                 'Content-Type': 'application/json',
                 'Authorization': accessToken
             }
-						// body: JSON.stringify({ username: user, })
         }
 
         fetch(`https://final-project-w5otwao4va-lz.a.run.app/posts/${id}/like`, ids)
@@ -58,12 +56,12 @@ const SpaceCommunicate = ({ post }) => {
     //                     })
     //             }
     //         })
-    // };
+    // };}
 
     return (
         <Main>
             <Container>
-						{/* <CommunityImage><img src={communityImg} alt="backgroundImg" /> </CommunityImage> */}
+						<CommunityImage><img src={communityImg} alt="backgroundImg" /> </CommunityImage>
                 <Paragraph>{post.text}</Paragraph>
                     {/* <textarea
                         className="input-textarea comment"
@@ -93,14 +91,13 @@ const SpaceCommunicate = ({ post }) => {
 
 export default SpaceCommunicate;
 
-// export const CommunityImage = styled.div`
-//   position: fixed;
-//   text-align: center;
-// 	background-size: 100vw 100vh;
-// 	right: 0;
-// 	top: 0;
-// 	z-index: -1;
-// `;
+
+export const CommunityImage = styled.div`
+  position: fixed;
+  text-align: center;
+	background-size: 100vw 100vh;
+	z-index: -1;
+`;
 
 export const Main = styled.div`
   display: grid;
@@ -136,6 +133,9 @@ export const Button = styled.button`
 	border: 0;
 	margin-right: 5px;
 	float: left; 
+	@media (max-width: 667px) {
+  float: right;
+  }
 /* 	
 	&.button-heart clicked {
         fill:"red";
@@ -152,12 +152,20 @@ export const Paragraph = styled.p`
 export const Counter = styled.p`
 float: left;
 font-size: smaller;
+@media (max-width: 667px) {
+  float: right;
+  }
 `;
 
 
 export const Moment = styled.p`
 	float: right;
 	font-size: 10px;
+	@media (max-width: 667px) {
+    width: 300px; 
+	  height: 100px;
+		padding: 10px 0px;
+  }
 `;
 
 

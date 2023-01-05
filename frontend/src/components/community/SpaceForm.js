@@ -5,6 +5,8 @@ import styled from 'styled-components';
 
 const SpaceForm = ({ onPostSubmitted }) => {
   const [newPost, setNewPost] = useState('');
+	const [newName, setNewName] = useState('');
+	const [newTitle, setNewTitle] = useState('');
 
 
   const accessToken = useSelector((store) => store.user.accessToken);
@@ -34,6 +36,12 @@ const SpaceForm = ({ onPostSubmitted }) => {
   const handleOnNewPost = (e) => {
     setNewPost(e.target.value)
   }
+	const handleOnNewName = (e) => {
+    setNewName(e.target.value)
+  }
+	const handleOnNewTitle = (e) => {
+    setNewTitle(e.target.value)
+  }
 
   return (
     <Main>
@@ -41,10 +49,26 @@ const SpaceForm = ({ onPostSubmitted }) => {
       <Form  onSubmit={handleFormSubmit}>
         <Title>What is happening in the space?</Title>
         <Label htmlFor="new-post">
+				<Input
+            id="new-title"
+            name="new-title"
+            placeholder="Write your Title ..."
+            defaultValue={newTitle}
+            onChange={handleOnNewTitle}
+            rows="5"
+            cols="33" />
+						<Input
+            id="new-name"
+            name="new-name"
+            placeholder="Write your Name ..."
+            defaultValue={newName}
+            onChange={handleOnNewName}
+            rows="5"
+            cols="33" />
           <Input
             id="new-post"
             name="new-post"
-            placeholder="Your comment ..."
+            placeholder="Write your Comment ..."
             defaultValue={newPost}
             onChange={handleOnNewPost}
             rows="5"
@@ -53,7 +77,7 @@ const SpaceForm = ({ onPostSubmitted }) => {
 				<Paragraph>{newPost.length} / 140</Paragraph>
         <Button
           type="submit"
-          disabled={newPost.length < 5 || newPost.length > 140}>
+          disabled={newPost.length < 4 || newPost.length > 140}>
           <span role="img" aria-label="heart">
           🚀 Post 🚀
           </span>
@@ -85,7 +109,7 @@ export const Main = styled.div`
 export const Container = styled.div`
   background-color: #B5D5C5;
   width: 500px; 
-	height: 300px;
+	height: 350px;
   border-radius: 10px;
   box-shadow: -3px -3px 9px #aaa9a9a2,
               3px 3px 7px rgba(147, 149, 151, 0.671);
@@ -100,6 +124,7 @@ export const Container = styled.div`
 export const Title = styled.h1`
   display: flex;
 	font-size: 30px;
+	font-weight: 700;
   color: #191970;
 	flex-direction: column;
 	justify-content: center;
@@ -115,7 +140,7 @@ export const Form = styled.form`
   line-height: 50px;
   justify-content: center;
   flex-direction: column;
-	height: 300px;
+	height: 350px;
   width: 100%;
   display: flex;
   position: relative;
@@ -127,24 +152,23 @@ export const Form = styled.form`
 `;
 
 export const Label = styled.h1`
-  /* display: flex;
+  display: flex;
   color: #fff;
-  font-size: 20px;
   margin: 0 auto;
   flex-direction: column;
   justify-content: center;
-  align-items: center; */
+  align-items: center;
 `;
 
 export const Input = styled.input`
   background-color: #eee;
 	margin-top: 10px;
 	width: 90%;
-	height: 60px;
+	height: 50px;
 	border: 3px solid maroon;
   border: none;
 	padding: 12px 15px;
-  border-radius: 10px;
+  border-radius: 20px;
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 `;
 

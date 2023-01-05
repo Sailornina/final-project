@@ -16,7 +16,7 @@ const Profile = () => {
 	const username = useSelector((store) => store.user.username)
 
 	///Localstorage testing
-	// const user = JSON.parse(localStorage.getItem("userData"));
+	// const user = JSON.parse(localStorage.getItem("userId"));
 
 
 	

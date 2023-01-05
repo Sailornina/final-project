@@ -23,7 +23,8 @@ const user = createSlice({
 		setEmail: (store, action) => {
 			store.email = action.payload;
 		},
-		setError: (store, action) => {
+		
+    setError: (store, action) => {
 			store.error = action.payload;
 		},
 		setLoading: (state, action) => {
