@@ -21,10 +21,13 @@ const ImageDetails = () => {
     return (
         <div className='details'>
             {nasaDetails.map((item) => {
-                title = {item}
-                url = {item}
-                description = {item}
-                date_created = {item}
+                return (
+                <h1>Hi</h1>
+                // title = {item}
+                // url = {item}
+                // description = {item}
+                // date_created = {item}
+                )
             })}
         </div>
     );

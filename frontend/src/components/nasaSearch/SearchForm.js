@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { searchNasaImagesByPage } from "../../apis/nasa-api";
+import ImageDetails from "./ImageDetails";
 // import { Link } from "react-router-dom";
 
 const SearchForm = () => {
@@ -33,7 +34,9 @@ const SearchForm = () => {
                     />
                     <button onClick={onClickSearch}>Search</button>
                 </form>
-
+                {result && (
+                   <ImageDetails />
+                )}
             </div>
         </div>
     );
