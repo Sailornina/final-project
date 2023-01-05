@@ -1,93 +1,40 @@
-// import React, { useState } from 'react';
-// import { useSelector } from "react-redux";
-// import moment from 'moment';
-
-// const SpaceCommunicate = ({ post }) => {
-//     const [counter, setCounter] = useState(post.likes);
-//     // const [comment, setComment] = useState(post.comment);
-
-//     const accessToken = useSelector((store) => store.user.accessToken);
-
-//     const handleLikeButton = (id) => {
-//         const ids = {
-//             method: 'PATCH',
-//             headers: {
-//                 'Content-Type': 'application/json',
-//                 'Authorization': accessToken
-//             }
-//         }
-
-//         fetch(`https://final-project-w5otwao4va-lz.a.run.app/posts/${id}/like`, ids)
-//             .then((res) => {
-//                 if (res.status === 200) {
-//                     res.json()
-//                         .then((likedPost) => {
-//                             console.log(`Request successful: ${JSON.stringify(likedPost)}`)
-//                             setCounter(likedPost.likes)
-//                         })
-//                 }
-//             })
-//     };
-
-//     // const handleComment = (id) => {
-//     //     const ids = {
-//     //         method: 'POST',
-//     //         headers: { 'Content-Type': 'application/json' },
-//     //         body: JSON.stringify({ comments: comment })
-//     //     }
-
-//     //     fetch(`'https://final-project-w5otwao4va-lz.a.run.app/posts/${id}/comment'`, ids)
-//     //         .then((res) => {
-//     //             if (res.status === 200) {
-//     //                 res.json()
-//     //                     .then((commentedPost) => {
-//     //                         console.log(`Request successful: ${JSON.stringify(commentedPost)}`)
-//     //                         setComment(commentedPost.comment)
-//     //                     })
-//     //             }
-//     //         })
-//     // };
-
-//     return (
-//         <section className="like-button-container">
-//             <div className="like-content">
-//                 <p>{post.text}</p>
-//                 <div className="info-posted">
-//                     {/* <textarea
-//                         className="input-textarea comment"
-//                         id="new-comment"
-//                         name="new-comment"
-//                         placeholder="add a comment"
-//                         value={comment}
-//                         onChange={handleComment}
-//                         rows="5"
-//                         cols="23" /> */}
-//                     <button
-//                         className={post.likes > 0 ? 'button-heart clicked' : 'button-heart'}
-//                         onClick={() => handleLikeButton(post._id)}>
-//                         <span role="img" aria-label="heart">❤️</span>
-//                     </button>
-//                     <span className="like-counter"> x {counter}</span>
-//                     <p className="date">{moment(post.createdAt).fromNow()}</p>
-//                 </div>
-//             </div>
-//         </section>
-
-//     )
-// };
-
-// export default SpaceCommunicate;
-
 import React, { useState } from 'react';
 import { useSelector } from "react-redux";
 import styled from 'styled-components';
 import moment from 'moment';
+// import communityImg from "../../assets/Rocket.png";
 
 const SpaceCommunicate = ({ post }) => {
-    const [counter, setCounter] = useState(post.likes);
+	// const dispatch = useDispatch();
+    const [counter, setCounter] = useState(post.likes);		
+		// const accessToken = localStorage.getItem('accessToken');
     // const [comment, setComment] = useState(post.comment);
-
+		// const [deleted, setDeleted] = useState(false)
+		// const userInfo = useSelector((store) => store.user.userInfo)
+		// const loggedInUser = useSelector((store) => store.user.userInfo)
     const accessToken = useSelector((store) => store.user.accessToken);
+
+	// 	const ondeleteClick = () => {
+	// 		setDeleted()
+	// 		console.log("delete")
+	// }
+
+	// const removeItem = post => {
+	// 	// remove it
+	// 	setPosts(posts.filter((item) => item.id !== post.id));
+	
+	// }
+
+	// useEffect(() => {
+  //   const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'))
+  //   if (loggedInUser) {
+  //     dispatch(user.actions.setLoggedInUser(loggedInUser))
+  //   }
+  // }, [dispatch])
+
+	// useEffect(() => {
+  //   localStorage.setItem('loggedInUser', JSON.stringify(userInfo))
+  // }, [userInfo])
 
     const handleLikeButton = (id) => {
         const ids = {
@@ -132,8 +79,8 @@ const SpaceCommunicate = ({ post }) => {
     return (
         <Main>
             <Container>
+						{/* <CommunityImage><img src={communityImg} alt="backgroundImg" /> </CommunityImage> */}
                 <Paragraph>{post.text}</Paragraph>
-                <div className="info-posted">
                     {/* <textarea
                         className="input-textarea comment"
                         id="new-comment"
@@ -144,20 +91,32 @@ const SpaceCommunicate = ({ post }) => {
                         rows="5"
                         cols="23" /> */}
                     <Button
-                        className={post.likes > 0 ? 'button-heart clicked' : 'button-heart'}
+                        className={post.likes > 0 ? 'button-heart clicked' : 'red-heartButton'}
                         onClick={() => handleLikeButton(post._id)}>
                         <span role="img" aria-label="heart">❤️</span>
                     </Button>
-                    <span className="like-counter"> x {counter}</span>
-                    <Moment className="date">{moment(post.createdAt).fromNow()}</Moment>
-                </div>
-            </Container>
+                    <Counter> x {counter}</Counter>
+                    <Moment>{moment(post.createdAt).fromNow()}</Moment>
+                    {/* <Button type="button" className="deleted-btn" onClick={() => dispatch(posts.id.removeItem(post.id))}> <RemoveButton
+                src="./assets/waste-icon.png"
+                alt="remove" />
+              </Button> */}
+					  </Container>
         </Main>
 
     )
 };
 
 export default SpaceCommunicate;
+
+// export const CommunityImage = styled.div`
+//   position: fixed;
+//   text-align: center;
+// 	background-size: 100vw 100vh;
+// 	right: 0;
+// 	top: 0;
+// 	z-index: -1;
+// `;
 
 export const Main = styled.div`
   display: grid;
@@ -183,27 +142,59 @@ export const Container = styled.div`
   }
 `;
 
-
 export const Button = styled.button`
-  border-radius: 20px;
+  border-radius: 50px;
+	width: 30px;
+	height: 30px;
   border: 1px solid #2b3a55;
   background-color: #2b3a55;
-  color: #ffffff;
-  font-size: 12px;
-  font-weight: bold;
-  padding: 12px 45px;
-  letter-spacing: 1px;
   cursor: pointer;
-  margin-bottom: 10%;
+	border: 0;
+	margin-right: 5px;
+	float: left; 
+/* 	
+	&.button-heart clicked {
+        fill:"red";
+	} */
 `;
 
 export const Paragraph = styled.p`
-display: flex;
+  display: flex;
+	flex-direction: column;
 	align-items: center;
 	color: rgb(84, 79, 76);
 `;
 
+export const Counter = styled.p`
+float: left;
+font-size: smaller;
+`;
+
 
 export const Moment = styled.p`
-	margin-left: auto;
+	float: right;
+	font-size: 10px;
 `;
+
+
+// const RemoveButton = styled.img`
+// width: 15px;
+//     height: 15px;
+//   &:hover {
+//     animation: jelly .5s ease;
+//   }
+//   @keyframes jelly {
+//   from {
+//     transform: scale(1, 1);
+//   }
+//   30% {
+//     transform: scale(1.25, 0.75);
+//   }
+//   40% {
+//     transform: scale(0.75, 1.25);
+//   }
+//   to {
+//     transform: scale(1, 1);
+//   }
+//   }
+// `

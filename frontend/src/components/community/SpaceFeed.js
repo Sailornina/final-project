@@ -4,7 +4,7 @@ import SpaceForm from "./SpaceForm";
 import SpaceCommunicate from "./SpaceCommunicate";
 
 const SpaceFeed = () => {
-    const [posts, setPosts] = useState([])
+    const [posts, setPosts] = useState([]);
 
     /* Api Global */
     useEffect(() => {
@@ -14,6 +14,9 @@ const SpaceFeed = () => {
     }, [posts.length])
 
     console.log(`Posts: ${JSON.stringify(posts)}`)
+
+
+		
 
     return (
         <section className="container">

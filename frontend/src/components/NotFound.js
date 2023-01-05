@@ -3,14 +3,14 @@ import { Link } from "react-router-dom";
 import notFoundImage from "../assets/notFound.png";
 import styled from 'styled-components';
 import { 
-	BackgroundImage
+	BackgroundImage,
  } from "../styles/GlobalStyle";
 import Image404 from "../assets/404.jpg";
 import Goback from "../assets/goBack.png";
 
 const NotFound = () => {
 	return (
-		<>
+   <>
 		<BackgroundImage><img src={Image404} alt="backgroundImg" /> </BackgroundImage>
 			<Link to="/login">
 			<ImageBack><img src={Goback} alt="Goback" /> Go back to Login </ImageBack>
@@ -28,7 +28,7 @@ export default NotFound;
 export const Title404 = styled.h1`
   display: flex;
 	margin: 0 auto;
-	font-size: 40px;
+	font-size: 20px;
   color: #8B0000;
 	flex-direction: column;
 	justify-content: center;
@@ -36,6 +36,11 @@ export const Title404 = styled.h1`
 	width: 100%;
   height: 100%;
   padding: 20px;
+	@media (max-width: 700px) {
+    margin-top:90px;
+		padding: 80px;
+		font-size: 50px;
+  }
 `;
 
 
@@ -47,8 +52,11 @@ flex-direction: column;
 justify-content: center;
 align-items: center;
 width: 100%;
-height: 100%;
+min-height: 10%;
 padding: 20px;
+@media (max-width: 700px) {
+    display: none;
+  }
 `;
 
 export const ImageBack = styled.div`

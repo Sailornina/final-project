@@ -1,69 +1,3 @@
-// import React, { useState } from "react";
-// import { useSelector } from "react-redux";
-// // import { API_POST } from "apis/space";
-
-// const SpaceForm = ({ onPostSubmitted }) => {
-//   const [newPost, setNewPost] = useState('');
-
-//   const accessToken = useSelector((store) => store.user.accessToken);
-
-//   const handleFormSubmit = (e) => {
-//     e.preventDefault()
-
-//     const message = {
-//       method: 'POST',
-//       headers: {
-//         'Content-Type': 'application/json', 
-//         'Authorization': accessToken
-//       },
-//       body: JSON.stringify({ text: newPost, title: 'title' })
-//     }
-
-//     console.log(`Message: ${JSON.stringify(message)}`)
-
-//     fetch('https://final-project-w5otwao4va-lz.a.run.app/posts', message)
-//       .then((res) => {
-//         res.json()
-//           .then((createdPost) => onPostSubmitted(createdPost))
-//           .then(() => setNewPost(''))
-//       })
-//   }
-
-//   const handleOnNewPost = (e) => {
-//     setNewPost(e.target.value)
-//   }
-
-//   return (
-//     <section className="form-container">
-//       <form className="form" onSubmit={handleFormSubmit}>
-//         <h1>What is happening in the space?</h1>
-//         <label htmlFor="new-post">
-//           <textarea
-//             className="input-textarea text"
-//             id="new-post"
-//             name="new-post"
-//             placeholder="Write here..."
-//             value={newPost}
-//             onChange={handleOnNewPost}
-//             rows="5"
-//             cols="33" />
-//         </label>
-//         <button
-//           type="submit"
-//           className="submit-button"
-//           disabled={newPost.length < 5 || newPost.length > 140}>
-//           <span role="img" aria-label="heart">
-//           🚀 Post 🚀
-//           </span>
-//         </button>
-//         <p className="lenght-post">{newPost.length} / 140</p>
-//       </form>
-//     </section>
-//   )
-// };
-
-// export default SpaceForm;
-
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import styled from 'styled-components';
@@ -71,6 +5,7 @@ import styled from 'styled-components';
 
 const SpaceForm = ({ onPostSubmitted }) => {
   const [newPost, setNewPost] = useState('');
+
 
   const accessToken = useSelector((store) => store.user.accessToken);
 
@@ -105,7 +40,7 @@ const SpaceForm = ({ onPostSubmitted }) => {
 		<Container>
       <Form  onSubmit={handleFormSubmit}>
         <Title>What is happening in the space?</Title>
-        <Label htmlFor="new-post">Here
+        <Label htmlFor="new-post">
           <Input
             id="new-post"
             name="new-post"
@@ -148,6 +83,7 @@ export const Main = styled.div`
 `;
 
 export const Container = styled.div`
+  background-color: #B5D5C5;
   width: 500px; 
 	height: 300px;
   border-radius: 10px;
@@ -202,13 +138,10 @@ export const Label = styled.h1`
 
 export const Input = styled.input`
   background-color: #eee;
-	
 	margin-top: 10px;
 	width: 90%;
 	height: 60px;
 	border: 3px solid maroon;
-	
-
   border: none;
 	padding: 12px 15px;
   border-radius: 10px;
@@ -233,6 +166,7 @@ export const Paragraph = styled.p`
   font-size: smaller;
 	padding: 0px;
 	color: black;
+	font-weight: 800;
   /* display: flex;
   color: black;
   font-size: 14px;
