@@ -40,7 +40,7 @@ const SpaceForm = ({ onPostSubmitted }) => {
 		<Container>
       <Form  onSubmit={handleFormSubmit}>
         <Title>What is happening in the space?</Title>
-        <Label htmlFor="new-post">Here
+        <Label htmlFor="new-post">
           <Input
             id="new-post"
             name="new-post"
@@ -83,6 +83,7 @@ export const Main = styled.div`
 `;
 
 export const Container = styled.div`
+  background-color: #B5D5C5;
   width: 500px; 
 	height: 300px;
   border-radius: 10px;
@@ -137,13 +138,10 @@ export const Label = styled.h1`
 
 export const Input = styled.input`
   background-color: #eee;
-	
 	margin-top: 10px;
 	width: 90%;
 	height: 60px;
 	border: 3px solid maroon;
-	
-
   border: none;
 	padding: 12px 15px;
   border-radius: 10px;
@@ -168,6 +166,7 @@ export const Paragraph = styled.p`
   font-size: smaller;
 	padding: 0px;
 	color: black;
+	font-weight: 800;
   /* display: flex;
   color: black;
   font-size: 14px;

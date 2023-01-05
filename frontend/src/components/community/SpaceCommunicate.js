@@ -2,14 +2,16 @@ import React, { useState } from 'react';
 import { useSelector } from "react-redux";
 import styled from 'styled-components';
 import moment from 'moment';
+// import communityImg from "../../assets/Rocket.png";
 
 const SpaceCommunicate = ({ post }) => {
 	// const dispatch = useDispatch();
-    const [counter, setCounter] = useState(post.likes);
-		
+    const [counter, setCounter] = useState(post.likes);		
 		// const accessToken = localStorage.getItem('accessToken');
     // const [comment, setComment] = useState(post.comment);
 		// const [deleted, setDeleted] = useState(false)
+		// const userInfo = useSelector((store) => store.user.userInfo)
+		// const loggedInUser = useSelector((store) => store.user.userInfo)
     const accessToken = useSelector((store) => store.user.accessToken);
 
 	// 	const ondeleteClick = () => {
@@ -22,7 +24,18 @@ const SpaceCommunicate = ({ post }) => {
 	// 	setPosts(posts.filter((item) => item.id !== post.id));
 	
 	// }
-	
+
+	// useEffect(() => {
+  //   const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'))
+  //   if (loggedInUser) {
+  //     dispatch(user.actions.setLoggedInUser(loggedInUser))
+  //   }
+  // }, [dispatch])
+
+	// useEffect(() => {
+  //   localStorage.setItem('loggedInUser', JSON.stringify(userInfo))
+  // }, [userInfo])
+
     const handleLikeButton = (id) => {
         const ids = {
             method: 'PATCH',
@@ -66,6 +79,7 @@ const SpaceCommunicate = ({ post }) => {
     return (
         <Main>
             <Container>
+						{/* <CommunityImage><img src={communityImg} alt="backgroundImg" /> </CommunityImage> */}
                 <Paragraph>{post.text}</Paragraph>
                     {/* <textarea
                         className="input-textarea comment"
@@ -94,6 +108,15 @@ const SpaceCommunicate = ({ post }) => {
 };
 
 export default SpaceCommunicate;
+
+// export const CommunityImage = styled.div`
+//   position: fixed;
+//   text-align: center;
+// 	background-size: 100vw 100vh;
+// 	right: 0;
+// 	top: 0;
+// 	z-index: -1;
+// `;
 
 export const Main = styled.div`
   display: grid;

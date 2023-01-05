@@ -15,7 +15,7 @@ const Profile = () => {
 	const [loading, setLoading] = useState(true)
 	const accessToken = useSelector((store) => store.user.accessToken);
 	const username = useSelector((store) => store.user.username)
-
+	
 	useEffect(() => {
     setTimeout(() => setLoading(false), 1000)
   }, [])
@@ -27,6 +27,7 @@ const Profile = () => {
 			localStorage.removeItem("user");
 		})
 	};
+	
 	useEffect(() => {
 		if (!accessToken) {
 			navigate('/login')
