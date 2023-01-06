@@ -20,7 +20,7 @@ const SpaceForm = ({ onPostSubmitted }) => {
         'Content-Type': 'application/json', 
         'Authorization': accessToken
       },
-      body: JSON.stringify({ text: newPost, title: 'title' })
+      body: JSON.stringify({ text: newPost, title: newTitle, name: newName })
     }
 
     console.log(`Message: ${JSON.stringify(message)}`)

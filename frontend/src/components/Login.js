@@ -118,13 +118,15 @@ const Login = () => {
                 <Input
                     type="text"
                     id="username"
+										placeholder="username"
                     // required ="Required"
                     value={username}
                     onChange={e => setUsername(e.target.value)} />
-                <Label htmlFor="password">Email</Label>
+                <Label htmlFor="email">Email</Label>
                 <Input
                     type="email"
                     id="email"
+										placeholder="email"
                     // required ="Required"
                     value={email}
                     onChange={e => setEmail(e.target.value)} />
@@ -132,6 +134,7 @@ const Login = () => {
                 <Input
                     type="password"
                     id="password"
+										placeholder="password"
                     // required ="Required"
                     value={password}
                     onChange={e => setPassword(e.target.value)} />

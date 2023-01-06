@@ -15,14 +15,15 @@ const Profile = () => {
 	const accessToken = useSelector((store) => store.user.accessToken);
 	const username = useSelector((store) => store.user.username)
 
-	///Localstorage testing
-	// const user = JSON.parse(localStorage.getItem("userId"));
-
-
-	
 	useEffect(() => {
     setTimeout(() => setLoading(false), 1000)
   }, [])
+
+	useEffect(() => {
+		dispatch(user.actions.setUsername(localStorage.getItem('username')));
+		dispatch(user.actions.setUserId(localStorage.getItem('userId')));
+		dispatch(user.actions.setAccessToken(localStorage.getItem("accessToken")));
+})
 
 	const logout = () => {
 		batch(() => {
@@ -105,8 +106,8 @@ export const SubHeading = styled.h2`
 padding: 30px;
 border: solid 1px rgba(0, 0, 0, 0.08);
 font-size: 20px;
-color: #DAA520;
-font-weight: 900px;
+color:#7FFFD4;
+font-weight: 800px;
 padding: 60px;
 &:hover {
   box-shadow: 0 0 12px 3px rgba(0, 0, 0, 10);

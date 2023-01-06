@@ -12,10 +12,6 @@ const SpaceCommunicate = ({ post }) => {
 		// const [deleted, setDeleted] = useState(false)
     const accessToken = useSelector((store) => store.user.accessToken);
 
-//LocalStorage testing
-		// const user = localStorage.getItem('user');
-//or????
-	// const post = localStorage.getItem('post');
 
     const handleLikeButton = (id) => {
         const ids = {

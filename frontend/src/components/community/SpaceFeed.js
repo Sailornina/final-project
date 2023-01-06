@@ -31,8 +31,7 @@ const SpaceFeed = () => {
     return (
         <section className="container">
             <SpaceForm onPostSubmitted={(newPost) => {
-                setPosts([newPost, ...posts])
-								// Updating the state.
+                setPosts([newPost, ...posts])// Updating the state.
                 console.log('onPostSubmitted called')
                 
             }} />
