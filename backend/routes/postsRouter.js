@@ -8,7 +8,18 @@ const router = express.Router()
 
 router.get("/", async (req, res) => {
 	try {
-		const allPosts = await Post.find().sort({ createdAt: 'desc' }).limit(20).exec();
+		const allPosts = await Post.find().populate('user', 'username')
+			.populate({
+				path: 'comments',
+				populate: {
+					path: 'author',
+					model: 'User',
+					select: '__id username'
+				}
+			})
+			.sort({ createdAt: 'desc' })
+			.limit(20)
+			.exec();
 		res.status(200).json({
 			response: {
 				allPosts,
@@ -21,12 +32,23 @@ router.get("/", async (req, res) => {
 	}
 });
 
+let parseSavedPost = (post) => {
+	return {
+		...post._doc,
+		user: {
+			id: post.user._id,
+			username: post.user.username
+		}
+	}
+}
+
 router.post("/", isAuthenticated, async (req, res) => {
 	const { title, text } = req.body;
 	try {
-		const posts = await Post({ title, text }).save()
+		const user = res.locals.user
+		const post = await Post({ user, title, text }).save()
 		res.status(200).json({
-			posts,
+			post: parseSavedPost(post),
 			response: {
 				message: "Your post was created"
 			},
@@ -42,7 +64,7 @@ router.post("/", isAuthenticated, async (req, res) => {
 	}
 });
 
-router.post("/:id/comment", isAuthenticated, async (req, res) => { 
+router.post("/:id/comment", isAuthenticated, async (req, res) => {
 	//If the user is registered in the database then they can create a post.
 	// Find out which post you are commenting.
 	const id = req.params.id
@@ -52,10 +74,10 @@ router.post("/:id/comment", isAuthenticated, async (req, res) => {
 			const comment = new Comment({
 				text: req.body.text,
 				post: id,
-				author: req.body.userId
+				author: req.body.author
 			})
 			await comment.save({ session });
-			
+
 			let result = await Post.findByIdAndUpdate(id, { '$push': { 'comments': comment._id } }, { session });
 			if (!result) {
 				throw new Error(`Couldn't find Post with id: ${id}`);
@@ -74,8 +96,7 @@ router.post("/:id/comment", isAuthenticated, async (req, res) => {
 router.patch("/:id/like", isAuthenticated, async (req, res) => {
 	const id = req.params.id
 	try {
-		const likeToUpdate = await Post.findByIdAndUpdate(
-			{ _id: id },
+		const likeToUpdate = await Post.findByIdAndUpdate({ _id: id },
 			{
 				$inc: {
 					likes: 1
@@ -86,6 +107,34 @@ router.patch("/:id/like", isAuthenticated, async (req, res) => {
 		res.status(200).json(likeToUpdate)
 	} catch (error) {
 		res.status(400).json({ message: "Couldn't find comment by id" })
+	}
+});
+
+router.delete("/:id", isAuthenticated, async (req, res) => {
+	const id = req.params.id
+	try {
+		const deletedPost = await Post.findOneAndDelete({ _id: id });
+		if (deletedPost) {
+			res.status(200).json({ success: true, response: deletedPost });
+		} else {
+			res.status(404).json({ success: false, response: 'Post not found' });
+		}
+	} catch (error) {
+		res.status(400).json({ success: false, response: error });
+	}
+});
+
+router.delete("/:id/comment", isAuthenticated, async (req, res) => {
+	const id = req.params.id
+	try {
+		const deletedComment = await Comment.findOneAndDelete({ _id: id });
+		if (deletedComment) {
+			res.status(200).json({ success: true, response: deletedComment });
+		} else {
+			res.status(404).json({ success: false, response: 'Comment not found' });
+		}
+	} catch (error) {
+		res.status(400).json({ success: false, response: error });
 	}
 });
 

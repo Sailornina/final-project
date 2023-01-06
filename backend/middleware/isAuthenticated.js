@@ -1,10 +1,10 @@
 import User from "../schemas/User"
 
 const isAuthenticated = async (req, res, next) => {
-	console.log(req);
 	const accessToken = req.header("Authorization");
 	try {
 		const user = await User.findOne({ accessToken: accessToken });
+		res.locals.user = user;
 		if (user) {
 			next();
 		} else {
