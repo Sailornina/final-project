@@ -110,4 +110,32 @@ router.patch("/:id/like", isAuthenticated, async (req, res) => {
 	}
 });
 
+router.delete("/:id", isAuthenticated, async (req, res) => {
+	const id = req.params.id
+	try {
+		const deletedPost = await Post.findOneAndDelete({ _id: id });
+		if (deletedPost) {
+			res.status(200).json({ success: true, response: deletedPost });
+		} else {
+			res.status(404).json({ success: false, response: 'Post not found' });
+		}
+	} catch (error) {
+		res.status(400).json({ success: false, response: error });
+	}
+});
+
+router.delete("/:id/comment", isAuthenticated, async (req, res) => {
+	const id = req.params.id
+	try {
+		const deletedComment = await Comment.findOneAndDelete({ _id: id });
+		if (deletedComment) {
+			res.status(200).json({ success: true, response: deletedComment });
+		} else {
+			res.status(404).json({ success: false, response: 'Comment not found' });
+		}
+	} catch (error) {
+		res.status(400).json({ success: false, response: error });
+	}
+});
+
 export default router;
