@@ -102,9 +102,6 @@ const Register = () => {
 			<Main>
     <Container >
 				<BackgroundImage><img src={Image} alt="backgroundImg" /> </BackgroundImage>
-      {/* <BackgroundImage>
-        <img src={Image} alt="backgroundImg" />{" "}
-      </BackgroundImage> */}
       <Label htmlFor="register">Hello Space Adventurer!</Label>
       <Paragraph>
         Enter your personal details and start your journey with us!
@@ -120,12 +117,14 @@ const Register = () => {
         <Input
           type="text"
           id="username"
+					placeholder="username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
-        <Label htmlFor="password">Email</Label>
+        <Label htmlFor="email">Email</Label>
         <Input
           type="email"
+					placeholder="email"
           id="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
@@ -133,6 +132,7 @@ const Register = () => {
         <Label htmlFor="password">Password</Label>
         <Input
           type="password"
+					placeholder="password"
           id="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
