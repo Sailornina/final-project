@@ -2,13 +2,18 @@ import React, { useState } from 'react';
 import { useSelector } from "react-redux";
 import styled from 'styled-components';
 import moment from 'moment';
+import { Link } from "react-router-dom";
+// import CommentForm from "./CommentForm";
 // import user from '../../reducers/user';
 import communityImg from "../../assets/Rocket.png";
 
 const SpaceCommunicate = ({ post }) => {
 	// const dispatch = useDispatch();
     const [counter, setCounter] = useState(post.likes);		
-    // const [comment, setComment] = useState(post.comment);
+
+    // const [comment, setComment] = useState([]);
+
+		// const [newcomment, setNewComment] = useState('');
 		// const [deleted, setDeleted] = useState(false)
     const accessToken = useSelector((store) => store.user.accessToken);
 
@@ -35,6 +40,8 @@ const SpaceCommunicate = ({ post }) => {
             })
     };
 
+//CreateComment
+
     // const handleComment = (id) => {
     //     const ids = {
     //         method: 'POST',
@@ -42,23 +49,35 @@ const SpaceCommunicate = ({ post }) => {
     //         body: JSON.stringify({ comments: comment })
     //     }
 
-    //     fetch(`'https://final-project-w5otwao4va-lz.a.run.app/posts/${id}/comment'`, ids)
+    //     fetch(`https://final-project-w5otwao4va-lz.a.run.app/posts/${id}/comment`, ids)
     //         .then((res) => {
     //             if (res.status === 200) {
     //                 res.json()
     //                     .then((commentedPost) => {
     //                         console.log(`Request successful: ${JSON.stringify(commentedPost)}`)
-    //                         setComment(commentedPost.comment)
+    //                         // .then(() => setNewComment(''))
+		// 													setComment(commentedPost.comment)
     //                     })
     //             }
     //         })
-    // };}
+    // };
 
     return (
-        <Main>
+		     <Main>
+					<Paragraph>Reply to the post <CommentLink to="/comment-form"> ... Here ... </CommentLink></Paragraph>
+						{/* {comments.map(comment => (
+						key={comment.id} 
+						// author ={author}
+						// text ={text}
+						comment ={comment} */}
             <Container>
 						<CommunityImage><img src={communityImg} alt="backgroundImg" /> </CommunityImage>
-                <Paragraph>{post.text}</Paragraph>
+						    <ParagraphTitle>{post.title}</ParagraphTitle>
+								<Paragraph>{post.text}</Paragraph>
+								{/* <div>
+									<CommentForm />
+								</div> */}
+								{/* {comments.map(comment => ( */}
                     {/* <textarea
                         className="input-textarea comment"
                         id="new-comment"
@@ -68,6 +87,7 @@ const SpaceCommunicate = ({ post }) => {
                         onChange={handleComment}
                         rows="5"
                         cols="23" /> */}
+												{/* ))} */}
                     <Button
                         className={post.likes > 0 ? 'button-heart clicked' : 'red-heartButton'}
                         onClick={() => handleLikeButton(post._id)}>
@@ -79,7 +99,7 @@ const SpaceCommunicate = ({ post }) => {
                 src="./assets/waste-icon.png"
                 alt="remove" />
               </Button> */}
-					  </Container>
+					  </Container>	
         </Main>
 
     )
@@ -103,16 +123,17 @@ export const Main = styled.div`
 `;
 
 export const Container = styled.div`
-  width: 400px; 
-	height: 100px;
+  word-break: break-all;
+	width: 700px; 
+	height: 200px;
   border-radius: 10px;
-  padding: 40px 30px;
+  padding: 60px 30px;
   margin-top: 10px;
   box-shadow: -3px -3px 9px #aaa9a9a2,
               3px 3px 7px rgba(147, 149, 151, 0.671);
 	@media (max-width: 667px) {
     width: 300px; 
-	  height: 100px;
+	  height: 200px;
 		padding: 10px 0px;
 		justify-content: center;
     flex-direction: column;
@@ -127,10 +148,12 @@ export const Button = styled.button`
   background-color: #2b3a55;
   cursor: pointer;
 	border: 0;
+	margin-top: 30px;
 	margin-right: 5px;
 	float: left; 
 	@media (max-width: 667px) {
   float: right;
+	margin-top: 10px;
   }
 /* 	
 	&.button-heart clicked {
@@ -140,27 +163,42 @@ export const Button = styled.button`
 
 export const Paragraph = styled.p`
   display: flex;
-	flex-direction: column;
-	align-items: center;
+	color: rgb(84, 79, 76);
+`;
+
+export const CommentLink = styled(Link)`
+text-decoration: none;
+color: black;
+font-weight: 700px;
+cursor: pointer;
+`;
+
+export const ParagraphTitle = styled.p`
+  display: flex;
+	font-weight: bold;
+	font-size: 30px;
 	color: rgb(84, 79, 76);
 `;
 
 export const Counter = styled.p`
 float: left;
-font-size: smaller;
+margin-top: 40px;
+font-size: 10px;
 @media (max-width: 667px) {
   float: right;
+	margin-top: 20px;
   }
 `;
-
 
 export const Moment = styled.p`
 	float: right;
 	font-size: 10px;
+	margin-top: 40px;
 	@media (max-width: 667px) {
     width: 300px; 
 	  height: 100px;
 		padding: 10px 0px;
+		margin-top: -15px;
   }
 `;
 
