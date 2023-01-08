@@ -7,7 +7,7 @@ import ImageDetails from "./ImageDetails";
 const SearchForm = () => {
     const [result, setResult] = useState({images: []});
     const [query, setQuery] = useState("");
-    const [page, setPage] = useState(1);
+    const [page] = useState(1);
 
     const onClickSearch = async (e) => {
         const imagesDetails = await searchNasaImagesByPage(query, page);

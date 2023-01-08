@@ -1,17 +1,7 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
 
 const ImageDetails = ({image}) => {
-    const [nasaDetails, setNasaDetails] = useState([]);
-    const navigate = useNavigate();
-
-    useEffect(() => {
-        if (!nasaDetails) {
-            navigate('/not-found')
-        }
-    }, [navigate])
-
+    
     return (
         <div className='details'>
                     <div>
