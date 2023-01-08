@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 // import { API_POST } from "apis/community/space";
 import SpaceForm from "./SpaceForm";
-import SpaceCommunicate from "./SpaceCommunicate";
 import user from "../../reducers/user";
+import SpaceCommunicate from "./SpaceCommunicate";
+
 
 const SpaceFeed = () => {
     const dispatch = useDispatch();
@@ -33,13 +34,15 @@ const SpaceFeed = () => {
             <SpaceForm onPostSubmitted={(newPost) => {
                 setPosts([newPost, ...posts])// Updating the state.
                 console.log('onPostSubmitted called')
-                
             }} />
+						
             {posts.map((post) => (
-                <SpaceCommunicate
+								<SpaceCommunicate 
                     key={post._id}
-                    post={post} />
-            ))}
+										title ={post.title} 
+                    post={post}
+								     />
+										 ))}
         </section>
     )
 };

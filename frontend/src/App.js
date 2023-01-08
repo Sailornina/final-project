@@ -12,6 +12,7 @@ import Register from "./components/Register";
 import About from "./components/About";
 import Profile from "./components/Profile";
 import SpaceFeed from "./components/community/SpaceFeed";
+import CommentForm from "./components/community/CommentForm";
 import Loading from "./components/Loading";
 import NotFound from "./components/NotFound";
 import SearchForm from "./components/nasaSearch/SearchForm";
@@ -39,6 +40,9 @@ export const App = () => {
 					<Route
 						path="/space-feed"
 						element={<SpaceFeed />} />
+							<Route
+						path="/comment-form"
+						element={<CommentForm />} />
 					<Route
 						path="/search-form"
 						element={<SearchForm />} />

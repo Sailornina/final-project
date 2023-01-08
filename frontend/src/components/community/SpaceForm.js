@@ -4,11 +4,8 @@ import styled from 'styled-components';
 // import { API_POST } from "apis/space";
 
 const SpaceForm = ({ onPostSubmitted }) => {
-  const [newPost, setNewPost] = useState('');
-	const [newName, setNewName] = useState('');
 	const [newTitle, setNewTitle] = useState('');
-
-
+  const [newPost, setNewPost] = useState('');
   const accessToken = useSelector((store) => store.user.accessToken);
 
   const handleFormSubmit = (e) => {
@@ -20,7 +17,7 @@ const SpaceForm = ({ onPostSubmitted }) => {
         'Content-Type': 'application/json', 
         'Authorization': accessToken
       },
-      body: JSON.stringify({ text: newPost, title: newTitle, name: newName })
+      body: JSON.stringify({ text: newPost, title: newTitle  })
     }
 
     console.log(`Message: ${JSON.stringify(message)}`)
@@ -33,15 +30,14 @@ const SpaceForm = ({ onPostSubmitted }) => {
       })
   }
 
-  const handleOnNewPost = (e) => {
-    setNewPost(e.target.value)
-  }
-	const handleOnNewName = (e) => {
-    setNewName(e.target.value)
-  }
 	const handleOnNewTitle = (e) => {
     setNewTitle(e.target.value)
   }
+
+  const handleOnNewPost = (e) => {
+    setNewPost(e.target.value)
+  }
+
 
   return (
     <Main>
@@ -49,20 +45,12 @@ const SpaceForm = ({ onPostSubmitted }) => {
       <Form  onSubmit={handleFormSubmit}>
         <Title>What is happening in the space?</Title>
         <Label htmlFor="new-post">
-				<Input
+				<InputTitle
             id="new-title"
             name="new-title"
             placeholder="Write your Title ..."
             defaultValue={newTitle}
             onChange={handleOnNewTitle}
-            rows="5"
-            cols="33" />
-						<Input
-            id="new-name"
-            name="new-name"
-            placeholder="Write your Name ..."
-            defaultValue={newName}
-            onChange={handleOnNewName}
             rows="5"
             cols="33" />
           <Input
@@ -163,8 +151,20 @@ export const Label = styled.h1`
 export const Input = styled.input`
   background-color: #eee;
 	margin-top: 10px;
-	width: 90%;
-	height: 50px;
+	width: 150%;
+	height: 80px;
+	border: 3px solid maroon;
+  border: none;
+	padding: 12px 15px;
+  border-radius: 20px;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+`;
+
+export const InputTitle = styled.input`
+  background-color: #FAEBD7;
+	margin-top: 10px;
+	width: 80%;
+	height: 20px;
 	border: 3px solid maroon;
   border: none;
 	padding: 12px 15px;
@@ -176,8 +176,8 @@ export const Input = styled.input`
 export const Button = styled.button`
   border-radius: 20px;
   border: 1px solid #2b3a55;
-  background-color: #2b3a55;
-  color: #ffffff;
+  /* background-color: #2b3a55; */
+  /* color: #ffffff; */
   font-size: 12px;
   font-weight: bold;
   padding: 12px 30px;
