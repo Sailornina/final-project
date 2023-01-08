@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import SpaceForm from "./SpaceForm";
+import PostForm from "./PostForm";
 import user from "../../reducers/user";
-import SpaceCommunicate from "./SpaceCommunicate";
+import PostsList from "./PostsList";
 
 const SpaceFeed = () => {
     const dispatch = useDispatch();
@@ -21,26 +21,26 @@ const SpaceFeed = () => {
         dispatch(user.actions.setAccessToken(localStorage.getItem("accessToken")));
     })
 
-    // console.log(`Posts: ${JSON.stringify(posts)}`)
-    // console.log('userData', localStorage.getItem("userData"));
-    // console.log('________________________________________________');
-    // console.log('accessToken', localStorage.getItem("accessToken"));
-    // console.log('user', localStorage.getItem("username"));
-
     return (
         <section className="container">
-            <SpaceForm onPostSubmitted={(newPost) => {
+            <PostForm onPostSubmitted={(newPost) => {
                 setPosts([newPost, ...posts])// Updating the state.
                 console.log('onPostSubmitted called')
             }} />
-			{posts.map((post) => (
-				<SpaceCommunicate 
+            {posts.map((post) => (
+                <PostsList
                     key={post._id}
-					title ={post.title} 
+                    title={post.title}
                     post={post} />
-			))}
+            ))}
         </section>
     );
 };
 
 export default SpaceFeed;
+
+// console.log(`Posts: ${JSON.stringify(posts)}`)
+// console.log('userData', localStorage.getItem("userData"));
+// console.log('________________________________________________');
+// console.log('accessToken', localStorage.getItem("accessToken"));
+// console.log('user', localStorage.getItem("username"));

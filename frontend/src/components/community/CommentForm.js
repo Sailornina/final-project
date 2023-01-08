@@ -9,13 +9,13 @@ const CommentForm = (id) => {
 
 	const handleOnNewComment = (e) => {
 		setNewComment(e.target.value)
-	}
+	};
+
 	const onCommentSubmitted = (newComment) => {
 		setNewComment([])
 	};
 
 	const comment = {
-
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',
@@ -23,6 +23,7 @@ const CommentForm = (id) => {
 		},
 		body: { text: newComment }
 	};
+
 	// console.log(`Comment: ${JSON.stringify(comment)}`)
 
 	fetch(`https://final-project-w5otwao4va-lz.a.run.app/posts/${id}/comment`, comment)
@@ -36,7 +37,7 @@ const CommentForm = (id) => {
 					.then(() => setNewComment(''))
 			}
 		});
-
+		
 	return (
 		<div className="nested-comments">
 			{/* <CommentsList /> */}

@@ -1,26 +1,18 @@
-import React, { useState } from 'react';
+import React from 'react';
 import CommentForm from "./CommentForm"
-// import SpaceForm from "./SpaceForm";
 
 const CommentsList = () => {
-	// const [comments, setComments] = useState([]);
 
 	return (
 		<section>
-			<h1>Hi</h1>
-			{/* <CommentForm onCommentSubmitted={(newComment) => {
-				setComments([newComment, ...comments])// Updating the state.
-				console.log('onCommentSubmitted called')
-		}} /> */}
-			<div>
+		  <h1>Hi</h1>
+		    <div>
 				{comments.map((comment) => (
 					<CommentForm
 						key={comment._id}
 						title={comment.title}
-						comment={comment}
-					/>
+						comment={comment} />
 				))}
-
 			</div>
 		</section>
 	)

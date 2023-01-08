@@ -3,15 +3,11 @@ import { useSelector } from "react-redux";
 import styled from 'styled-components';
 import moment from 'moment';
 import { Link } from "react-router-dom";
-// import CommentForm from "./CommentForm";
-// import user from '../../reducers/user';
 import communityImg from "../../assets/Rocket.png";
 
-const SpaceCommunicate = ({ post }) => {
+const PostsList = ({ post }) => {
   const [counter, setCounter] = useState(post.likes);
   // const dispatch = useDispatch();	
-  // const [comment, setComment] = useState([]);
-  // const [newcomment, setNewComment] = useState('');
   // const [deleted, setDeleted] = useState(false);
 
   const accessToken = useSelector((store) => store.user.accessToken);
@@ -34,59 +30,16 @@ const SpaceCommunicate = ({ post }) => {
               setCounter(likedPost.likes)
             })
         }
-
       });
-
   };
-
-  //CreateComment
-
-  // const handleComment = (id) => {
-  //     const ids = {
-  //         method: 'POST',
-  //         headers: { 'Content-Type': 'application/json' },
-  //         body: JSON.stringify({ comments: comment })
-  //     }
-
-  //     fetch(`https://final-project-w5otwao4va-lz.a.run.app/posts/${id}/comment`, ids)
-  //         .then((res) => {
-  //             if (res.status === 200) {
-  //                 res.json()
-  //                     .then((commentedPost) => {
-  //                         console.log(`Request successful: ${JSON.stringify(commentedPost)}`)
-  //                         // .then(() => setNewComment(''))
-  // 													setComment(commentedPost.comment)
-  //                     })
-  //             }
-  //         })
-  // };
 
   return (
     <Main>
       <Paragraph>Reply to the post <CommentLink to="/comment-form"> ... Here ... </CommentLink></Paragraph>
-      {/* {comments.map(comment => (
-						key={comment.id} 
-						// author ={author}
-						// text ={text}
-						comment ={comment} */}
       <Container>
         <CommunityImage><img src={communityImg} alt="backgroundImg" /> </CommunityImage>
         <ParagraphTitle>{post.title}</ParagraphTitle>
         <Paragraph>{post.text}</Paragraph>
-        {/* <div>
-									<CommentForm />
-								</div> */}
-        {/* {comments.map(comment => ( */}
-        {/* <textarea
-                        className="input-textarea comment"
-                        id="new-comment"
-                        name="new-comment"
-                        placeholder="add a comment"
-                        value={comment}
-                        onChange={handleComment}
-                        rows="5"
-                        cols="23" /> */}
-        {/* ))} */}
         <Button
           className={post.likes > 0 ? 'button-heart clicked' : 'red-heartButton'}
           onClick={() => handleLikeButton(post._id)}>
@@ -104,7 +57,7 @@ const SpaceCommunicate = ({ post }) => {
   )
 };
 
-export default SpaceCommunicate;
+export default PostsList;
 
 
 export const CommunityImage = styled.div`

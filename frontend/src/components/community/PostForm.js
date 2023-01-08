@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import styled from 'styled-components';
 
-const SpaceForm = ({ onPostSubmitted }) => {
+const PostForm = ({ onPostSubmitted }) => {
 	const [newTitle, setNewTitle] = useState('');
   const [newPost, setNewPost] = useState('');
   const accessToken = useSelector((store) => store.user.accessToken);
@@ -74,7 +74,7 @@ const SpaceForm = ({ onPostSubmitted }) => {
   )
 };
 
-export default SpaceForm;
+export default PostForm;
 
 
 export const Main = styled.div`
