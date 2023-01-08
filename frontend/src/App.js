@@ -15,9 +15,6 @@ import SpaceFeed from "./components/community/SpaceFeed";
 import Loading from "./components/Loading";
 import NotFound from "./components/NotFound";
 import SearchForm from "./components/nasaSearch/SearchForm";
-import ImageDetails from "./components/nasaSearch/ImageDetails";
-
-
 
 export const App = () => {
 	const reducer = combineReducers({
@@ -45,9 +42,6 @@ export const App = () => {
 					<Route
 						path="/search-form"
 						element={<SearchForm />} />
-						<Route
-						path="/image-details"
-						element={<ImageDetails />} />
 					<Route
 						path="/login"
 						element={<Login />} />

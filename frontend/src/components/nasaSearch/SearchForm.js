@@ -2,12 +2,12 @@ import React from "react";
 import { useState } from "react";
 import { searchNasaImagesByPage } from "../../apis/nasa-api";
 import ImageDetails from "./ImageDetails";
-// import { Link } from "react-router-dom";
+import PaginationOutlined from "./PaginationOutlined";
 
 const SearchForm = () => {
     const [result, setResult] = useState({images: []});
     const [query, setQuery] = useState("");
-    const [page] = useState(1);
+    const [page, setPage] = useState(1);
 
     const onClickSearch = async (e) => {
         const imagesDetails = await searchNasaImagesByPage(query, page);
@@ -34,6 +34,7 @@ const SearchForm = () => {
                     />
                     <button onClick={onClickSearch}>Search</button>
                 </form>
+                <PaginationOutlined page={page} setPage={setPage} />
                 {result.images.map((image) => (
                    <ImageDetails
                    key={image.id}
