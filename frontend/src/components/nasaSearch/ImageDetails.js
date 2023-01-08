@@ -3,14 +3,9 @@ import { useNavigate } from "react-router-dom";
 import { searchNasaImagesByPage } from "../../apis/nasa-api";
 import { useState, useEffect } from "react";
 
-const ImageDetails = () => {
-    const [nasaDetails, setNasaDetails] = useState(null);
+const ImageDetails = ({image}) => {
+    const [nasaDetails, setNasaDetails] = useState([]);
     const navigate = useNavigate();
-
-    useEffect(async () => {
-        const imagesDetails = await searchNasaImagesByPage("", 1);
-        setNasaDetails(imagesDetails);
-    }, [nasaDetails]);
 
     useEffect(() => {
         if (!nasaDetails) {
@@ -20,16 +15,13 @@ const ImageDetails = () => {
 
     return (
         <div className='details'>
-            {nasaDetails.map((item) => {
-                return (
-                <h1 key={nasaDetails._id}>
-                {item.title}
-                {item.url}
-                {item.description}
-                {item.date_created}
-                </h1>
-                )
-            })}
+                    <div>
+                        <h1>{image.title}</h1>
+                            <img alt="nasa-img" src={image.url}/>
+                            <p>{image.description}</p>
+                            <p>{image.date_created}</p>
+                    </div>
+
         </div>
     );
 };

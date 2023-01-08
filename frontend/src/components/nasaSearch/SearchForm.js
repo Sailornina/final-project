@@ -5,7 +5,7 @@ import ImageDetails from "./ImageDetails";
 // import { Link } from "react-router-dom";
 
 const SearchForm = () => {
-    const [result, setResult] = useState(null);
+    const [result, setResult] = useState({images: []});
     const [query, setQuery] = useState("");
     const [page, setPage] = useState(1);
 
@@ -34,13 +34,10 @@ const SearchForm = () => {
                     />
                     <button onClick={onClickSearch}>Search</button>
                 </form>
-                {result.map((item) => (
+                {result.images.map((image) => (
                    <ImageDetails
-                   key={item._id}
-                   title = {item}
-                   url = {item}
-                   description = {item}
-                   date_created = {item} />
+                   key={image.id}
+                   image={image}/>
                 ))}
             </div>
         </div>

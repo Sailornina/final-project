@@ -46,7 +46,7 @@ export const App = () => {
 						path="/search-form"
 						element={<SearchForm />} />
 						<Route
-						path="image-details"
+						path="/image-details"
 						element={<ImageDetails />} />
 					<Route
 						path="/login"
