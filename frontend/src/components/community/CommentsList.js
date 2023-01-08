@@ -4,16 +4,16 @@ import  CommentForm from "./CommentForm"
 // import SpaceForm from "./SpaceForm";
 
 const CommentsList = () => {
-	const [comments, setComments] = useState([]);
+	// const [comments, setComments] = useState([]);
 	
   return (
 
 		<section>
 				<h1>Hi</h1>
-		<CommentForm onCommentSubmitted={(newComment) => {
+		{/* <CommentForm onCommentSubmitted={(newComment) => {
 				setComments([newComment, ...comments])// Updating the state.
 				console.log('onCommentSubmitted called')
-		}} />
+		}} /> */}
 <div>
 				{comments.map((comment) => (
 						<CommentForm 

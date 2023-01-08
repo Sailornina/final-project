@@ -102,7 +102,7 @@ export const Heading = styled.h1`
   padding: 50px;
 `;
 
-export const SubHeading = styled.h2`
+export const SubHeading = styled.h1`
 padding: 30px;
 border: solid 1px rgba(0, 0, 0, 0.08);
 font-size: 20px;
