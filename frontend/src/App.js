@@ -14,6 +14,7 @@ import Profile from "./components/Profile";
 import SpaceFeed from "./components/community/SpaceFeed";
 import Loading from "./components/Loading";
 import NotFound from "./components/NotFound";
+import CommentForm from "./components/community/CommentForm";
 
 export const App = () => {
 	const reducer = combineReducers({
@@ -38,6 +39,9 @@ export const App = () => {
 					<Route
 						path="/space-feed"
 						element={<SpaceFeed />} />
+					<Route
+						path="/comment-form"
+						element={<CommentForm />} />
 					<Route
 						path="/login"
 						element={<Login />} />
