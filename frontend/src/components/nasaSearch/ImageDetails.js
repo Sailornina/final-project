@@ -1,6 +1,5 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { searchNasaImagesByPage } from "../../apis/nasa-api";
 import { useState, useEffect } from "react";
 
 const ImageDetails = ({image}) => {
@@ -21,7 +20,6 @@ const ImageDetails = ({image}) => {
                             <p>{image.description}</p>
                             <p>{image.date_created}</p>
                     </div>
-
         </div>
     );
 };
