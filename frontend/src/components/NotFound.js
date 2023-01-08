@@ -33,8 +33,8 @@ export const Title404 = styled.h1`
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	width: 100%;
-  height: 100%;
+	width: 50%;
+  height: 50%;
   padding: 20px;
 	@media (max-width: 700px) {
     margin-top:90px;

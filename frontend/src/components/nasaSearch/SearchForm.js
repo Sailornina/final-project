@@ -1,23 +1,44 @@
-import React, { useState, useEffect } from "react";
-// import { useNavigate } from "react-router-dom";
-// import { useSelector } from "react-redux";
-// import { getNasaImagesByPage } from "../../utils/nasa-api";
-
+import React from "react";
+import { useState } from "react";
+import { searchNasaImagesByPage } from "../../apis/nasa-api";
+import ImageDetails from "./ImageDetails";
+// import { Link } from "react-router-dom";
 
 const SearchForm = () => {
+    const [result, setResult] = useState({images: []});
+    const [query, setQuery] = useState("");
+    const [page] = useState(1);
+
+    const onClickSearch = async (e) => {
+        const imagesDetails = await searchNasaImagesByPage(query, page);
+        console.log(`Result: ${JSON.stringify(imagesDetails)}`)
+        setResult(imagesDetails);
+    };
+
+    const updateQuery = (e) => {
+        setQuery(e.target.value)
+    };
+
+    const onFormSubmit = (e) => e.preventDefault()
 
     return (
-        <div>
+        <div className="search-container">
             <div className="search-div">
-                <form className='search-form'>
+                <form onSubmit={onFormSubmit}>
                     <input
                         className='search-input'
                         placeholder='Search for moon, supernova...'
                         type="text"
-                        value={q}
-                        onChange={onQueryChange} />
-                    <button className='search-button' type='onSubmit'>Search</button>
+                        value={query}
+                        onChange={updateQuery}
+                    />
+                    <button onClick={onClickSearch}>Search</button>
                 </form>
+                {result.images.map((image) => (
+                   <ImageDetails
+                   key={image.id}
+                   image={image}/>
+                ))}
             </div>
         </div>
     );
