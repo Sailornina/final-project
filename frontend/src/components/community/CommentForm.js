@@ -1,5 +1,3 @@
-// import React from "react";
-// import CommentCommunicate from "./CommentCommunicate";
 import React, { useState } from 'react';
 import { useSelector } from "react-redux";
 // import CommentsList from "./CommentsList"
@@ -9,14 +7,14 @@ const CommentForm = (id) => {
 	// const [comments, setComments] = useState([]);
 	const accessToken = useSelector((store) => store.user.accessToken);
 
-const handleOnNewComment = (e) => {
-	setNewComment(e.target.value)
-}
-const onCommentSubmitted = (newComment)  => {
-	setNewComment([])
+	const handleOnNewComment = (e) => {
+		setNewComment(e.target.value)
+	}
+	const onCommentSubmitted = (newComment) => {
+		setNewComment([])
+	};
 
-
-const comment =  {
+	const comment = {
 
 		method: 'POST',
 		headers: {
@@ -24,8 +22,7 @@ const comment =  {
 			'Authorization': accessToken
 		},
 		body: { text: newComment }
-	}
-
+	};
 	// console.log(`Comment: ${JSON.stringify(comment)}`)
 
 	fetch(`https://final-project-w5otwao4va-lz.a.run.app/posts/${id}/comment`, comment)
@@ -37,26 +34,24 @@ const comment =  {
 						console.log(`Request successful: ${JSON.stringify(commentedPost)}`)
 					})
 					.then(() => setNewComment(''))
-				}
-		})
-};
+			}
+		});
 
-return(
-	<div className="nested-comments">
-	{/* <CommentsList /> */}
-
-	<textarea
-          className="input-textarea comment"
-          id="new-comment"
-          name="new-comment"
-          placeholder="add a comment"
-          value={newComment}
-          onChange={handleOnNewComment}
-          rows="5"
-          cols="23" />
-					  <button type="submit" onClick={onCommentSubmitted}>Post</button>
-						</div>
-)
+	return (
+		<div className="nested-comments">
+			{/* <CommentsList /> */}
+			<textarea
+				className="input-textarea comment"
+				id="new-comment"
+				name="new-comment"
+				placeholder="add a comment"
+				value={newComment}
+				onChange={handleOnNewComment}
+				rows="5"
+				cols="23" />
+			<button type="submit" onClick={onCommentSubmitted}>Post</button>
+		</div>
+	)
 
 };
 

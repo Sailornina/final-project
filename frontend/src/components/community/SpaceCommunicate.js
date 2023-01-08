@@ -8,77 +8,76 @@ import { Link } from "react-router-dom";
 import communityImg from "../../assets/Rocket.png";
 
 const SpaceCommunicate = ({ post }) => {
-	// const dispatch = useDispatch();
-    const [counter, setCounter] = useState(post.likes);		
+  const [counter, setCounter] = useState(post.likes);
+  // const dispatch = useDispatch();	
+  // const [comment, setComment] = useState([]);
+  // const [newcomment, setNewComment] = useState('');
+  // const [deleted, setDeleted] = useState(false);
 
-    // const [comment, setComment] = useState([]);
+  const accessToken = useSelector((store) => store.user.accessToken);
 
-		// const [newcomment, setNewComment] = useState('');
-		// const [deleted, setDeleted] = useState(false)
-    const accessToken = useSelector((store) => store.user.accessToken);
-
-
-    const handleLikeButton = (id) => {
-        const ids = {
-            method: 'PATCH',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': accessToken
-            }
-        }
-
-        fetch(`https://final-project-w5otwao4va-lz.a.run.app/posts/${id}/like`, ids)
-            .then((res) => {
-                if (res.status === 200) {
-                    res.json()
-                        .then((likedPost) => {
-                            console.log(`Request successful: ${JSON.stringify(likedPost)}`)
-                            setCounter(likedPost.likes)
-                        })
-                }
-								
-            })
+  const handleLikeButton = (id) => {
+    const ids = {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': accessToken
+      }
     };
 
-//CreateComment
+    fetch(`https://final-project-w5otwao4va-lz.a.run.app/posts/${id}/like`, ids)
+      .then((res) => {
+        if (res.status === 200) {
+          res.json()
+            .then((likedPost) => {
+              console.log(`Request successful: ${JSON.stringify(likedPost)}`)
+              setCounter(likedPost.likes)
+            })
+        }
 
-    // const handleComment = (id) => {
-    //     const ids = {
-    //         method: 'POST',
-    //         headers: { 'Content-Type': 'application/json' },
-    //         body: JSON.stringify({ comments: comment })
-    //     }
+      });
 
-    //     fetch(`https://final-project-w5otwao4va-lz.a.run.app/posts/${id}/comment`, ids)
-    //         .then((res) => {
-    //             if (res.status === 200) {
-    //                 res.json()
-    //                     .then((commentedPost) => {
-    //                         console.log(`Request successful: ${JSON.stringify(commentedPost)}`)
-    //                         // .then(() => setNewComment(''))
-		// 													setComment(commentedPost.comment)
-    //                     })
-    //             }
-    //         })
-    // };
+  };
 
-    return (
-		     <Main>
-					<Paragraph>Reply to the post <CommentLink to="/comment-form"> ... Here ... </CommentLink></Paragraph>
-						{/* {comments.map(comment => (
+  //CreateComment
+
+  // const handleComment = (id) => {
+  //     const ids = {
+  //         method: 'POST',
+  //         headers: { 'Content-Type': 'application/json' },
+  //         body: JSON.stringify({ comments: comment })
+  //     }
+
+  //     fetch(`https://final-project-w5otwao4va-lz.a.run.app/posts/${id}/comment`, ids)
+  //         .then((res) => {
+  //             if (res.status === 200) {
+  //                 res.json()
+  //                     .then((commentedPost) => {
+  //                         console.log(`Request successful: ${JSON.stringify(commentedPost)}`)
+  //                         // .then(() => setNewComment(''))
+  // 													setComment(commentedPost.comment)
+  //                     })
+  //             }
+  //         })
+  // };
+
+  return (
+    <Main>
+      <Paragraph>Reply to the post <CommentLink to="/comment-form"> ... Here ... </CommentLink></Paragraph>
+      {/* {comments.map(comment => (
 						key={comment.id} 
 						// author ={author}
 						// text ={text}
 						comment ={comment} */}
-            <Container>
-						<CommunityImage><img src={communityImg} alt="backgroundImg" /> </CommunityImage>
-						    <ParagraphTitle>{post.title}</ParagraphTitle>
-								<Paragraph>{post.text}</Paragraph>
-								{/* <div>
+      <Container>
+        <CommunityImage><img src={communityImg} alt="backgroundImg" /> </CommunityImage>
+        <ParagraphTitle>{post.title}</ParagraphTitle>
+        <Paragraph>{post.text}</Paragraph>
+        {/* <div>
 									<CommentForm />
 								</div> */}
-								{/* {comments.map(comment => ( */}
-                    {/* <textarea
+        {/* {comments.map(comment => ( */}
+        {/* <textarea
                         className="input-textarea comment"
                         id="new-comment"
                         name="new-comment"
@@ -87,22 +86,22 @@ const SpaceCommunicate = ({ post }) => {
                         onChange={handleComment}
                         rows="5"
                         cols="23" /> */}
-												{/* ))} */}
-                    <Button
-                        className={post.likes > 0 ? 'button-heart clicked' : 'red-heartButton'}
-                        onClick={() => handleLikeButton(post._id)}>
-                        <span role="img" aria-label="heart">❤️</span>
-                    </Button>
-                    <Counter> x {counter}</Counter>
-                    <Moment>{moment(post.createdAt).fromNow()}</Moment>
-                    {/* <Button type="button" className="deleted-btn" onClick={() => dispatch(posts.id.removeItem(post.id))}> <RemoveButton
+        {/* ))} */}
+        <Button
+          className={post.likes > 0 ? 'button-heart clicked' : 'red-heartButton'}
+          onClick={() => handleLikeButton(post._id)}>
+          <span role="img" aria-label="heart">❤️</span>
+        </Button>
+        <Counter> x {counter}</Counter>
+        <Moment>{moment(post.createdAt).fromNow()}</Moment>
+        {/* <Button type="button" className="deleted-btn" onClick={() => dispatch(posts.id.removeItem(post.id))}> <RemoveButton
                 src="./assets/waste-icon.png"
                 alt="remove" />
               </Button> */}
-					  </Container>	
-        </Main>
+      </Container>
+    </Main>
 
-    )
+  )
 };
 
 export default SpaceCommunicate;
@@ -201,7 +200,6 @@ export const Moment = styled.p`
 		margin-top: -15px;
   }
 `;
-
 
 // const RemoveButton = styled.img`
 // width: 15px;

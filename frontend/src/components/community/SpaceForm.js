@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import styled from 'styled-components';
-// import { API_POST } from "apis/space";
 
 const SpaceForm = ({ onPostSubmitted }) => {
 	const [newTitle, setNewTitle] = useState('');
@@ -18,7 +17,7 @@ const SpaceForm = ({ onPostSubmitted }) => {
         'Authorization': accessToken
       },
       body: JSON.stringify({ text: newPost, title: newTitle  })
-    }
+    };
 
     console.log(`Message: ${JSON.stringify(message)}`)
 
@@ -28,16 +27,15 @@ const SpaceForm = ({ onPostSubmitted }) => {
           .then((createdPost) => onPostSubmitted(createdPost))
           .then(() => setNewPost(''))
       })
-  }
+  };
 
 	const handleOnNewTitle = (e) => {
     setNewTitle(e.target.value)
-  }
+  };
 
   const handleOnNewPost = (e) => {
     setNewPost(e.target.value)
-  }
-
+  };
 
   return (
     <Main>
