@@ -2,24 +2,36 @@ import React from "react";
 import { useState } from "react";
 import { searchNasaImagesByPage } from "../../apis/nasa-api";
 import ImageDetails from "./ImageDetails";
-// import { Link } from "react-router-dom";
+import Pagination from '@mui/material/Pagination';
 
 const SearchForm = () => {
-    const [result, setResult] = useState({images: []});
+    const [result, setResult] = useState({ images: [] });
     const [query, setQuery] = useState("");
-    const [page] = useState(1);
+    const [page, setPage] = useState(1);
+    const [totalPages, setTotalPages] = useState(1)
+
+    const executeSearch = async (query, page) => {
+        const imagesDetails = await searchNasaImagesByPage(query, page);
+        console.log(`Result: ${JSON.stringify(imagesDetails)}`);
+        setResult(imagesDetails);
+        setTotalPages(imagesDetails.total_pages)
+    };
 
     const onClickSearch = async (e) => {
-        const imagesDetails = await searchNasaImagesByPage(query, page);
-        console.log(`Result: ${JSON.stringify(imagesDetails)}`)
-        setResult(imagesDetails);
+        await executeSearch(query, page);
     };
 
     const updateQuery = (e) => {
         setQuery(e.target.value)
     };
 
-    const onFormSubmit = (e) => e.preventDefault()
+    const onFormSubmit = (e) => e.preventDefault();
+
+    const handleChangePage = async (e, value) => {
+        await executeSearch(query, value);
+        // console.log(`handleChangePage value: ${value}`)
+        setPage(value);
+    };
 
     return (
         <div className="search-container">
@@ -34,14 +46,26 @@ const SearchForm = () => {
                     />
                     <button onClick={onClickSearch}>Search</button>
                 </form>
-                {result.images.map((image) => (
-                   <ImageDetails
-                   key={image.id}
-                   image={image}/>
-                ))}
+                <div>
+                    {result.images.length > 0 && 
+                    <Pagination
+                        count={totalPages}
+                        variant="outlined"
+                        color="secondary"
+                        onChange={handleChangePage}
+                    />}
+                    {result.images.map((image) => (
+                        <ImageDetails
+                            key={image.id}
+                            image={image}
+                        />
+                    ))}
+                </div>
             </div>
         </div>
     );
 };
 
 export default SearchForm;
+
+

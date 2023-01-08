@@ -19,12 +19,3 @@ export const searchNasaImagesByPage = async (query, page) => {
         return console.error("Failed to fetch nasa images", error);
     }
 };
-
-// export const getNasaDetailsById = async (id) => {
-//     try {
-//         const response = await axios.get(`/images/search/${id}`);
-//         return response.data;
-//     } catch (error) {
-//         return console.error("Failed to fetch nasa images", error);
-//     }
-// };
