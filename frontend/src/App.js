@@ -15,6 +15,7 @@ import SpaceFeed from "./components/community/SpaceFeed";
 import Loading from "./components/Loading";
 import NotFound from "./components/NotFound";
 import CommentForm from "./components/community/CommentForm";
+import SearchForm from "./components/nasaSearch/SearchForm";
 
 export const App = () => {
 	const reducer = combineReducers({
@@ -42,6 +43,9 @@ export const App = () => {
 					<Route
 						path="/comment-form"
 						element={<CommentForm />} />
+					<Route
+						path="/search-form"
+						element={<SearchForm />} />
 					<Route
 						path="/login"
 						element={<Login />} />
