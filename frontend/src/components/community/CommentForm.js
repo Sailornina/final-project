@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 
-
-const CommentForm = (onCommentSubmitted, _id) => {
+const CommentForm = ({ onCommentSubmitted, postId }) => {
   const [newComment, setNewComment] = useState("");
   const accessToken = useSelector((store) => store.user.accessToken);
 
@@ -20,14 +19,12 @@ const CommentForm = (onCommentSubmitted, _id) => {
 
     console.log(`Comment: ${JSON.stringify(comment)}`);
 
-    fetch(
-      `https://final-project-w5otwao4va-lz.a.run.app/posts/${_id}/comment`, comment)
-			.then((res) => {
-      res
-        .json()
-        // .then((createdComment) => onCommentSubmitted(createdComment))
-      .then(() => setNewComment(""));
-      });
+    fetch(`https://final-project-w5otwao4va-lz.a.run.app/posts/${postId}/comment`, comment)
+      .then((res) => {res.json()
+      .then((postCommented) => onCommentSubmitted(postCommented))
+      .then(() => setNewComment(''))
+  })
+      
   };
 
   const handleOnNewComment = (e) => {

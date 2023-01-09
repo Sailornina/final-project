@@ -2,11 +2,12 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Comment = ({ comment }) => {
+const Comment = ({ text }) => {
+  console.log("Comment rendered: " + text);
   return (
     <Main>
       <Container>
-        <Paragraph>{comment.text}</Paragraph>
+        <Paragraph>{text}</Paragraph>
       </Container>
     </Main>
   )

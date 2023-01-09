@@ -5,16 +5,16 @@ import user from "../../reducers/user";
 import Comment from "./Comment";
 
 
-const Comments = (_id) => {
+const Comments = ({ postId, commentList }) => {
     const dispatch = useDispatch();
-    const [comments, setComments] = useState([]);
+    const [comments, setComments] = useState(commentList || []);
 
 
-    useEffect(() => {
-        fetch(`https://final-project-w5otwao4va-lz.a.run.app/posts/${_id}/comment`)
-            .then((res) => res.json())
-            .then((json) => setComments(json.response.allPosts))
-    }, [comments.length])
+    // useEffect(() => {
+    //     fetch(`https://final-project-w5otwao4va-lz.a.run.app/posts/${_id}/comment`)
+    //         .then((res) => res.json())
+    //         .then((json) => setComments(json.response.allPosts))
+    // }, [comments.length])
 
     useEffect(() => {
         dispatch(user.actions.setUsername(localStorage.getItem('username')));
@@ -24,15 +24,14 @@ const Comments = (_id) => {
 
     return (
         <section className="container">
-            <CommentForm onCommentSubmitted={(newComment) => {
+            <CommentForm postId={postId} onCommentSubmitted={(newComment) => {
                 setComments([newComment, ...comments])// Updating the state.
-                console.log('onCommenttSubmitted called')
+                console.log('onCommenttSubmitted: ' + JSON.stringify(newComment))
             }} />
-
             {comments.map((comment) => (
                 <Comment
                     key={comment._id}
-                    comment={comment}
+                    text={comment.text}
                 />
             ))}
         </section>

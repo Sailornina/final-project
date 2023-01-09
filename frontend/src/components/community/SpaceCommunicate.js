@@ -5,6 +5,7 @@ import moment from 'moment';
 import { Link } from "react-router-dom";
 import Icon from "../../assets/waste-icon.png";
 import communityImg from "../../assets/Rocket.png";
+import Comments from "./Comments"
 // import user from '../../reducers/user';
 
 const SpaceCommunicate = ({ post }) => {
@@ -69,6 +70,7 @@ const SpaceCommunicate = ({ post }) => {
           src={Icon}
           alt="remove" /></Button>
       </Container>
+      <Comments postId={post._id} commentList={post.comments}/>
     </Main>
 
   )

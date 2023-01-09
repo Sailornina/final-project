@@ -23,8 +23,7 @@ const SpaceForm = ({ onPostSubmitted }) => {
     console.log(`Message: ${JSON.stringify(message)}`)
 
     fetch('https://final-project-w5otwao4va-lz.a.run.app/posts', message)
-      .then((res) => {
-        res.json()
+      .then((res) => {res.json()
           .then((createdPost) => onPostSubmitted(createdPost))
           .then(() => setNewPost(''))
       })
