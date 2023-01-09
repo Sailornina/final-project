@@ -68,13 +68,14 @@ router.post("/:id/comment", isAuthenticated, async (req, res) => {
 	//If the user is registered in the database then they can create a post.
 	// Find out which post you are commenting.
 	const id = req.params.id
+	const user = res.locals.user
 	const session = await mongoose.connection.startSession()
 	try {
 		await session.withTransaction(async (session) => {
 			const comment = new Comment({
 				text: req.body.text,
 				post: id,
-				author: req.body.author
+				author: user
 			})
 			await comment.save({ session });
 
