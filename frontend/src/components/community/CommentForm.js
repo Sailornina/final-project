@@ -1,63 +1,55 @@
-// import React from "react";
-// import CommentCommunicate from "./CommentCommunicate";
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
-// import CommentsList from "./CommentsList"
 
-const CommentForm = (id) => {
-	const [newComment, setNewComment] = useState('');
-	// const [comments, setComments] = useState([]);
-	const accessToken = useSelector((store) => store.user.accessToken);
+const CommentForm = ({ onCommentSubmitted, postId }) => {
+  const [newComment, setNewComment] = useState("");
+  const accessToken = useSelector((store) => store.user.accessToken);
 
-const handleOnNewComment = (e) => {
-	setNewComment(e.target.value)
-}
-const onCommentSubmitted = (newComment)  => {
-	setNewComment([])
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
 
+    const comment = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": accessToken
+      },
+      body: JSON.stringify({ text: newComment }),
+    };
 
-const comment =  {
+    console.log(`Comment: ${JSON.stringify(comment)}`);
 
-		method: 'POST',
-		headers: {
-			'Content-Type': 'application/json',
-			'Authorization': accessToken
-		},
-		body: { text: newComment }
-	}
+    fetch(`https://final-project-w5otwao4va-lz.a.run.app/posts/${postId}/comment`, comment)
+      .then((res) => {res.json()
+      .then((postCommented) => onCommentSubmitted(postCommented))
+      .then(() => setNewComment(''))
+  })
+      
+  };
 
-	// console.log(`Comment: ${JSON.stringify(comment)}`)
+  const handleOnNewComment = (e) => {
+    setNewComment(e.target.value);
+  };
 
-	fetch(`https://final-project-w5otwao4va-lz.a.run.app/posts/${id}/comment`, comment)
-		.then((res) => {
-			if (res.status === 200) {
-				res.json()
-					.then((commentedPost) => {
-						onCommentSubmitted(commentedPost)
-						console.log(`Request successful: ${JSON.stringify(commentedPost)}`)
-					})
-					.then(() => setNewComment(''))
-				}
-		})
-};
-
-return(
-	<div className="nested-comments">
-	{/* <CommentsList /> */}
-
-	<textarea
-          className="input-textarea comment"
-          id="new-comment"
-          name="new-comment"
-          placeholder="add a comment"
-          value={newComment}
-          onChange={handleOnNewComment}
-          rows="5"
-          cols="23" />
-					  <button type="submit" onClick={onCommentSubmitted}>Post</button>
-						</div>
-)
-
+  return (
+    <div className="nested-comments">
+      <form onSubmit={handleFormSubmit}>
+        <label htmlFor="new-comment">
+          <textarea
+            className="input-textarea comment"
+            id="new-comment"
+            name="new-comment"
+            placeholder="add a comment"
+            value={newComment}
+            onChange={handleOnNewComment}
+            rows="5"
+            cols="23"
+          />
+        </label>
+        <button type="submit">Post</button>
+      </form>
+    </div>
+  );
 };
 
 export default CommentForm;

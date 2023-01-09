@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import { MainContainer, MainHeading, Button } from "../styles/GlobalStyle";
 import Loading from './Loading';
 import background from "../assets/background-image-profile.jpg";
-import { API_URL } from "../apis/user";
+// import { API_URL } from "../apis/user";
 
 const Profile = () => {
 	const navigate = useNavigate();
@@ -19,11 +19,11 @@ const Profile = () => {
     setTimeout(() => setLoading(false), 1000)
   }, [])
 
-	useEffect(() => {
-		dispatch(user.actions.setUsername(localStorage.getItem('username')));
-		dispatch(user.actions.setUserId(localStorage.getItem('userId')));
-		dispatch(user.actions.setAccessToken(localStorage.getItem("accessToken")));
-})
+// 	useEffect(() => {
+// 		dispatch(user.actions.setUsername(localStorage.getItem('username')));
+// 		dispatch(user.actions.setUserId(localStorage.getItem('userId')));
+// 		dispatch(user.actions.setAccessToken(localStorage.getItem("accessToken")));
+// })
 
 	const logout = () => {
 		batch(() => {
@@ -37,24 +37,6 @@ const Profile = () => {
 			navigate('/login')
 		}
 	}, [accessToken, navigate])
-
-	useEffect(() => {
-		const options = {
-			method: 'GET',
-			headers: {
-				'Authorization': accessToken,
-			},
-		}
-
-		fetch(API_URL('editprofile'), options)
-			.then((res) => res.json())
-			.then((data) => {
-				console.log("Response: " + data);
-				if (data.success) {
-					// setSecret(data.message)
-				}
-			})
-	}, [accessToken])
 
 	return (
 		<>
