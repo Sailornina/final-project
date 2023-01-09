@@ -29,14 +29,14 @@ const SpaceFeed = () => {
                 setPosts([newPost, ...posts])// Updating the state.
                 console.log('onPostSubmitted called')
             }} />
-						
+
             {posts.map((post) => (
-								<SpaceCommunicate 
+                <SpaceCommunicate
                     key={post._id}
-										title ={post.title} 
+                    title={post.title}
                     post={post}
-								     />
-										 ))}
+                />
+            ))}
         </section>
     )
 };

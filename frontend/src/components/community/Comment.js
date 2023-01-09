@@ -2,21 +2,17 @@
 import React from 'react';
 import styled from 'styled-components';
 
-
 const Comment = ({ comment }) => {
-    return (
-		     <Main>
-            <Container>
-								<Paragraph>{comment.text}</Paragraph>
-					  </Container>	
-        </Main>
-
-    )
+  return (
+    <Main>
+      <Container>
+        <Paragraph>{comment.text}</Paragraph>
+      </Container>
+    </Main>
+  )
 };
 
 export default Comment;
-
-
 
 export const Main = styled.div`
   display: grid;

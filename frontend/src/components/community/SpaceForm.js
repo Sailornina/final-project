@@ -4,7 +4,7 @@ import styled from 'styled-components';
 // import { API_POST } from "apis/space";
 
 const SpaceForm = ({ onPostSubmitted }) => {
-	const [newTitle, setNewTitle] = useState('');
+  const [newTitle, setNewTitle] = useState('');
   const [newPost, setNewPost] = useState('');
   const accessToken = useSelector((store) => store.user.accessToken);
 
@@ -14,10 +14,10 @@ const SpaceForm = ({ onPostSubmitted }) => {
     const message = {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json', 
+        'Content-Type': 'application/json',
         'Authorization': accessToken
       },
-      body: JSON.stringify({ text: newPost, title: newTitle  })
+      body: JSON.stringify({ text: newPost, title: newTitle })
     }
 
     console.log(`Message: ${JSON.stringify(message)}`)
@@ -30,7 +30,7 @@ const SpaceForm = ({ onPostSubmitted }) => {
       })
   }
 
-	const handleOnNewTitle = (e) => {
+  const handleOnNewTitle = (e) => {
     setNewTitle(e.target.value)
   }
 
@@ -41,38 +41,38 @@ const SpaceForm = ({ onPostSubmitted }) => {
 
   return (
     <Main>
-		<Container>
-      <Form  onSubmit={handleFormSubmit}>
-        <Title>What is happening in the space?</Title>
-				<Paragraph>Here you can create and find all the posts</Paragraph>
-        <Label htmlFor="new-post">
-				<InputTitle
-            id="new-title"
-            name="new-title"
-            placeholder="Write your Title ..."
-            defaultValue={newTitle}
-            onChange={handleOnNewTitle}
-            rows="5"
-            cols="33" />
-          <Input
-            id="new-post"
-            name="new-post"
-            placeholder="Write your Comment ..."
-            defaultValue={newPost}
-            onChange={handleOnNewPost}
-            rows="5"
-            cols="33" />
-        </Label>
-				<Paragraph>{newPost.length} / 140</Paragraph>
-        <Button
-          type="submit"
-          disabled={newPost.length < 4 || newPost.length > 140}>
-          <span role="img" aria-label="heart">
-          🚀 Post 🚀
-          </span>
-        </Button>
-      </Form>
-			</Container>	
+      <Container>
+        <Form onSubmit={handleFormSubmit}>
+          <Title>What is happening in the space?</Title>
+          <Paragraph>Here you can create and find all the posts</Paragraph>
+          <Label htmlFor="new-post">
+            <InputTitle
+              id="new-title"
+              name="new-title"
+              placeholder="Write your Title ..."
+              defaultValue={newTitle}
+              onChange={handleOnNewTitle}
+              rows="5"
+              cols="33" />
+            <Input
+              id="new-post"
+              name="new-post"
+              placeholder="Write your Comment ..."
+              defaultValue={newPost}
+              onChange={handleOnNewPost}
+              rows="5"
+              cols="33" />
+          </Label>
+          <Paragraph>{newPost.length} / 140</Paragraph>
+          <Button
+            type="submit"
+            disabled={newPost.length < 4 || newPost.length > 140}>
+            <span role="img" aria-label="heart">
+              🚀 Post 🚀
+            </span>
+          </Button>
+        </Form>
+      </Container>
     </Main>
   )
 };

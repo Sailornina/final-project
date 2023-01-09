@@ -8,70 +8,70 @@ import communityImg from "../../assets/Rocket.png";
 // import user from '../../reducers/user';
 
 const SpaceCommunicate = ({ post }) => {
-	// const dispatch = useDispatch();
-	  // const [removePost] = useState('');
-    const [counter, setCounter] = useState(post.likes);		
-    const accessToken = useSelector((store) => store.user.accessToken);
+  // const dispatch = useDispatch();
+  // const [removePost] = useState('');
+  const [counter, setCounter] = useState(post.likes);
+  const accessToken = useSelector((store) => store.user.accessToken);
 
-		const onDeletePost = async (id) => {
-									const options = {
-											method: "DELETE",
-											headers: {
-													"Content-Type": "application/json",
-													'Authorization': accessToken
-											},
-											body: JSON.stringify({ 
-											}),
-									}
-									await fetch(`https://final-project-w5otwao4va-lz.a.run.app/posts/${id}`, options)
-									// .then((res) => res.json())
-									// .then((dispatch(user.actions.removePost(id))))
-										
-	}
+  const onDeletePost = async (id) => {
+    const options = {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        'Authorization': accessToken
+      },
+      body: JSON.stringify({
+      }),
+    }
+    await fetch(`https://final-project-w5otwao4va-lz.a.run.app/posts/${id}`, options)
+    // .then((res) => res.json())
+    // .then((dispatch(user.actions.removePost(id))))
+
+  }
 
 
-    const handleLikeButton = (id) => {
-        const ids = {
-            method: 'PATCH',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': accessToken
-            }
-        }
+  const handleLikeButton = (id) => {
+    const ids = {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': accessToken
+      }
+    }
 
-        fetch(`https://final-project-w5otwao4va-lz.a.run.app/posts/${id}/like`, ids)
-            .then((res) => {
-                if (res.status === 200) {
-                    res.json()
-                        .then((likedPost) => {
-                            console.log(`Request successful: ${JSON.stringify(likedPost)}`)
-                            setCounter(likedPost.likes)
-                        })
-                }
+    fetch(`https://final-project-w5otwao4va-lz.a.run.app/posts/${id}/like`, ids)
+      .then((res) => {
+        if (res.status === 200) {
+          res.json()
+            .then((likedPost) => {
+              console.log(`Request successful: ${JSON.stringify(likedPost)}`)
+              setCounter(likedPost.likes)
             })
-    };
+        }
+      })
+  };
 
-    return (
-		     <Main>
-					<CommunityImage><img src={communityImg} alt="backgroundImg" /> </CommunityImage>
-            <Container>
-						    <ParagraphTitle>{post.title}</ParagraphTitle>
-								<Paragraph>{post.text}</Paragraph>
-								<CommentLink to="/comment-form">  Reply  </CommentLink>
-                    <Button
-                        className={post.likes > 0 ? 'button-heart clicked' : 'red-heartButton'}
-                        onClick={() => handleLikeButton(post._id)}>
-                        <span role="img" aria-label="heart">❤️</span>
-                    </Button>
-                    <Counter>x{counter}</Counter>
-                    <Moment>{moment(post.createdAt).fromNow()}</Moment>
-										<Button onClick={() => onDeletePost(post._id)}><RemoveButton
-              src={Icon}  
-                alt="remove" /></Button>
-					  </Container>	
-        </Main>
+  return (
+    <Main>
+      <CommunityImage><img src={communityImg} alt="backgroundImg" /> </CommunityImage>
+      <Container>
+        <ParagraphTitle>{post.title}</ParagraphTitle>
+        <Paragraph>{post.text}</Paragraph>
+        <CommentLink to="/comment-form">  Reply  </CommentLink>
+        <Button
+          className={post.likes > 0 ? 'button-heart clicked' : 'red-heartButton'}
+          onClick={() => handleLikeButton(post._id)}>
+          <span role="img" aria-label="heart">❤️</span>
+        </Button>
+        <Counter>x{counter}</Counter>
+        <Moment>{moment(post.createdAt).fromNow()}</Moment>
+        <Button onClick={() => onDeletePost(post._id)}><RemoveButton
+          src={Icon}
+          alt="remove" /></Button>
+      </Container>
+    </Main>
 
-    )
+  )
 };
 
 export default SpaceCommunicate;

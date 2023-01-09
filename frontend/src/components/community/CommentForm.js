@@ -10,7 +10,7 @@ const CommentForm = (onCommentSubmitted, _id) => {
     e.preventDefault();
 
     const comment = {
-      method: "POST", 
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
         "Authorization": accessToken
@@ -26,8 +26,8 @@ const CommentForm = (onCommentSubmitted, _id) => {
       res
         .json()
         // .then((createdComment) => onCommentSubmitted(createdComment))
-        .then(() => setNewComment(""));
-    });
+      .then(() => setNewComment(""));
+      });
   };
 
   const handleOnNewComment = (e) => {

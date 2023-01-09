@@ -28,13 +28,13 @@ const Comments = (_id) => {
                 setComments([newComment, ...comments])// Updating the state.
                 console.log('onCommenttSubmitted called')
             }} />
-						
+
             {comments.map((comment) => (
-								<Comment
+                <Comment
                     key={comment._id}
                     comment={comment}
-								     />
-										 ))}
+                />
+            ))}
         </section>
     )
 };
