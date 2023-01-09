@@ -44,6 +44,7 @@ const SpaceForm = ({ onPostSubmitted }) => {
 		<Container>
       <Form  onSubmit={handleFormSubmit}>
         <Title>What is happening in the space?</Title>
+				<Paragraph>Here you can create and find all the posts</Paragraph>
         <Label htmlFor="new-post">
 				<InputTitle
             id="new-title"

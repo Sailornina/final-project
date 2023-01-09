@@ -3,19 +3,31 @@ import { useSelector } from "react-redux";
 import styled from 'styled-components';
 import moment from 'moment';
 import { Link } from "react-router-dom";
-// import CommentForm from "./CommentForm";
-// import user from '../../reducers/user';
+import Icon from "../../assets/waste-icon.png";
 import communityImg from "../../assets/Rocket.png";
+// import user from '../../reducers/user';
 
 const SpaceCommunicate = ({ post }) => {
 	// const dispatch = useDispatch();
+	  // const [removePost] = useState('');
     const [counter, setCounter] = useState(post.likes);		
-
-    // const [comment, setComment] = useState([]);
-
-		// const [newcomment, setNewComment] = useState('');
-		// const [deleted, setDeleted] = useState(false)
     const accessToken = useSelector((store) => store.user.accessToken);
+
+		const onDeletePost = async (id) => {
+									const options = {
+											method: "DELETE",
+											headers: {
+													"Content-Type": "application/json",
+													'Authorization': accessToken
+											},
+											body: JSON.stringify({ 
+											}),
+									}
+									await fetch(`https://final-project-w5otwao4va-lz.a.run.app/posts/${id}`, options)
+									// .then((res) => res.json())
+									// .then((dispatch(user.actions.removePost(id))))
+										
+	}
 
 
     const handleLikeButton = (id) => {
@@ -36,69 +48,26 @@ const SpaceCommunicate = ({ post }) => {
                             setCounter(likedPost.likes)
                         })
                 }
-								
             })
     };
 
-//CreateComment
-
-    // const handleComment = (id) => {
-    //     const ids = {
-    //         method: 'POST',
-    //         headers: { 'Content-Type': 'application/json' },
-    //         body: JSON.stringify({ comments: comment })
-    //     }
-
-    //     fetch(`https://final-project-w5otwao4va-lz.a.run.app/posts/${id}/comment`, ids)
-    //         .then((res) => {
-    //             if (res.status === 200) {
-    //                 res.json()
-    //                     .then((commentedPost) => {
-    //                         console.log(`Request successful: ${JSON.stringify(commentedPost)}`)
-    //                         // .then(() => setNewComment(''))
-		// 													setComment(commentedPost.comment)
-    //                     })
-    //             }
-    //         })
-    // };
-
     return (
 		     <Main>
-					<Paragraph>Reply to the post <CommentLink to="/comment-form"> ... Here ... </CommentLink></Paragraph>
-						{/* {comments.map(comment => (
-						key={comment.id} 
-						// author ={author}
-						// text ={text}
-						comment ={comment} */}
+					<CommunityImage><img src={communityImg} alt="backgroundImg" /> </CommunityImage>
             <Container>
-						<CommunityImage><img src={communityImg} alt="backgroundImg" /> </CommunityImage>
 						    <ParagraphTitle>{post.title}</ParagraphTitle>
 								<Paragraph>{post.text}</Paragraph>
-								{/* <div>
-									<CommentForm />
-								</div> */}
-								{/* {comments.map(comment => ( */}
-                    {/* <textarea
-                        className="input-textarea comment"
-                        id="new-comment"
-                        name="new-comment"
-                        placeholder="add a comment"
-                        value={comment}
-                        onChange={handleComment}
-                        rows="5"
-                        cols="23" /> */}
-												{/* ))} */}
+								<CommentLink to="/comment-form">  Reply  </CommentLink>
                     <Button
                         className={post.likes > 0 ? 'button-heart clicked' : 'red-heartButton'}
                         onClick={() => handleLikeButton(post._id)}>
                         <span role="img" aria-label="heart">❤️</span>
                     </Button>
-                    <Counter> x {counter}</Counter>
+                    <Counter>x{counter}</Counter>
                     <Moment>{moment(post.createdAt).fromNow()}</Moment>
-                    {/* <Button type="button" className="deleted-btn" onClick={() => dispatch(posts.id.removeItem(post.id))}> <RemoveButton
-                src="./assets/waste-icon.png"
-                alt="remove" />
-              </Button> */}
+										<Button onClick={() => onDeletePost(post._id)}><RemoveButton
+              src={Icon}  
+                alt="remove" /></Button>
 					  </Container>	
         </Main>
 
@@ -118,8 +87,12 @@ export const CommunityImage = styled.div`
 export const Main = styled.div`
   display: grid;
   place-items: center;
-  text-align: center;
+	text-align: center;
   background-size: cover;
+	@media (max-width: 667px) {
+  display: flex;
+	justify-content: center;
+  }
 `;
 
 export const Container = styled.div`
@@ -135,8 +108,6 @@ export const Container = styled.div`
     width: 300px; 
 	  height: 200px;
 		padding: 10px 0px;
-		justify-content: center;
-    flex-direction: column;
   }
 `;
 
@@ -152,8 +123,7 @@ export const Button = styled.button`
 	margin-right: 5px;
 	float: left; 
 	@media (max-width: 667px) {
-  float: right;
-	margin-top: 10px;
+	margin-top: -30px;
   }
 /* 	
 	&.button-heart clicked {
@@ -168,7 +138,9 @@ export const Paragraph = styled.p`
 
 export const CommentLink = styled(Link)`
 text-decoration: none;
-color: black;
+color: rgb(84, 79, 76);
+font-size: 10px;
+float: right;
 font-weight: 700px;
 cursor: pointer;
 `;
@@ -186,7 +158,8 @@ margin-top: 40px;
 font-size: 10px;
 @media (max-width: 667px) {
   float: right;
-	margin-top: 20px;
+	margin-top: 
+	-35px;
   }
 `;
 
@@ -203,24 +176,25 @@ export const Moment = styled.p`
 `;
 
 
-// const RemoveButton = styled.img`
-// width: 15px;
-//     height: 15px;
-//   &:hover {
-//     animation: jelly .5s ease;
-//   }
-//   @keyframes jelly {
-//   from {
-//     transform: scale(1, 1);
-//   }
-//   30% {
-//     transform: scale(1.25, 0.75);
-//   }
-//   40% {
-//     transform: scale(0.75, 1.25);
-//   }
-//   to {
-//     transform: scale(1, 1);
-//   }
-//   }
-// `
+const RemoveButton = styled.img`
+    filter: invert(100%) sepia(18%) saturate(351%) hue-rotate(149deg) brightness(100%) contrast(95%);
+    width: 15px;
+    height: 15px;
+  &:hover {
+    animation: jelly .5s ease;
+  }
+  @keyframes jelly {
+  from {
+    transform: scale(1, 1);
+  }
+  30% {
+    transform: scale(1.25, 0.75);
+  }
+  40% {
+    transform: scale(0.75, 1.25);
+  }
+  to {
+    transform: scale(1, 1);
+  }
+  }
+`

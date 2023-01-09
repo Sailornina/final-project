@@ -6,23 +6,22 @@ import user from "./reducers/user";
 import GlobalStyle from "./styles/GlobalStyle.js";
 import Navbar from "./components/Navbar";
 import StartScreen from "./components/StartScreen";
-// import Footer from "./components/Footer";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import About from "./components/About";
 import Profile from "./components/Profile";
 import SpaceFeed from "./components/community/SpaceFeed";
-import CommentForm from "./components/community/CommentForm";
+import Comments from "./components/community/Comments";
 import Loading from "./components/Loading";
 import NotFound from "./components/NotFound";
 import SearchForm from "./components/nasaSearch/SearchForm";
+import CommentForm from "./components/community/CommentForm";
 
 export const App = () => {
 	const reducer = combineReducers({
 		user: user.reducer
 	});
 	const store = configureStore({
-		// reducer: reducer
 		reducer
 	});
 	return (
@@ -40,6 +39,9 @@ export const App = () => {
 					<Route
 						path="/space-feed"
 						element={<SpaceFeed />} />
+							<Route
+						path="/comments"
+						element={<Comments />} />
 							<Route
 						path="/comment-form"
 						element={<CommentForm />} />
@@ -62,7 +64,6 @@ export const App = () => {
 						path="/not-found"
 						element={<NotFound />} />
 				</Routes>
-				{/* <Footer /> */}
 			</BrowserRouter>
 		</Provider>
 	);

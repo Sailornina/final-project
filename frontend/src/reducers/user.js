@@ -9,6 +9,7 @@ const user = createSlice({
 		email: null,
 		error: null,
 		isLoading: false,
+		// posts:[],
 	},
 	reducers: {
 		setUsername: (store, action) => {
@@ -27,9 +28,19 @@ const user = createSlice({
     setError: (store, action) => {
 			store.error = action.payload;
 		},
-		setLoading: (state, action) => {
-     state.isLoading = action.payload;
-    }
+		setLoading: (store, action) => {
+     store.isLoading = action.payload;
+    },
+		// setPosts: (store, action) => {
+		// 	console.log('---------------------')
+		// 	store.posts = action.payload;
+		//  },
+		//  removePost: (store, action) => {
+		// 	const postId = action.payload._id
+		// 	const posts = store.posts
+		// 	console.log('posts', posts)
+		// 	store.posts = posts.filter(post => post._id !== postId)
+		//  } 
 	}
 });
 
