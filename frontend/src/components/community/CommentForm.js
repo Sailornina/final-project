@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
+import styled from 'styled-components';
 
 const CommentForm = ({ onCommentSubmitted, postId }) => {
   const [newComment, setNewComment] = useState("");
@@ -32,24 +33,110 @@ const CommentForm = ({ onCommentSubmitted, postId }) => {
   };
 
   return (
-    <div className="nested-comments">
-      <form onSubmit={handleFormSubmit}>
-        <label htmlFor="new-comment">
-          <textarea
+    <Main>
+			<Container>
+      <Form onSubmit={handleFormSubmit}>
+        <Label htmlFor="new-comment">
+          <Input
             className="input-textarea comment"
             id="new-comment"
             name="new-comment"
-            placeholder="add a comment"
+            placeholder="Add a comment"
             value={newComment}
             onChange={handleOnNewComment}
             rows="5"
             cols="23"
           />
-        </label>
-        <button type="submit">Post</button>
-      </form>
-    </div>
+        </Label>
+        <Button type="submit">Reply</Button>
+      </Form>
+			</Container>
+    </Main>
   );
 };
 
 export default CommentForm;
+
+
+export const Main = styled.div`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	margin: auto;
+	width: 30%;
+	margin-top: 10px;
+	padding: 20px;
+`;
+
+export const Container = styled.div`
+  width: 500px; 
+	height: 200px;
+	@media (max-width: 667px) {
+    /* width: 300px; 
+	  height: 400px;
+		padding: 20px 0px;
+		margin-top: 50px; */
+  }
+`;
+
+
+export const Form = styled.form`
+  color: #fff;
+  display: flex;
+  z-index: 1;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+	height: 100%;
+  position: relative;
+  text-align: center;
+	@media (max-width: 667px) {
+    /* width: 300px; 
+	  height: 300px; */
+  }
+`;
+
+export const Label = styled.h1`
+  display: flex;
+  color: #fff;
+  margin: 0 auto;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const Input = styled.input`
+  background-color: #eee;
+	margin-top: 10px;
+	width: 150%;
+	height: 80px;
+	border: 3px solid;
+  border: none;
+	padding: 12px 15px;
+  border-radius: 20px;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+`;
+
+
+
+export const Button = styled.button`
+  border-radius: 20px;
+  border: 1px solid #2b3a55;
+  background-color: #2b3a55;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 12px 30px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  margin-top: 5%;
+`;
+
+export const Paragraph = styled.p`
+  font-size: smaller;
+	padding: 0px;
+	color: black;
+	font-weight: 800;
+`;
