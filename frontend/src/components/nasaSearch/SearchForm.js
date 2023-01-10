@@ -1,4 +1,5 @@
 import React from "react";
+import styled from "styled-components";
 import { useState } from "react";
 import { searchNasaImagesByPage } from "../../apis/nasa-api";
 import ImageDetails from "./ImageDetails";
@@ -34,19 +35,19 @@ const SearchForm = () => {
     };
 
     return (
-        <div className="search-container">
+        <ContainerSearch className="search-container">
             <div className="search-div">
-                <form onSubmit={onFormSubmit}>
-                    <input
+                <Form onSubmit={onFormSubmit}>
+                    <InputSearch
                         className='search-input'
                         placeholder='Search for moon, supernova...'
                         type="text"
                         value={query}
                         onChange={updateQuery}
                     />
-                    <button onClick={onClickSearch}>Search</button>
-                </form>
-                <div>
+                    <ButtonSearch onClick={onClickSearch}>Search</ButtonSearch>
+                </Form>
+                <div className="result-search">
                     {result.images.length > 0 && 
                     <Pagination
                         count={totalPages}
@@ -62,10 +63,58 @@ const SearchForm = () => {
                     ))}
                 </div>
             </div>
-        </div>
+        </ContainerSearch>
     );
 };
 
 export default SearchForm;
 
+export const ContainerSearch = styled.div`
+  width: 50%;
+  position: absolute;
+  margin-bottom: 100%;
+`;
 
+export const Form = styled.form`
+  display: flex;
+  justify-content: center;
+  place-items: center;
+  text-align: center;
+  background-size: cover;
+  @media (max-width: 667px) {
+  }
+`;
+
+// export const Search = styled.div`
+//   width: 100%;
+//   position: relative;
+//   display: flex;
+// `;
+
+export const InputSearch = styled.input`
+  width: 60%;
+  border: 3px solid #00B4CC;
+  border-right: none;
+  padding: 5px;
+  height: 50px;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  color: #9DBFAF;
+`;
+
+export const ButtonSearch = styled.button`
+  width: 150px;
+  height: 50px;
+  border: 1px solid #00B4CC;
+  background: #00B4CC;
+  text-align: center;
+  color: #fff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
+`;
+
+// export const ResultSearch = styled.div`
+// display: grid;
+//   grid-template-columns: 1fr, 1fr;
+// `;
