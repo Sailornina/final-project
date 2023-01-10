@@ -1,10 +1,10 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
-import moment from "moment";
+// import moment from "moment";
 import Icon from "../../assets/waste-icon.png";
 
-const Comment = ({ text, author, createdAt }) => {
+const Comment = ({ text }) => {
   // const username = useSelector((store) => store.user.username);
   const accessToken = useSelector((store) => store.user.accessToken);
 
@@ -28,9 +28,9 @@ const Comment = ({ text, author, createdAt }) => {
   return (
     <Main>
       <Container>
-        <Title>{author}</Title>
+        {/* <Title>{author}</Title> */}
         <Paragraph>{text}</Paragraph>
-        <Moment>{moment(createdAt).fromNow()}</Moment>
+        {/* <Moment>{moment(createdAt).fromNow()}</Moment> */}
         <Button onClick={onDeleteComment}>
           <RemoveButton src={Icon} alt="remove" />
         </Button>
@@ -105,11 +105,11 @@ export const Button = styled.button`
   }
 `;
 
-export const Moment = styled.p`
-  float: right;
-  font-size: 10px;
-  margin-top: 5px;
-`;
+// export const Moment = styled.p`
+//   float: right;
+//   font-size: 10px;
+//   margin-top: 5px;
+// `;
 
 const RemoveButton = styled.img`
   /* filter: invert(100%) sepia(18%) saturate(351%) hue-rotate(149deg) brightness(100%) contrast(95%); */

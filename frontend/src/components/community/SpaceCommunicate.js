@@ -15,7 +15,7 @@ const SpaceCommunicate = ({ post }) => {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
-        Authorization: accessToken,
+        'Authorization': accessToken,
       },
       body: JSON.stringify({}),
     };

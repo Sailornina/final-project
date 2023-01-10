@@ -19,12 +19,6 @@ const Profile = () => {
     setTimeout(() => setLoading(false), 1000);
   }, []);
 
-		useEffect(() => {
-		dispatch(user.actions.setUsername(localStorage.getItem('username')));
-		dispatch(user.actions.setUserId(localStorage.getItem('userId')));
-		dispatch(user.actions.setAccessToken(localStorage.getItem("accessToken")));
-})
-
   const logout = () => {
     batch(() => {
       dispatch(user.actions.setUsername(null));
@@ -53,7 +47,7 @@ const Profile = () => {
               your Favorite Community
             </SubHeading>
             <SubHeading>
-              Start navigate to our
+              Start Navigate to our
               <CommunityLink to="/search-form"> Search </CommunityLink> Menue
             </SubHeading>
             <Button className="profile-button-logout" onClick={logout}>
@@ -78,7 +72,6 @@ export const ProfileImage = styled.div`
   height: 526px;
   left: -326px;
   top: -80px;
-
 `;
 
 export const Heading = styled.h1`

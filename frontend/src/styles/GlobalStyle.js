@@ -74,7 +74,6 @@ export const BackgroundImage = styled.div`
   height: 526px;
   left: -326px;
   top: -80px;
-  filter: blur(2px);
 `;
 
 export const Form = styled.form`
