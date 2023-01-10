@@ -1,7 +1,10 @@
 import React from "react";
-import Image from "../assets/about.png";
+// import Image from "../assets/about.png";
+import Image1 from "../assets/About.jpg";
+import Image2 from "../assets/Aboutt.jpg";
 import styled from "styled-components";
 import { Title, MainContainer } from "../styles/GlobalStyle";
+import { ParagraphTitle } from "./community/SpaceCommunicate";
 
 const About = () => {
   return (
@@ -10,16 +13,18 @@ const About = () => {
         The purpose of our page is the investigation of the Sun, the Moon, and
         the heavens.
       </Title>
+      <ParagraphTitle>
+        Our aim is to spread interest in astronomy to all those who may never
+        have looked through a telescope or realized their place in the cosmos.
+      </ParagraphTitle>
       <AboutSubContainer>
-        <Paragraph>Here is Naghmeh in Coyoto Head Nebula</Paragraph>
+        <Paragraph>Here you can find Naghmeh in Coyote Head Nebula</Paragraph>
         <AboutImage>
-          <img src={Image} alt="backgroundImg" />
+          <img src={Image1} alt="backgroundImg" />
         </AboutImage>
-      </AboutSubContainer>
-      <AboutSubContainer>
-        <Paragraph>Here is Antonella ......</Paragraph>
+				<Paragraph>Here you can find Antonella in Thor's Helmet Nebula </Paragraph>
         <AboutImage>
-          <img src={Image} alt="backgroundImg" />
+          <img src={Image2} alt="backgroundImg" />
         </AboutImage>
       </AboutSubContainer>
     </MainContainer>
@@ -43,10 +48,11 @@ export const AboutSubContainer = styled.div`
 
 export const AboutImage = styled.div`
   display: flex;
+	margin-bottom: 50px;
 `;
 
 export const Paragraph = styled.p`
-  font-size: 14px;
+  font-size: 18px;
   color: #7f8c9b;
   line-height: 150%;
 `;
