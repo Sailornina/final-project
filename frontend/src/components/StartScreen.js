@@ -28,9 +28,12 @@ const StartScreen = () => {
         <YouTubeHeading>
           <YouTubeParagraph>
             Best Space Movies -{" "}
-            <YoutubeLink href="https://www.marieclaire.com/culture/g31006874/best-space-movies/">
+            <a
+              href="https://www.marieclaire.com/culture/g31006874/best-space-movies/"
+              target="_blank" rel="noopener noreferrer"
+            >
               of All Time
-            </YoutubeLink>
+            </a>
           </YouTubeParagraph>
           <YouTubeWrapper>
             <ReactPlayer url="https://www.youtube.com/watch?v=EOK6_cX35QM&list=RDYF1eYbfbH5k&index=13" />
@@ -63,6 +66,10 @@ export const YouTubeParagraph = styled.div`
   color: #ffffff;
   justify-content: center;
   align-items: center;
+
+  & a {
+    color: white;
+  }
 `;
 
 export const YoutubeLink = styled(Link)`
