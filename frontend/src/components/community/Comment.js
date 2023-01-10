@@ -16,14 +16,14 @@ const Comment = ({ text, comment }) => {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
-        Authorization: accessToken,
+        "Authorization": accessToken
       },
       body: JSON.stringify({}),
     };
     await fetch(
       `https://final-project-w5otwao4va-lz.a.run.app/comments/${id}`,
       options
-    );
+    )
   };
 
 
