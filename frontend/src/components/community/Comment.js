@@ -11,20 +11,26 @@ const Comment = ({ text, comment }) => {
 
   console.log("Comment rendered: " + text);
 
-  const onDeleteComment = async (id) => {
+  const onDeleteComment =  (id) => {
     const options = {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
-        Authorization: accessToken,
+        'Authorization': accessToken,
       },
-      body: JSON.stringify({}),
+      // body: JSON.stringify({}),
     };
-    await fetch(
-      `https://final-project-w5otwao4va-lz.a.run.app/posts/${id}`,
-      options
-    );
-  };
+    fetch(
+      `https://final-project-w5otwao4va-lz.a.run.app/posts/${id}/comment`, options)
+		    .then((res) => {
+			if (res.status === 200) {
+				res.json()
+					.then((deletedComment) => {
+						console.log(`Request successful: ${JSON.stringify(deletedComment)}`)
+					})
+				}
+			})
+					};
 
   return (
     <Main>

@@ -73,9 +73,6 @@ export default SpaceCommunicate;
 
 
 export const CommunityImage = styled.div`
-  /* position: fixed;
-  text-align: center;
-	background-size: 100vw 100vh; */
 	z-index: -1;
 `;
 
