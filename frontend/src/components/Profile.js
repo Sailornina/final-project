@@ -73,6 +73,7 @@ export const ProfileImage = styled.div`
 
 export const Heading = styled.h1`
   display: flex;
+	text-transform: capitalize;
 	margin: 0 auto;
 	font-size: 30px;
   color: white;

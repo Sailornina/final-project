@@ -72,12 +72,6 @@ export const Main = styled.div`
 export const Container = styled.div`
   width: 500px; 
 	height: 200px;
-	@media (max-width: 667px) {
-    /* width: 300px; 
-	  height: 400px;
-		padding: 20px 0px;
-		margin-top: 50px; */
-  }
 `;
 
 
@@ -92,10 +86,6 @@ export const Form = styled.form`
 	height: 100%;
   position: relative;
   text-align: center;
-	@media (max-width: 667px) {
-    /* width: 300px; 
-	  height: 300px; */
-  }
 `;
 
 export const Label = styled.h1`

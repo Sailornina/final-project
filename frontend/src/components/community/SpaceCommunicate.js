@@ -120,6 +120,7 @@ export const SubContainer = styled.div`
 `;
 
 export const Button = styled.button`
+  background-color: white;
   border-radius: 80px;
   cursor: pointer;
 	border: 0;
@@ -132,6 +133,7 @@ color: rgb(84, 79, 76);
 `;
 
 export const ParagraphTitle = styled.p`
+  text-transform: capitalize;
 	font-weight: bold;
 	font-size: 30px;
 	color: rgb(84, 79, 76);
@@ -148,17 +150,12 @@ export const Moment = styled.p`
 	font-size: 10px;
 	margin-top: 5px;
 	@media (max-width: 667px) {
-    /* width: 300px; 
-	  height: 100px;
-		padding: 10px 0px;
-		margin-top: -15px; */
 		margin-left: auto;
   }
 `;
 
 
 const RemoveButton = styled.img`
-    /* filter: invert(100%) sepia(18%) saturate(351%) hue-rotate(149deg) brightness(100%) contrast(95%); */
 		width: 15px;
     height: 15px;
   &:hover {
