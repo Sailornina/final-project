@@ -19,6 +19,12 @@ const Profile = () => {
     setTimeout(() => setLoading(false), 1000);
   }, []);
 
+		useEffect(() => {
+		dispatch(user.actions.setUsername(localStorage.getItem('username')));
+		dispatch(user.actions.setUserId(localStorage.getItem('userId')));
+		dispatch(user.actions.setAccessToken(localStorage.getItem("accessToken")));
+})
+
   const logout = () => {
     batch(() => {
       dispatch(user.actions.setUsername(null));
@@ -40,17 +46,15 @@ const Profile = () => {
             <Heading> " THE DREAM IS ALIVE " </Heading>
             <Heading> Welcome to your profile {username} </Heading>
             <ProfileImage>
-              <img src={background} alt="backgroundImg" />{" "}
+              <img src={background} alt="Img" />
             </ProfileImage>
             <SubHeading>
-              {" "}
-              Click <CommunityLink to="/space-feed">Here</CommunityLink> to find
-              your favorite Community{" "}
+              Click <CommunityLink to="/space-feed">Here</CommunityLink> to Find
+              your Favorite Community
             </SubHeading>
             <SubHeading>
-              {" "}
-              Start navigate to our{" "}
-              <CommunityLink to="/search-form">Search</CommunityLink> menue{" "}
+              Start navigate to our
+              <CommunityLink to="/search-form"> Search </CommunityLink> Menue
             </SubHeading>
             <Button className="profile-button-logout" onClick={logout}>
               Logout
@@ -69,10 +73,12 @@ export default Profile;
 export const ProfileImage = styled.div`
   position: fixed;
   text-align: center;
-  background-size: 100vw 100vh;
-  right: 0;
-  top: 0;
   z-index: -1;
+  width: 390px;
+  height: 526px;
+  left: -326px;
+  top: -80px;
+
 `;
 
 export const Heading = styled.h1`

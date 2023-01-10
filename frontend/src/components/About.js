@@ -1,5 +1,4 @@
 import React from "react";
-// import Image from "../assets/about.png";
 import Image1 from "../assets/About.jpg";
 import Image2 from "../assets/Aboutt.jpg";
 import styled from "styled-components";
