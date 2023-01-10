@@ -42,7 +42,7 @@ const SpaceForm = ({ onPostSubmitted }) => {
 		<Container>
       <Form  onSubmit={handleFormSubmit}>
         <Title>What is happening in the space?</Title>
-				<Paragraph>Create and find all the posts</Paragraph>
+				<Paragraph>Create and Find all the previous Posts here</Paragraph>
         <Label htmlFor="new-post">
 				<InputTitle
             id="new-title"
@@ -87,10 +87,6 @@ export const Main = styled.div`
 	width: 30%;
 	margin-top: 20px;
 	padding: 20px;
-  /* display: grid;
-  place-items: center;
-  text-align: center;
-  background-size: cover; */
 `;
 
 export const Container = styled.div`
@@ -112,7 +108,7 @@ export const Title = styled.h1`
   display: flex;
 	font-size: 30px;
 	font-weight: 700;
-  color: #191970;
+  color: #008b8b;
 	flex-direction: column;
 	justify-content: center;
 	margin-top: 100px;
@@ -159,7 +155,7 @@ export const Input = styled.input`
 `;
 
 export const InputTitle = styled.input`
-  background-color: #FAEBD7;
+  background-color: #add8e6;
 	margin-top: 10px;
 	width: 80%;
 	height: 20px;
@@ -174,8 +170,6 @@ export const InputTitle = styled.input`
 export const Button = styled.button`
   border-radius: 20px;
   border: 1px solid #2b3a55;
-  /* background-color: #2b3a55; */
-  /* color: #ffffff; */
   font-size: 12px;
   font-weight: bold;
   padding: 12px 30px;
@@ -185,8 +179,8 @@ export const Button = styled.button`
 `;
 
 export const Paragraph = styled.p`
-  font-size: smaller;
+  font-size: 10px;
 	padding: 0px;
-	color: black;
+	color: rgb(84, 79, 76);
 	font-weight: 800;
 `;

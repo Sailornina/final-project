@@ -71,7 +71,7 @@ export const Container = styled.div`
 `;
 
 export const Title = styled.h1`
-color: #2b3a55;
+color: 	#008080;
 text-transform: capitalize;
 font-size: small;
 margin-top: -50px;
@@ -138,5 +138,9 @@ const RemoveButton = styled.img`
     to {
       transform: scale(1, 1);
     }
+  }
+	@media (max-width: 667px) {
+		width: 10px;
+    height: 10px;
   }
 `;

@@ -49,8 +49,8 @@ const SpaceCommunicate = ({ post }) => {
 		<Main>
 		<CommunityImage><img src={communityImg} alt="backgroundImg" /> </CommunityImage>
 			<Container>
+			<ParagraphTitle>{post.title}</ParagraphTitle>
 				<SubContainer>
-					<ParagraphTitle>{post.title}</ParagraphTitle>
 					<Paragraph>{post.text}</Paragraph>
 					</SubContainer>
 					<Counter>{counter}</Counter>
@@ -95,24 +95,25 @@ export const Container = styled.div`
 	width: 700px; 
 	height: 200px;
   border-radius: 10px;
-  padding: 60px 30px;
+  padding: 10px 30px;
   margin-top: 10px;
   box-shadow: -3px -3px 9px #aaa9a9a2,
               3px 3px 7px rgba(147, 149, 151, 0.671);
 	@media (max-width: 667px) {
-    width: 300px; 
+    width: 350px; 
 	  height: 200px;
 		padding: 10px 0px;
   }
 `;
 
 export const SubContainer = styled.div`
-  background-color: #eee;
+  background-color: #b0c4de;
 	margin-top: 10px;
 	width: 100%;
 	height: 100px;
 	border: 1px solid;
   border: none;
+	padding: 10px 30px;
   border-radius: 20px;
 	@media (max-width: 667px) {
 		border-radius: 40px;
@@ -130,6 +131,9 @@ export const Button = styled.button`
 
 export const Paragraph = styled.p`
 color: rgb(84, 79, 76);
+@media (max-width: 667px) {
+		font-size: smaller;
+  }
 `;
 
 export const ParagraphTitle = styled.p`
@@ -174,5 +178,10 @@ const RemoveButton = styled.img`
   to {
     transform: scale(1, 1);
   }
+  }
+	@media (max-width: 667px) {
+		float: right;
+		width: 10px;
+    height: 10px;
   }
 `
