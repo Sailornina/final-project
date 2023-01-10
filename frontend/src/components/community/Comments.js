@@ -26,7 +26,7 @@ const Comments = ({ postId, commentList }) => {
         <section className="container">
             <CommentForm postId={postId} onCommentSubmitted={(newComment) => {
                 setComments([newComment, ...comments])// Updating the state.
-                console.log('onCommenttSubmitted: ' + JSON.stringify(newComment))
+                console.log('onCommentSubmitted: ' + JSON.stringify(newComment))
             }} />
             {comments.map((comment) => (
                 <Comment
