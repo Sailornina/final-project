@@ -17,50 +17,30 @@ import NotFound from "./components/NotFound";
 import SearchForm from "./components/nasaSearch/SearchForm";
 
 export const App = () => {
-	const reducer = combineReducers({
-		user: user.reducer
-	});
-	const store = configureStore({
-		reducer
-	});
-	return (
-		<Provider store={store}>
-			<BrowserRouter>
-				<GlobalStyle />
-				<Navbar />
-				<Routes>
-					<Route
-						path="/"
-						element={<StartScreen />} />
-					<Route
-						path="/profile"
-						element={<Profile />} />
-					<Route
-						path="/space-feed"
-						element={<SpaceFeed />} />
-					<Route
-						path="/comments"
-						element={<Comments />} />
-					<Route
-						path="/search-form"
-						element={<SearchForm />} />
-					<Route
-						path="/login"
-						element={<Login />} />
-					<Route
-						path="/register"
-						element={<Register />} />
-					<Route
-						path="/about"
-						element={<About />} />
-					<Route
-						path="/loading"
-						element={<Loading />} />
-					<Route
-						path="/not-found"
-						element={<NotFound />} />
-				</Routes>
-			</BrowserRouter>
-		</Provider>
-	);
+  const reducer = combineReducers({
+    user: user.reducer,
+  });
+  const store = configureStore({
+    reducer,
+  });
+  return (
+    <Provider store={store}>
+      <BrowserRouter>
+        <GlobalStyle />
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<StartScreen />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/space-feed" element={<SpaceFeed />} />
+          <Route path="/comments" element={<Comments />} />
+          <Route path="/search-form" element={<SearchForm />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/loading" element={<Loading />} />
+          <Route path="/not-found" element={<NotFound />} />
+        </Routes>
+      </BrowserRouter>
+    </Provider>
+  );
 };

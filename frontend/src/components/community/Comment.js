@@ -1,12 +1,11 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
-// import moment from 'moment';
+import moment from "moment";
 import Icon from "../../assets/waste-icon.png";
 
-
-const Comment = ({ text, comment }) => {
-	const username = useSelector((store) => store.user.username);
+const Comment = ({ text, author, createdAt }) => {
+  // const username = useSelector((store) => store.user.username);
   const accessToken = useSelector((store) => store.user.accessToken);
 
   console.log("Comment rendered: " + text);
@@ -23,23 +22,21 @@ const Comment = ({ text, comment }) => {
     await fetch(
       `https://final-project-w5otwao4va-lz.a.run.app/comments/${id}`,
       options
-    );
+    )
   };
-
 
   return (
     <Main>
       <Container>
-        <Title>{username}</Title>
+        <Title>{author}</Title>
         <Paragraph>{text}</Paragraph>
-				{/* <Moment>{moment(comment.createdAt).fromNow()}</Moment> */}
-        <Button onClick={() => onDeleteComment(comment.id)}>
+        <Moment>{moment(createdAt).fromNow()}</Moment>
+        <Button onClick={onDeleteComment}>
           <RemoveButton src={Icon} alt="remove" />
         </Button>
       </Container>
     </Main>
   );
-	
 };
 
 export default Comment;
@@ -56,7 +53,7 @@ export const Main = styled.div`
 
 export const Container = styled.div`
   word-break: break-all;
-	
+
   width: 600px;
   height: 100px;
   border-radius: 10px;
@@ -64,8 +61,8 @@ export const Container = styled.div`
   margin-top: 10px;
   box-shadow: -3px -3px 9px #aaa9a9a2, 3px 3px 7px rgba(147, 149, 151, 0.671);
   @media (max-width: 667px) {
-		display: flex;
-		flex-direction: column;
+    display: flex;
+    flex-direction: column;
     width: 50%;
     height: 100px;
     padding: 10px 0px;
@@ -73,18 +70,17 @@ export const Container = styled.div`
 `;
 
 export const Title = styled.h1`
-color: 	#008080;
-text-transform: capitalize;
-font-size: small;
-margin-top: -50px;
-float: left;
-@media (max-width: 667px) {
-	font-size: smaller;
-	margin-top: -10px;
-  margin-left: 5px;
+  color: #008080;
+  text-transform: capitalize;
+  font-size: small;
+  margin-top: -50px;
+  float: left;
+  @media (max-width: 667px) {
+    font-size: smaller;
+    margin-top: -10px;
+    margin-left: 5px;
   }
 `;
-
 
 export const Paragraph = styled.p`
   display: flex;
@@ -92,7 +88,7 @@ export const Paragraph = styled.p`
   align-items: center;
   text-align: center;
   color: rgb(84, 79, 76);
-	@media (max-width: 667px) {
+  @media (max-width: 667px) {
     font-size: small;
   }
 `;
@@ -104,21 +100,16 @@ export const Button = styled.button`
   border: 0;
   margin-right: 5px;
   float: left;
-	@media (max-width: 667px) {
+  @media (max-width: 667px) {
     margin-top: 20px;
-		
   }
-
 `;
 
-// export const Moment = styled.p`
-// 	float: right;
-// 	font-size: 10px;
-// 	margin-top: 5px;
-// 	@media (max-width: 667px) {
-// 		margin-left: auto;
-//   }
-// `;
+export const Moment = styled.p`
+  float: right;
+  font-size: 10px;
+  margin-top: 5px;
+`;
 
 const RemoveButton = styled.img`
   /* filter: invert(100%) sepia(18%) saturate(351%) hue-rotate(149deg) brightness(100%) contrast(95%); */
@@ -141,8 +132,8 @@ const RemoveButton = styled.img`
       transform: scale(1, 1);
     }
   }
-	@media (max-width: 667px) {
-		width: 10px;
+  @media (max-width: 667px) {
+    width: 10px;
     height: 10px;
   }
 `;
