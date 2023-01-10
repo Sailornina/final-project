@@ -74,7 +74,6 @@ export const BackgroundImage = styled.div`
   height: 526px;
   left: -326px;
   top: -80px;
-  filter: blur(2px);
 `;
 
 export const Form = styled.form`
@@ -316,7 +315,6 @@ export const FooterText = styled.div`
   @media (max-width: 700px) {
     margin-left: 0px;
     text-align: center;
-    /* margin-right: 1rem; */
     margin: 0.4rem auto 0.4rem;
   }
 `;
