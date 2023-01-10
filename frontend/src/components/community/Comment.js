@@ -6,31 +6,26 @@ import Icon from "../../assets/waste-icon.png";
 
 
 const Comment = ({ text, comment }) => {
-	const username = useSelector((store) => store.user.username)
+	const username = useSelector((store) => store.user.username);
   const accessToken = useSelector((store) => store.user.accessToken);
 
   console.log("Comment rendered: " + text);
 
-  const onDeleteComment =  (id) => {
+  const onDeleteComment = async (id) => {
     const options = {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
-        'Authorization': accessToken,
+        Authorization: accessToken,
       },
-      // body: JSON.stringify({}),
+      body: JSON.stringify({}),
     };
-    fetch(
-      `https://final-project-w5otwao4va-lz.a.run.app/posts/${id}/comment`, options)
-		    .then((res) => {
-			if (res.status === 200) {
-				res.json()
-					.then((deletedComment) => {
-						console.log(`Request successful: ${JSON.stringify(deletedComment)}`)
-					})
-				}
-			})
-					};
+    await fetch(
+      `https://final-project-w5otwao4va-lz.a.run.app/comments/${id}`,
+      options
+    );
+  };
+
 
   return (
     <Main>
@@ -38,12 +33,13 @@ const Comment = ({ text, comment }) => {
         <Title>{username}</Title>
         <Paragraph>{text}</Paragraph>
 				{/* <Moment>{moment(comment.createdAt).fromNow()}</Moment> */}
-        <Button onClick={() => onDeleteComment(comment._id)}>
+        <Button onClick={() => onDeleteComment(comment.id)}>
           <RemoveButton src={Icon} alt="remove" />
         </Button>
       </Container>
     </Main>
   );
+	
 };
 
 export default Comment;
