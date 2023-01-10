@@ -7,6 +7,7 @@ import postsRouter from "./routes/postsRouter";
 import registerRouter from "./routes/registerRouter";
 import loginRouter from "./routes/loginRouter";
 import usersRouter from "./routes/usersRouter";
+import commentsRouter from "./routes/commentsRouter";
 
 const mongoUrl = process.env.MONGO_URL || "mongodb://localhost:27017,localhost:27018,localhost:27019/final-project?replicaSet=rs";
 mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true });
@@ -44,6 +45,7 @@ app.use("/posts", postsRouter);
 app.use("/register", registerRouter);
 app.use("/login", loginRouter);
 app.use("/users", usersRouter);
+app.use("/comments", commentsRouter);
 
 // Start the server
 app.listen(port, () => {
