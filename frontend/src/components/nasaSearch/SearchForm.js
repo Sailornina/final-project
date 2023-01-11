@@ -47,21 +47,21 @@ const SearchForm = () => {
                     />
                     <ButtonSearch onClick={onClickSearch}>Search</ButtonSearch>
                 </Form>
-                <div className="result-search">
-                    {result.images.length > 0 && 
-                    <Pagination
-                        count={totalPages}
-                        variant="outlined"
-                        color="secondary"
-                        onChange={handleChangePage}
-                    />}
+                <ResultSearch className="result-search">
+                    {result.images.length > 0 &&
+                        <Pagination
+                            count={totalPages}
+                            variant="outlined"
+                            color="secondary"
+                            onChange={handleChangePage}
+                        />}
                     {result.images.map((image) => (
                         <ImageDetails
                             key={image.id}
                             image={image}
                         />
                     ))}
-                </div>
+                </ResultSearch>
             </div>
         </ContainerSearch>
     );
@@ -70,10 +70,17 @@ const SearchForm = () => {
 export default SearchForm;
 
 export const ContainerSearch = styled.div`
-  width: 50%;
+  width: 60%;
   position: absolute;
-  margin-bottom: 100%;
-`;
+  /* margin-bottom: 100%; */
+  @media (max-width: 1024px) {
+    width: 50%;
+    height: 100px;
+    padding: 10px 0px;
+  display: flex;
+  justify-content: center;
+  place-items: center;
+}`;
 
 export const Form = styled.form`
   display: flex;
@@ -81,17 +88,20 @@ export const Form = styled.form`
   place-items: center;
   text-align: center;
   background-size: cover;
-  @media (max-width: 667px) {
-  }
 `;
 
 // export const Search = styled.div`
+//   display: flex;
+//   justify-content: center;
 //   width: 100%;
 //   position: relative;
 //   display: flex;
 // `;
 
 export const InputSearch = styled.input`
+  display: flex;
+  justify-content: center;
+  place-items: center;
   width: 60%;
   border: 3px solid #00B4CC;
   border-right: none;
@@ -99,7 +109,7 @@ export const InputSearch = styled.input`
   height: 50px;
   border-radius: 5px 0 0 5px;
   outline: none;
-  color: #9DBFAF;
+  color: black;
 `;
 
 export const ButtonSearch = styled.button`
@@ -114,7 +124,9 @@ export const ButtonSearch = styled.button`
   font-size: 20px;
 `;
 
-// export const ResultSearch = styled.div`
-// display: grid;
-//   grid-template-columns: 1fr, 1fr;
-// `;
+export const ResultSearch = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  column-gap: 40px;
+`;
