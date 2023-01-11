@@ -1,7 +1,7 @@
 import React from "react";
 import Footer from "../components/Footer";
 import ReactPlayer from "react-player";
-import styled from "styled-components/macro";
+import styled from "styled-components";
 import { StartLink, LinkWrapper } from "../styles/GlobalStyle";
 import { StartContainer, MainHeading } from "../styles/GlobalStyle";
 import { HeroImage, HeroSection, HeroText } from "../styles/GlobalStyle";
@@ -50,7 +50,6 @@ const StartScreen = () => {
         </YouTubeWrapper>
       </YouTubeHeading>
       </StartContainer>
-    
       <Footer />
     </HeroSection>
   );

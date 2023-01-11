@@ -46,13 +46,10 @@ export const Main = styled.div`
   place-items: center;
   text-align: center;
   background-size: cover;
-  @media (max-width: 667px) {
-  }
 `;
 
 export const Container = styled.div`
   word-break: break-all;
-
   width: 600px;
   height: 100px;
   border-radius: 10px;
