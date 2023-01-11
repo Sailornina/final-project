@@ -27,7 +27,7 @@ const Comment = ({ comment, onCommentDeleted }) => {
   return (
     <Main>
       <Container>
-        {/* <Title>{author}</Title> */}
+        <Title>{comment.author.username}</Title>
         <Paragraph>{comment.text}</Paragraph>
         {/* <Moment>{moment(createdAt).fromNow()}</Moment> */}
         <Button onClick={onDeleteButtonClick}>
