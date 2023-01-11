@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
-// import moment from "moment";
+import moment from "moment";
 import Icon from "../../assets/waste-icon.png";
 
 const Comment = ({ comment, onCommentDeleted }) => {
@@ -29,7 +29,7 @@ const Comment = ({ comment, onCommentDeleted }) => {
       <Container>
         <Title>{comment.author.username}</Title>
         <Paragraph>{comment.text}</Paragraph>
-        {/* <Moment>{moment(createdAt).fromNow()}</Moment> */}
+        <Moment>{moment(comment.createdAt).fromNow()}</Moment>
         <Button onClick={onDeleteButtonClick}>
           <RemoveButton src={Icon} alt="remove" />
         </Button>
@@ -99,19 +99,19 @@ export const Button = styled.button`
   border: 0;
   margin-right: 5px;
   float: left;
+
   @media (max-width: 667px) {
     margin-top: 20px;
   }
 `;
 
-// export const Moment = styled.p`
-//   float: right;
-//   font-size: 10px;
-//   margin-top: 5px;
-// `;
+export const Moment = styled.p`
+  float: right;
+  font-size: 10px;
+  margin-top: 5px;
+`;
 
 const RemoveButton = styled.img`
-  /* filter: invert(100%) sepia(18%) saturate(351%) hue-rotate(149deg) brightness(100%) contrast(95%); */
   width: 15px;
   height: 15px;
   &:hover {

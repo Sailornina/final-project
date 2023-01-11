@@ -121,7 +121,7 @@ export const Button = styled.button`
   padding: 12px 30px;
   letter-spacing: 1px;
   cursor: pointer;
-  margin-top: 5%;
+  margin-top: 2%;
 `;
 
 export const Paragraph = styled.p`

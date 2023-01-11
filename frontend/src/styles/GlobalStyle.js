@@ -210,7 +210,6 @@ export const Logo = styled.img`
   max-width: 180px;
   height: auto;
   padding: 3%;
-	
   @media (max-width: 667px) {
 	 padding: 8%;
   }

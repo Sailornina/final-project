@@ -102,16 +102,16 @@ export const Container = styled.div`
   border-radius: 10px;
   padding: 10px 30px;
   margin-top: 10px;
-  box-shadow: -3px -3px 9px #aaa9a9a2, 3px 3px 7px rgba(147, 149, 151, 0.671);
+  box-shadow: 0 0 5px 5px olive;
   @media (max-width: 667px) {
-    width: 350px;
+    width: 320px;
     height: 200px;
     padding: 10px 0px;
   }
 `;
 
 export const SubContainer = styled.div`
-  background-color: #b0c4de;
+  background-color: #8FBC8F;
   margin-top: 10px;
   width: 100%;
   height: 100px;

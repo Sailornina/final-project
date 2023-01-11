@@ -79,6 +79,7 @@ export const YouTubeHeading = styled.div`
     @media (max-width: 667px) {
       position: relative;
       padding-top: 56.25%;
+			margin-top: 100px;
     }
 
 `;
