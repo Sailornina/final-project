@@ -14,7 +14,7 @@ const StartScreen = () => {
   return (
     <HeroSection>
       <HeroImage>
-        <img src={backgroundImage} alt="backgroundImg" />
+        <img alt="backgroundImg" src={backgroundImage}  />
       </HeroImage>
       <StartContainer>
         <MainHeading>Welcome to Astronomy Community</MainHeading>

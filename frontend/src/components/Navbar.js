@@ -25,7 +25,7 @@ const Navbar = () => {
             <CustomLink to="/about">About</CustomLink>
             <CustomLink to="/profile">
               {" "}
-              <span role="img" aria-labelledby="Alien">
+              <span role="img" aria-labelledby="alien">
                 👽
               </span>
             </CustomLink>

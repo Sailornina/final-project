@@ -133,8 +133,9 @@ export const HeroText = styled.p`
   font-size: clamp(0.9rem, 1.5vw, 1.3rem);
   line-height: 24px;
   text-align: center;
+	font-weight: bold;
   letter-spacing: 2px;
-  color: #fff;
+  color: #000000;
 `;
 
 export const LinkWrapper = styled.div`
@@ -148,8 +149,8 @@ export const LinkWrapper = styled.div`
 
 export const StartLink = styled(Link)`
   color: black;
-  border: 10px solid #2b3a55;
-  background-color: #2b3a55;
+  border: 10px solid #5F9EA0;
+  background-color: #5F9EA0;
   font-size: clamp(0.5rem, 1vw, 1.3rem);
   line-height: 24px;
   font-weight: bold;
@@ -190,7 +191,7 @@ export const MainContainer = styled.div`
 export const MainHeading = styled.h1`
   font-size: clamp(2.3rem, 6vw, 4.5rem);
   margin-bottom: 2rem;
-  color: ${({ inverse }) => (inverse ? "$403ae3" : "#fff")};
+  /* color: ${({ inverse }) => (inverse ? "$403ae3" : "#fff")}; */
   width: 100%;
   letter-spacing: 4px;
   text-align: center;
@@ -251,7 +252,6 @@ export const Form = styled.form`
   line-height: 80px;
   justify-content: center;
   flex-direction: column;
-	 /* padding: 0 100px; */
   height: 600px;
   width: 100%;
   display: flex;
@@ -292,8 +292,6 @@ export const Input = styled.input`
   background-color: #eee;
   border: none;
   padding: 12px 15px;
-	/* margin: 8px 0;
-  width: 100%;  */
   border-radius: 10px;
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 `;
