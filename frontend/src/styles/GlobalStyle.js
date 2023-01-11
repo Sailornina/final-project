@@ -201,7 +201,7 @@ export const Title = styled.h1`
   display: flex;
   margin: 0 auto;
   font-size: 40px;
-  color: #191970;
+  color: #2F4F4F;
   flex-direction: column;
   justify-content: center;
   align-items: center;

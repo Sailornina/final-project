@@ -46,6 +46,7 @@ export const AboutImage = styled.div`
 
 export const Paragraph = styled.p`
   font-size: 20px;
-  color: #7f8c9b;
+	font-family: cursive;
+  color: #000000;
   line-height: 150%;
 `;
