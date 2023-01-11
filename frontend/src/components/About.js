@@ -9,9 +9,7 @@ const About = () => {
   return (
     <MainContainer>
       <Title>
-        The purpose of our page is the investigation of the Sun, the Moon, and
-        the heavens.
-      </Title>
+        The purpose of our page is the investigation of the Sun, the Moon, and the heavens.</Title>
       <ParagraphTitle>
         Our aim is to spread interest in astronomy to all those who may never
         have looked through a telescope or realized their place in the cosmos.

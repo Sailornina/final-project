@@ -55,7 +55,7 @@ export const Container = styled.div`
   height: 700px;
   border-radius: 10px;
   padding: 40px 30px;
-  margin-top: 10px;
+  margin-top: 5px;
   box-shadow: -3px -3px 9px #aaa9a9a2, 3px 3px 7px rgba(147, 149, 151, 0.671);
   @media (max-width: 667px) {
     width: 300px;
@@ -99,6 +99,7 @@ export const Label = styled.h1`
   display: flex;
   color: #fff;
   font-size: 20px;
+	padding: 20px;
   margin: 0 auto;
   flex-direction: column;
   justify-content: center;

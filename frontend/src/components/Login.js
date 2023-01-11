@@ -15,7 +15,8 @@ import {
   Button,
   Paragraph,
 } from "../styles/GlobalStyle";
-import Image from "../assets/background-image.jpg";
+import Image from "../assets/backgroundLogin.jpg";
+import ImageWelcome from "../assets/astronaut.png";
 import { API_URL } from "../apis/user";
 
 const Login = () => {
@@ -101,6 +102,9 @@ const Login = () => {
               To keep connected with us, please login with your personal
               information!
             </Paragraph>
+						<Imagewelcome>
+              <img src={ImageWelcome} alt="backgroundImg" />{" "}
+            </Imagewelcome>
             <Input
               type="hidden"
               id="login"
@@ -108,7 +112,7 @@ const Login = () => {
               onChange={() => setMode("login")}
             />
             <Form onSubmit={onFormSubmit}>
-              <Label htmlFor="username">Username</Label>
+              <Label htmlFor="username"></Label>
               <Input
                 type="text"
                 id="username"
@@ -116,7 +120,7 @@ const Login = () => {
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
               />
-              <Label htmlFor="password">Password</Label>
+              <Label htmlFor="password"></Label>
               <Input
                 type="password"
                 id="password"
@@ -131,11 +135,10 @@ const Login = () => {
                 type="submit"
                 disabled={password.length < 8 || password.length > 20}
               >
-                {" "}
                 Sign in
               </Button>
               <Paragraph>
-                New in the community?{" "}
+                New in the community?
                 <ProfileLink to="/register">Register</ProfileLink>
               </Paragraph>
             </Form>
@@ -158,4 +161,9 @@ export const Anchor = styled.a`
   @media (max-width: 667px) {
     line-height: 20px;
   }
+`;
+
+
+export const Imagewelcome = styled.div`
+  text-align: center;
 `;

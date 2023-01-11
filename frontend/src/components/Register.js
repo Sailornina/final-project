@@ -14,7 +14,7 @@ import {
   Button,
   Paragraph,
 } from "../styles/GlobalStyle";
-import Image from "../assets/background-image.jpg";
+import Image from "../assets/backgroundLogin.jpg";
 import Swal from "sweetalert2";
 import { API_URL } from "../apis/user";
 
@@ -114,7 +114,7 @@ const Register = () => {
               onChange={() => setMode("register")}
             />
             <Form onSubmit={onFormSubmit}>
-              <Label htmlFor="username">Username</Label>
+              <Label htmlFor="username"></Label>
               <Input
                 type="text"
                 id="username"
@@ -122,7 +122,7 @@ const Register = () => {
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
               />
-              <Label htmlFor="email">Email</Label>
+              <Label htmlFor="email"></Label>
               <Input
                 type="email"
                 placeholder="email"
@@ -130,7 +130,7 @@ const Register = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
-              <Label htmlFor="password">Password</Label>
+              <Label htmlFor="password"></Label>
               <Input
                 type="password"
                 placeholder="password"
