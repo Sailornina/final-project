@@ -54,6 +54,7 @@ const SearchForm = () => {
                             variant="outlined"
                             color="secondary"
                             onChange={handleChangePage}
+                            sx={{display:"flex", justifyContent:"center"}}
                         />}
                     {result.images.map((image) => (
                         <ImageDetails
