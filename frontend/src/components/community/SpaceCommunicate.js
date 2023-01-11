@@ -54,6 +54,7 @@ const SpaceCommunicate = ({ post, onPostDeleted }) => {
         <img src={communityImg} alt="backgroundImg" />{" "}
       </CommunityImage>
       <Container>
+      <div>{post.user.username}</div>
         <ParagraphTitle>{post.title}</ParagraphTitle>
         <SubContainer>
           <Paragraph>{post.text}</Paragraph>

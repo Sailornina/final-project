@@ -25,7 +25,7 @@ const SpaceForm = ({ onPostSubmitted }) => {
     fetch("https://final-project-w5otwao4va-lz.a.run.app/posts", message)
       .then((res) => {
         res.json()
-        .then((createdPost) => onPostSubmitted(createdPost))
+        .then((createdPost) => onPostSubmitted(createdPost.post))
         .then(() => setNewPost(""));
       }
       );

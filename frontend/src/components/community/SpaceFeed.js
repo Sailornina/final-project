@@ -27,7 +27,7 @@ const SpaceFeed = () => {
       <SpaceForm
         onPostSubmitted={(newPost) => {
           setPosts([newPost, ...posts]); // Updating the state.
-          console.log("onPostSubmitted called");
+          console.log("onPostSubmitted called with new post: " + JSON.stringify(newPost));
         }}
       />
       {posts.map((post) => (
