@@ -111,7 +111,7 @@ export const YoutubeLink = styled(Link)`
 `;
 
 export const ScrollImage = styled.img`
-    width: 50px;
+    width: 40px;
     justify-content: center;
     flex-direction: column;
     cursor: pointer;
