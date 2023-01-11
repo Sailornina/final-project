@@ -31,7 +31,14 @@ const SpaceFeed = () => {
         }}
       />
       {posts.map((post) => (
-        <SpaceCommunicate key={post._id} title={post.title} post={post} />
+        <SpaceCommunicate 
+        key={post._id}
+        title={post.title} 
+        post={post}
+        onPostDeleted={(deletedPost) => {
+          setPosts(posts.filter((post) => post._id !== deletedPost._id))
+        }} 
+        />
       ))}
     </section>
   );

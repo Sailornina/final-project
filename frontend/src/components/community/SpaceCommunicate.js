@@ -6,21 +6,24 @@ import Icon from "../../assets/waste-icon.png";
 import communityImg from "../../assets/Rocket.png";
 import Comments from "./Comments";
 
-const SpaceCommunicate = ({ post }) => {
+const SpaceCommunicate = ({ post, onPostDeleted }) => {
   const [counter, setCounter] = useState(post.likes);
   const accessToken = useSelector((store) => store.user.accessToken);
 
-  const onDeletePost = async () => {
+  const onDeleteButtonClicked = () => {
     const options = {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
         'Authorization': accessToken,
-      },
-      body: JSON.stringify({}),
+      }
     };
-    await fetch(
-      `https://final-project-w5otwao4va-lz.a.run.app/posts/${post._id}`, options)
+    fetch(`https://final-project-w5otwao4va-lz.a.run.app/posts/${post._id}`, options)
+    .then((res) => {
+      if(res.status === 200) {
+        onPostDeleted(post)
+      }
+    })
   };
 
   const handleLikeButton = (id) => {
@@ -65,7 +68,7 @@ const SpaceCommunicate = ({ post }) => {
           </span>
         </Button>
         <Moment>{moment(post.createdAt).fromNow()}</Moment>
-        <Button onClick={() => onDeletePost(post._id)}>
+        <Button onClick={() => onDeleteButtonClicked(post._id)}>
           <RemoveButton src={Icon} alt="remove" />
         </Button>
       </Container>
