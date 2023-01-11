@@ -20,9 +20,7 @@ const SpaceCommunicate = ({ post }) => {
       body: JSON.stringify({}),
     };
     await fetch(
-      `https://final-project-w5otwao4va-lz.a.run.app/posts/${post._id}`,
-      options
-    );
+      `https://final-project-w5otwao4va-lz.a.run.app/posts/${post._id}`, options)
   };
 
   const handleLikeButton = (id) => {

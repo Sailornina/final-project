@@ -4,11 +4,11 @@ import styled from "styled-components";
 // import moment from "moment";
 import Icon from "../../assets/waste-icon.png";
 
-const Comment = ({ comment }) => {
+const Comment = ({ comment, onCommentDeleted }) => {
   // const username = useSelector((store) => store.user.username);
   const accessToken = useSelector((store) => store.user.accessToken);
 
-  const onDeleteComment = async () => {
+  const onDeleteButtonClick = () => {
     const options = {
       method: "DELETE",
       headers: {
@@ -16,10 +16,12 @@ const Comment = ({ comment }) => {
         "Authorization": accessToken
       }
     };
-    await fetch(
-      `https://final-project-w5otwao4va-lz.a.run.app/comments/${comment._id}`,
-      options
-    )
+    fetch(`https://final-project-w5otwao4va-lz.a.run.app/comments/${comment._id}`, options)
+    .then((res) => {
+      if(res.status === 200) {
+        onCommentDeleted(comment)
+      }
+    })
   };
 
   return (
@@ -28,7 +30,7 @@ const Comment = ({ comment }) => {
         {/* <Title>{author}</Title> */}
         <Paragraph>{comment.text}</Paragraph>
         {/* <Moment>{moment(createdAt).fromNow()}</Moment> */}
-        <Button onClick={onDeleteComment}>
+        <Button onClick={onDeleteButtonClick}>
           <RemoveButton src={Icon} alt="remove" />
         </Button>
       </Container>

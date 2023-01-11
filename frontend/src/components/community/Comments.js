@@ -24,7 +24,12 @@ const Comments = ({ postId, commentList }) => {
         }}
       />
       {comments.map((comment) => (
-        <Comment key={comment._id} comment={comment} />
+        <Comment
+        key={comment._id}
+        comment={comment}
+        onCommentDeleted={(deletedComment) => {
+          setComments(comments.filter((comment) => comment._id !== deletedComment._id))         
+        }} />
       ))}
     </section>
   );
