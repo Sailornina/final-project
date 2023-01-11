@@ -209,6 +209,10 @@ export const Logo = styled.img`
   max-width: 180px;
   height: auto;
   padding: 3%;
+	
+  @media (max-width: 667px) {
+	 padding: 8%;
+  }
 `;
 
 export const OpenLinksButton = styled.button`
@@ -259,6 +263,7 @@ export const HeroImage = styled.div`
   right: 0;
   top: 0;
   position: absolute;
+	opacity: 80%;
   z-index: -1;
 `;
 

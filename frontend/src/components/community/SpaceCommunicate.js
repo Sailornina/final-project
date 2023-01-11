@@ -54,7 +54,7 @@ const SpaceCommunicate = ({ post, onPostDeleted }) => {
         <img src={communityImg} alt="backgroundImg" />{" "}
       </CommunityImage>
       <Container>
-      <div>{post.user.username}</div>
+      <Title>{post.user.username}</Title>
         <ParagraphTitle>{post.title}</ParagraphTitle>
         <SubContainer>
           <Paragraph>{post.text}</Paragraph>
@@ -145,6 +145,16 @@ export const ParagraphTitle = styled.p`
   font-weight: bold;
   font-size: 30px;
   color: rgb(84, 79, 76);
+`;
+
+
+export const Title = styled.p`
+  text-transform: capitalize;
+  color: #008080;
+	float: left;
+	font-weight: bold;
+  text-transform: capitalize;
+  font-size: small;
 `;
 
 export const Counter = styled.p`

@@ -5,8 +5,8 @@ import styled from "styled-components/macro";
 import { StartLink, LinkWrapper } from "../styles/GlobalStyle";
 import { StartContainer, MainHeading } from "../styles/GlobalStyle";
 import { HeroImage, HeroSection, HeroText } from "../styles/GlobalStyle";
-import backgroundImage from "../assets/background-image1.jpg";
-import scrollIcon from "../assets/scrollDown.png";
+import backgroundImage from "../assets/background-img.jpg";
+import scrollIcon from "../assets/scrollD.png";
 import { Link } from "react-router-dom";
 import { Paragraph } from "./About";
 
@@ -61,12 +61,11 @@ export default StartScreen;
 
 export const YouTubeHeading = styled.div`
   display: flex;
-	margin-top: 200px;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   margin-top: 300px;
-
+	
   &.react-player {
     position: absolute;
     top: 0;
@@ -90,6 +89,7 @@ export const YouTubeWrapper = styled.div`
 
 export const YouTubeParagraph = styled.div`
   color: #ffffff;
+	padding: 20px;
   justify-content: center;
   align-items: center;
 
@@ -115,7 +115,10 @@ export const ScrollImage = styled.img`
     justify-content: center;
     flex-direction: column;
     cursor: pointer;
-	
+
+		&.scroll:hover{
+			transform: scale(1.5); 
+		}
 `;
 
 
