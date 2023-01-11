@@ -43,7 +43,7 @@ const StartScreen = () => {
         <YouTubeWrapper>
           <ReactPlayer
             className="react-player"
-            url="https://www.youtube.com/watch?v=EOK6_cX35QM&list=RDYF1eYbfbH5k&index=13"
+            url="http://www.youtube.com/watch?v=EOK6_cX35QM&list=RDYF1eYbfbH5k&index=13"
             width="100%"
             height="100%"
           />
