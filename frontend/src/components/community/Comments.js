@@ -24,7 +24,7 @@ const Comments = ({ postId, commentList }) => {
         }}
       />
       {comments.map((comment) => (
-        <Comment key={comment._id} text={comment.text} />
+        <Comment key={comment._id} comment={comment} />
       ))}
     </section>
   );

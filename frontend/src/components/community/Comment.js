@@ -4,23 +4,20 @@ import styled from "styled-components";
 // import moment from "moment";
 import Icon from "../../assets/waste-icon.png";
 
-const Comment = ({ text }) => {
+const Comment = ({ comment }) => {
   // const username = useSelector((store) => store.user.username);
   const accessToken = useSelector((store) => store.user.accessToken);
 
-  console.log("Comment rendered: " + text);
-
-  const onDeleteComment = async (id) => {
+  const onDeleteComment = async () => {
     const options = {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
         "Authorization": accessToken
-      },
-      body: JSON.stringify({}),
+      }
     };
     await fetch(
-      `https://final-project-w5otwao4va-lz.a.run.app/comments/${id}`,
+      `https://final-project-w5otwao4va-lz.a.run.app/comments/${comment._id}`,
       options
     )
   };
@@ -29,7 +26,7 @@ const Comment = ({ text }) => {
     <Main>
       <Container>
         {/* <Title>{author}</Title> */}
-        <Paragraph>{text}</Paragraph>
+        <Paragraph>{comment.text}</Paragraph>
         {/* <Moment>{moment(createdAt).fromNow()}</Moment> */}
         <Button onClick={onDeleteComment}>
           <RemoveButton src={Icon} alt="remove" />

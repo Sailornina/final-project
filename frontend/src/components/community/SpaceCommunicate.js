@@ -10,7 +10,7 @@ const SpaceCommunicate = ({ post }) => {
   const [counter, setCounter] = useState(post.likes);
   const accessToken = useSelector((store) => store.user.accessToken);
 
-  const onDeletePost = async (id) => {
+  const onDeletePost = async () => {
     const options = {
       method: "DELETE",
       headers: {
@@ -20,7 +20,7 @@ const SpaceCommunicate = ({ post }) => {
       body: JSON.stringify({}),
     };
     await fetch(
-      `https://final-project-w5otwao4va-lz.a.run.app/posts/${id}`,
+      `https://final-project-w5otwao4va-lz.a.run.app/posts/${post._id}`,
       options
     );
   };
