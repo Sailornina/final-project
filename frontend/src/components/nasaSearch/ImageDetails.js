@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 const ImageDetails = ({ image }) => {
 
     return (
-        <Card sx={{ maxWidth: 500, display: 'grid', flexDirection: 'column' }} className='details'>
+        <Card sx={{ display: 'grid', flexDirection: 'column' }} className='details'>
             <CardContent>
                 <Typography gutterBottom variant="h5" component="div">{image.title}</Typography>
                 <CardMedia alt="nasa-img" component="img" height="140" src={image.url} />

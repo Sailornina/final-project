@@ -70,17 +70,18 @@ const SearchForm = () => {
 export default SearchForm;
 
 export const ContainerSearch = styled.div`
-  width: 60%;
-  position: absolute;
-  /* margin-bottom: 100%; */
-  @media (max-width: 1024px) {
-    width: 50%;
-    height: 100px;
-    padding: 10px 0px;
-  display: flex;
+  width: 100%;
+  height: 100px;
+  display: block;
+  /* display: flex;
   justify-content: center;
-  place-items: center;
-}`;
+  place-items: center; */
+  @media (min-width: 1440px) {
+    display: block;
+    width: 100%;
+    height: 100px;
+    padding: 10px 0px;}
+`;
 
 export const Form = styled.form`
   display: flex;
@@ -89,14 +90,6 @@ export const Form = styled.form`
   text-align: center;
   background-size: cover;
 `;
-
-// export const Search = styled.div`
-//   display: flex;
-//   justify-content: center;
-//   width: 100%;
-//   position: relative;
-//   display: flex;
-// `;
 
 export const InputSearch = styled.input`
   display: flex;
@@ -109,7 +102,7 @@ export const InputSearch = styled.input`
   height: 50px;
   border-radius: 5px 0 0 5px;
   outline: none;
-  color: black;
+  color: #3A4F7A;
 `;
 
 export const ButtonSearch = styled.button`
@@ -128,5 +121,5 @@ export const ResultSearch = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr;
-  column-gap: 40px;
+  column-gap: 15px;
 `;
