@@ -43,7 +43,7 @@ const Profile = () => {
               <img src={background} alt="Img" />
             </ProfileImage>
             <SubHeading>
-              Click <CommunityLink to="/space-feed">Here</CommunityLink> to Find
+             <CommunityLink to="/space-feed">Here</CommunityLink> you will Find
               your Favorite Community
             </SubHeading>
             <SubHeading>
@@ -67,6 +67,7 @@ export default Profile;
 export const ProfileImage = styled.div`
   position: fixed;
   text-align: center;
+	opacity: 70%;
   z-index: -1;
   width: 390px;
   height: 526px;
@@ -78,7 +79,7 @@ export const Heading = styled.h1`
   display: flex;
   text-transform: capitalize;
   margin: 0 auto;
-  font-size: 30px;
+  font-size: 40px;
   color: white;
   flex-direction: column;
   justify-content: center;
@@ -102,7 +103,7 @@ export const SubHeading = styled.h1`
 
 export const CommunityLink = styled(Link)`
   color: white;
-  text-decoration: underline;
+  text-decoration: none;
   cursor: pointer;
-	transform: scale(1.5); 
+	transform: rotate();
 `;
