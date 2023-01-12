@@ -21,7 +21,6 @@ const SearchForm = () => {
   useEffect(() => {
     setTimeout(() => setLoading(false), 1000);
   }, []);
-  console.log("loading", loading);
 
   useEffect(() => {
     dispatch(user.actions.setUsername(localStorage.getItem("username")));

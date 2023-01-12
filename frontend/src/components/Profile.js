@@ -48,7 +48,7 @@ const Profile = () => {
             </SubHeading>
             <SubHeading>
               Start Navigate to our
-              <CommunityLink to="/search-form">Search</CommunityLink> Menue
+              <CommunityLink to="/search-form"> Search </CommunityLink> Menue
             </SubHeading>
             <Button className="profile-button-logout" onClick={logout}>
               Logout
