@@ -67,6 +67,7 @@ export const Main = styled.div`
 	width: 30%;
 	margin-top: 10px;
 	padding: 20px;
+
 `;
 
 export const Container = styled.div`
