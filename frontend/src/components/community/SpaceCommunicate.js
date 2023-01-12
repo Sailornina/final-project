@@ -82,7 +82,6 @@ export default SpaceCommunicate;
 
 export const CommunityImage = styled.div`
   z-index: -1;
-
 `;
 
 export const Main = styled.div`

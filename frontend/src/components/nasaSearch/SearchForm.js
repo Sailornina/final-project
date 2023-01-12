@@ -7,6 +7,8 @@ import Loading from "../Loading";
 import { searchNasaImagesByPage } from "../../apis/nasa-api";
 import ImageDetails from "./ImageDetails";
 import Pagination from "@mui/material/Pagination";
+import communityImg from "../../assets/Rocket.png";
+import { Title } from "../../styles/GlobalStyle";
 
 const SearchForm = () => {
 	const dispatch = useDispatch();
@@ -54,7 +56,10 @@ const SearchForm = () => {
 		<>
 		{loading === false ? (
     <ContainerSearch className="search-container">
-      <div className="search-div">
+			<Title>Start Investigate the Space with Us!</Title>
+				<CommunityImage>
+        <img width = "300" height="300" src={communityImg} alt="backgroundImg" />{" "}
+      </CommunityImage>
         <Form onSubmit={onFormSubmit}>
           <InputSearch
             className="search-input"
@@ -79,7 +84,6 @@ const SearchForm = () => {
             <ImageDetails key={image.id} image={image} />
           ))}
         </ResultSearch>
-      </div>
     </ContainerSearch>
 		    ) : (
 				<Loading />
@@ -90,6 +94,11 @@ const SearchForm = () => {
 };
 
 export default SearchForm;
+
+export const CommunityImage = styled.div`
+  z-index: -1;
+	overflow: hidden;
+`;
 
 export const ContainerSearch = styled.div`
   width: 100%;
