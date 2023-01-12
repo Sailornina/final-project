@@ -11,24 +11,23 @@ import communityImg from "../../assets/Rocket.png";
 import { Title } from "../../styles/GlobalStyle";
 
 const SearchForm = () => {
-	const dispatch = useDispatch();
-	const [loading, setLoading] = useState(true);
+  const dispatch = useDispatch();
+  const [loading, setLoading] = useState(true);
   const [result, setResult] = useState({ images: [] });
   const [query, setQuery] = useState("");
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
 
-	useEffect(() => {
+  useEffect(() => {
     setTimeout(() => setLoading(false), 1000);
   }, []);
-	console.log('loading', loading)
+  console.log("loading", loading);
 
-	useEffect(() => {
+  useEffect(() => {
     dispatch(user.actions.setUsername(localStorage.getItem("username")));
     dispatch(user.actions.setUserId(localStorage.getItem("userId")));
     dispatch(user.actions.setAccessToken(localStorage.getItem("accessToken")));
   });
-
 
   const executeSearch = async (query, page) => {
     const imagesDetails = await searchNasaImagesByPage(query, page);
@@ -54,24 +53,32 @@ const SearchForm = () => {
   };
 
   return (
-		<>
-		{loading === false ? (
-    <ContainerSearch className="search-container">
-			<Title>Start Investigate the Space with Us!</Title>
-				<CommunityImage>
-        <img width = "300" height="300" src={communityImg} alt="backgroundImg" />{" "}
-      </CommunityImage>
-        <Form onSubmit={onFormSubmit}>
-          <InputSearch
-            className="search-input"
-            placeholder="Search for moon, supernova..."
-            type="text"
-            value={query}
-            onChange={updateQuery}
-          />
-          <ButtonSearch onClick={onClickSearch}>Search</ButtonSearch>
-        </Form>
-      
+    <>
+      {loading === false ? (
+        <ContainerSearch className="search-container">
+          <Title>Start exploring Space to prepare for Earth's future</Title>
+          <Paragraph>
+            "The stars belong to the dreamers who wish upon them"
+          </Paragraph>
+          <CommunityImage>
+            <img
+              width="300"
+              height="300"
+              src={communityImg}
+              alt="backgroundImg"
+            />{" "}
+          </CommunityImage>
+          <Form onSubmit={onFormSubmit}>
+            <InputSearch
+              className="search-input"
+              placeholder="I keep pressing the Space bar, but I'm still on Earth! (Search for moon, supernova &...)"
+              type="text"
+              value={query}
+              onChange={updateQuery}
+            />
+            <ButtonSearch onClick={onClickSearch}>Search</ButtonSearch>
+          </Form>
+
           {result.images.length > 0 && (
             <Pagination
               count={totalPages}
@@ -81,25 +88,38 @@ const SearchForm = () => {
               sx={{ display: "flex", justifyContent: "center" }}
             />
           )}
-					  <ResultSearch className="result-search">
-          {result.images.map((image) => (
-            <ImageDetails key={image.id} image={image} />
-          ))}
-        </ResultSearch>
-    </ContainerSearch>
-		) : (
-			<Loading />
-			)}
-			</>	
+          <ResultSearch className="result-search">
+            {result.images.map((image) => (
+              <ImageDetails key={image.id} image={image} />
+            ))}
+          </ResultSearch>
+        </ContainerSearch>
+      ) : (
+        <Loading />
+      )}
+    </>
   );
-
 };
 
 export default SearchForm;
 
 export const CommunityImage = styled.div`
   z-index: -1;
-	overflow: hidden;
+  overflow: hidden;
+`;
+
+export const Paragraph = styled.div`
+  display: flex;
+  justify-content: center;
+  font-size: 20px;
+  font-family: cursive;
+  color: #000000;
+  line-height: 150%;
+	align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+	margin-top: 20px;
 `;
 
 export const ContainerSearch = styled.div`
