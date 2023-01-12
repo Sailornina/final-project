@@ -67,6 +67,7 @@ export const Main = styled.div`
 	width: 30%;
 	margin-top: 10px;
 	padding: 20px;
+
 `;
 
 export const Container = styled.div`
@@ -121,7 +122,7 @@ export const Button = styled.button`
   padding: 12px 30px;
   letter-spacing: 1px;
   cursor: pointer;
-  margin-top: 5%;
+  margin-top: 2%;
 `;
 
 export const Paragraph = styled.p`

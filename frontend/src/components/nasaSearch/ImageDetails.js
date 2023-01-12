@@ -6,7 +6,6 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 
 const ImageDetails = ({ image }) => {
-
     return (
         <Card sx={{ display: 'grid', flexDirection: 'column' }} className='details'>
             <CardContent>

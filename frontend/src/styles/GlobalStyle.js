@@ -10,147 +10,6 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-export const MainContainer = styled.div`
-  width: 100%;
-  max-width: 1300px;
-  margin-right: auto;
-  margin-left: auto;
-  padding: 0 50px;
-  @media screen and (max-width: 960px) {
-    padding: 0 30px;
-  }
-`;
-export const MainHeading = styled.h1`
-  font-size: clamp(2.3rem, 6vw, 4.5rem);
-  margin-bottom: 2rem;
-  color: ${({ inverse }) => (inverse ? "$403ae3" : "#fff")};
-  width: 100%;
-  letter-spacing: 4px;
-  text-align: center;
-`;
-
-export const Title = styled.h1`
-  display: flex;
-  margin: 0 auto;
-  font-size: 40px;
-  color: #191970;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  padding: 20px;
-`;
-
-//----Register/Login css----//
-export const Main = styled.div`
-  display: grid;
-  place-items: center;
-  text-align: center;
-  background-size: cover;
-`;
-
-export const Container = styled.div`
-  width: 600px;
-  height: 700px;
-  border-radius: 10px;
-  padding: 40px 30px;
-  margin-top: 10px;
-  box-shadow: -3px -3px 9px #aaa9a9a2, 3px 3px 7px rgba(147, 149, 151, 0.671);
-  @media (max-width: 667px) {
-    width: 300px;
-    height: 800px;
-    padding: 10px 0px;
-    justify-content: center;
-    flex-direction: column;
-  }
-`;
-
-export const BackgroundImage = styled.div`
-  position: fixed;
-  text-align: center;
-  z-index: -1;
-  width: 390px;
-  height: 526px;
-  left: -326px;
-  top: -80px;
-  filter: blur(2px);
-`;
-
-export const Form = styled.form`
-  color: #fff;
-  display: flex;
-  z-index: 1;
-  align-items: center;
-  line-height: 80px;
-  justify-content: center;
-  flex-direction: column;
-  height: 600px;
-  width: 100%;
-  display: flex;
-  position: relative;
-  text-align: center;
-  @media (max-width: 667px) {
-    width: 300px;
-    height: 650px;
-  }
-`;
-
-export const Label = styled.h1`
-  display: flex;
-  color: #fff;
-  font-size: 20px;
-  margin: 0 auto;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;
-
-export const Paragraph = styled.p`
-  display: flex;
-  color: #fff;
-  font-size: 14px;
-  font-weight: 100;
-  line-height: 20px;
-  letter-spacing: 0.5px;
-  width: 50%;
-  margin: 0 auto;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;
-
-export const Input = styled.input`
-  background-color: #eee;
-  border: none;
-  padding: 12px 15px;
-  border-radius: 10px;
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-`;
-
-export const Button = styled.button`
-  border-radius: 20px;
-  border: 1px solid #2b3a55;
-  background-color: #2b3a55;
-  color: #ffffff;
-  font-size: 12px;
-  font-weight: bold;
-  padding: 12px 45px;
-  letter-spacing: 1px;
-  cursor: pointer;
-  margin-bottom: 10%;
-`;
-
-//----Profile CSS----//
-export const ProfileLink = styled(Link)`
-  color: #ffffff;
-  font-size: 12px;
-  font-weight: bold;
-  letter-spacing: 1px;
-  cursor: pointer;
-  margin: auto;
-`;
-
 //----Navbar css----//
 export const NavbarContainer = styled.nav`
   width: 100%;
@@ -210,6 +69,9 @@ export const Logo = styled.img`
   max-width: 180px;
   height: auto;
   padding: 3%;
+  @media (max-width: 667px) {
+	 padding: 8%;
+  }
 `;
 
 export const OpenLinksButton = styled.button`
@@ -235,6 +97,7 @@ export const NavbarExtendedContainer = styled.div`
   }
 `;
 
+
 //----StartScreen css----//
 export const StartContainer = styled.div`
   width: 100%;
@@ -242,12 +105,14 @@ export const StartContainer = styled.div`
   margin-right: auto;
   margin-left: auto;
   padding: 0 50px;
+
   @media screen and (max-width: 960px) {
     padding: 0 30px;
   }
 `;
 
 export const HeroSection = styled.section`
+ /* height: 175vh; */
   background-position: center;
   background-size: cover;
   padding-top: clamp(70px, 25vh, 220px);
@@ -259,6 +124,7 @@ export const HeroImage = styled.div`
   right: 0;
   top: 0;
   position: absolute;
+	opacity: 80%;
   z-index: -1;
 `;
 
@@ -267,8 +133,9 @@ export const HeroText = styled.p`
   font-size: clamp(0.9rem, 1.5vw, 1.3rem);
   line-height: 24px;
   text-align: center;
+	font-weight: bold;
   letter-spacing: 2px;
-  color: #fff;
+  color: #000000;
 `;
 
 export const LinkWrapper = styled.div`
@@ -282,8 +149,8 @@ export const LinkWrapper = styled.div`
 
 export const StartLink = styled(Link)`
   color: black;
-  border: 10px solid #2b3a55;
-  background-color: #2b3a55;
+  border: 10px solid #5F9EA0;
+  background-color: #5F9EA0;
   font-size: clamp(0.5rem, 1vw, 1.3rem);
   line-height: 24px;
   font-weight: bold;
@@ -301,6 +168,149 @@ export const StartLink = styled(Link)`
   }
 `;
 
+//----Profile CSS----//
+export const ProfileLink = styled(Link)`
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  cursor: pointer;
+  margin: auto;
+`;
+
+export const MainContainer = styled.div`
+  width: 100%;
+  max-width: 1300px;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 0 50px;
+  @media screen and (max-width: 960px) {
+    padding: 0 30px;
+  }
+`;
+export const MainHeading = styled.h1`
+  font-size: clamp(2.3rem, 6vw, 4.5rem);
+  margin-bottom: 2rem;
+  /* color: ${({ inverse }) => (inverse ? "$403ae3" : "#fff")}; */
+  width: 100%;
+  letter-spacing: 4px;
+  text-align: center;
+`;
+
+export const Title = styled.h1`
+  display: flex;
+  margin: 0 auto;
+  font-size: 40px;
+  color: #2F4F4F;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+`;
+
+//----Register/Login css----//
+export const Main = styled.div`
+  display: grid;
+  place-items: center;
+  text-align: center;
+  background-size: cover;
+`;
+
+export const Container = styled.div`
+  width: 600px;
+  height: 700px;
+  border-radius: 10px;
+  padding: 40px 30px;
+  margin-top: 5px;
+  box-shadow: -3px -3px 9px #aaa9a9a2, 3px 3px 7px rgba(147, 149, 151, 0.671);
+  @media (max-width: 667px) {
+    width: 300px;
+    height: 800px;
+    padding: 10px 0px;
+    justify-content: center;
+    flex-direction: column;
+  }
+`;
+
+export const BackgroundImage = styled.div`
+  position: fixed;
+  text-align: center;
+  z-index: -1;
+  width: 390px;
+  height: 526px;
+  left: -326px;
+  top: -80px;
+`;
+
+export const Form = styled.form`
+  color: #fff;
+  display: flex;
+  z-index: 1;
+  align-items: center;
+  line-height: 80px;
+  justify-content: center;
+  flex-direction: column;
+  height: 600px;
+  width: 100%;
+  display: flex;
+  position: relative;
+  text-align: center;
+  @media (max-width: 667px) {
+    width: 300px;
+    height: 650px;
+  }
+`;
+
+export const Label = styled.h1`
+  display: flex;
+  color: #fff;
+  font-size: 20px;
+	padding: 20px;
+  margin: 0 auto;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const Paragraph = styled.p`
+  display: flex;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 100;
+  line-height: 20px;
+  letter-spacing: 0.5px;
+  width: 50%;
+  margin: 0 auto;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const Input = styled.input`
+  background-color: #eee;
+  border: none;
+  padding: 12px 15px;
+  border-radius: 10px;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+`;
+
+export const Button = styled.button`
+  border-radius: 20px;
+  border: 1px solid #2b3a55;
+  background-color: #2b3a55;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 12px 45px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  margin-bottom: 10%;
+`;
+
+
+
 //-----Footer Css-----//
 export const FooterText = styled.div`
   color: white;
@@ -316,7 +326,7 @@ export const FooterText = styled.div`
   @media (max-width: 700px) {
     margin-left: 0px;
     text-align: center;
-    /* margin-right: 1rem; */
+		 margin-right: 1rem; 
     margin: 0.4rem auto 0.4rem;
   }
 `;
