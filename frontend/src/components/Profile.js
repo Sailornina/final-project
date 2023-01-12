@@ -6,7 +6,6 @@ import styled from "styled-components";
 import { MainContainer, MainHeading, Button } from "../styles/GlobalStyle";
 import Loading from "./Loading";
 import background from "../assets/background-image-profile.jpg";
-// import { API_URL } from "../apis/user";
 
 const Profile = () => {
   const navigate = useNavigate();

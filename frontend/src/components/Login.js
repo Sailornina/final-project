@@ -97,7 +97,7 @@ const Login = () => {
             <BackgroundImage>
               <img src={Image} alt="backgroundImg" />{" "}
             </BackgroundImage>
-            <Label htmlFor="login">Welcome Back!</Label>
+            <Label htmlFor="login">Welcome Back!
             <Paragraph>
               To keep connected with us, please login with your personal
               information!
@@ -108,11 +108,13 @@ const Login = () => {
             <Input
               type="hidden"
               id="login"
+							required= 'required'
               checked={mode === "login"}
               onChange={() => setMode("login")}
             />
+						</Label>
             <Form onSubmit={onFormSubmit}>
-              <Label htmlFor="username"></Label>
+              <Label htmlFor="username">
               <Input
                 type="text"
                 id="username"
@@ -120,7 +122,8 @@ const Login = () => {
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
               />
-              <Label htmlFor="password"></Label>
+							</Label>
+              <Label htmlFor="password">
               <Input
                 type="password"
                 id="password"
@@ -128,6 +131,7 @@ const Login = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
+							</Label>
               <Anchor href="/register">
                 Forgot your password? Create a new account!
               </Anchor>

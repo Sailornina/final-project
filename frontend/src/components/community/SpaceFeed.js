@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-// import { API_POST } from "apis/community/space";
 import SpaceForm from "./SpaceForm";
 import user from "../../reducers/user";
 import SpaceCommunicate from "./SpaceCommunicate";

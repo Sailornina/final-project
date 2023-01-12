@@ -2,7 +2,6 @@ import React from "react";
 import Image1 from "../assets/About.jpg";
 import styled from "styled-components";
 import { Title, MainContainer } from "../styles/GlobalStyle";
-// import { ParagraphTitle } from "./community/SpaceCommunicate";
 
 const About = () => {
   return (

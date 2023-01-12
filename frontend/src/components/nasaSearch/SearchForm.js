@@ -30,7 +30,7 @@ const SearchForm = () => {
 
   const handleChangePage = async (e, value) => {
     await executeSearch(query, value);
-    // console.log(`handleChangePage value: ${value}`)
+  
     setPage(value);
   };
   
@@ -74,9 +74,7 @@ export const ContainerSearch = styled.div`
   width: 100%;
   height: 100px;
   display: block;
-  /* display: flex;
-  justify-content: center;
-  place-items: center; */
+	margin-top: 20px;
   @media (min-width: 1440px) {
     display: block;
     width: 100%;
@@ -123,4 +121,7 @@ export const ResultSearch = styled.div`
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr;
   column-gap: 15px;
+	@media (max-width: 667px) {
+    grid-template-columns: 1fr;
+		}
 `;

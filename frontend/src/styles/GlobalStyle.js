@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 const GlobalStyle = createGlobalStyle`
   *{
   box-sizing: border-box;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
@@ -112,7 +114,6 @@ export const StartContainer = styled.div`
 `;
 
 export const HeroSection = styled.section`
- /* height: 175vh; */
   background-position: center;
   background-size: cover;
   padding-top: clamp(70px, 25vh, 220px);

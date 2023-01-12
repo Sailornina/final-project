@@ -14,7 +14,6 @@ import {
 import LogoImg from "../assets/Logo.png";
 
 const Navbar = () => {
-	// const auth = localStorage.getItem ('user')
   //represent the state of the button with boolean false
   const [extendNavbar, setExtendNavbar] = useState(false);
 
@@ -41,7 +40,7 @@ const Navbar = () => {
           </NavbarLinkContainer>
         </LeftContainer>
         <RightContainer>
-          <Logo src={LogoImg}></Logo>
+          <Logo src={LogoImg} alt= "logo"></Logo>
         </RightContainer>
       </NavbarInnerContainer>
       {extendNavbar && (
@@ -71,7 +70,7 @@ const Navbar = () => {
             to="/profile"
           >
             {" "}
-            <span role="img" aria-labelledby="Alien">
+            <span role="img" aria-labelledby="alien">
               👽
             </span>
           </NavbarLinkExtended>

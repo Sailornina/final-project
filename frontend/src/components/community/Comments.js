@@ -18,7 +18,7 @@ const Comments = ({ postId, commentList }) => {
     <section className="container">
       <CommentForm
         postId={postId}
-        onCommentSubmitted={(newComment) => {
+        onCommentSubmitted={(newComment) => { //Callback
           setComments([newComment, ...comments]); // Updating the state.
           console.log("onCommentSubmitted: " + JSON.stringify(newComment));
         }}
