@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 import moment from "moment";
 import Icon from "../../assets/waste-icon.png";
 
 const Comment = ({ comment, onCommentDeleted }) => {
-  // const username = useSelector((store) => store.user.username);
+	const [counter, setCounter] = useState(comment.likes);
   const accessToken = useSelector((store) => store.user.accessToken);
 
   const onDeleteButtonClick = () => {
@@ -24,11 +24,45 @@ const Comment = ({ comment, onCommentDeleted }) => {
     })
   };
 
+
+	
+  const handleLikeButton = (id) => {
+    const ids = {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: accessToken,
+      },
+    };
+
+    fetch(
+      `https://final-project-w5otwao4va-lz.a.run.app/comments/${id}/like`,
+      ids
+    ).then((res) => {
+      if (res.status === 200) {
+        res.json().then((likedComment) => {
+          console.log(`Request successful: ${JSON.stringify(likedComment)}`);
+          setCounter(likedComment.likes);
+        });
+      }
+    });
+  };
+
+
   return (
     <Main>
       <Container>
         <Title>{comment.author.username}</Title>
         <Paragraph>{comment.text}</Paragraph>
+				<Counter>{counter}</Counter>
+        <Button
+          className={comment.likes}
+          onClick={() => handleLikeButton(comment._id)}
+        >
+          <span role="img" aria-label="heart">
+            ❤️
+          </span>
+        </Button>
         <Moment>{moment(comment.createdAt).fromNow()}</Moment>
         <Button onClick={onDeleteButtonClick}>
           <RemoveButton src={Icon} alt="remove" />
@@ -107,6 +141,13 @@ export const Moment = styled.p`
   font-size: 10px;
   margin-top: 5px;
 `;
+
+export const Counter = styled.p`
+  float: left;
+  margin-top: 0px;
+  font-size: 10px;
+`;
+
 
 const RemoveButton = styled.img`
   width: 15px;
