@@ -10,7 +10,7 @@ const ImageDetails = ({ image }) => {
         <Card sx={{ display: 'grid', flexDirection: 'column' }} className='details'>
             <CardContent>
                 <Typography gutterBottom variant="h5" component="div">{image.title}</Typography>
-                <CardMedia alt="nasa-img" component="img" height="140" src={image.url} />
+                <CardMedia alt="nasa-img" component="img" height="550" src={image.url} />
                 <Typography variant="body2" fontSize={12} color="text.secondary">{image.description}</Typography>
                 <Typography variant="body2" color="text.secondary">{moment(image.date_created).format('ll')}</Typography>
             </CardContent>
