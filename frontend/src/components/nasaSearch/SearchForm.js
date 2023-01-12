@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+import user from "../../reducers/user";
+import { useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import Loading from "../Loading";
 import { searchNasaImagesByPage } from "../../apis/nasa-api";
@@ -7,6 +9,7 @@ import ImageDetails from "./ImageDetails";
 import Pagination from "@mui/material/Pagination";
 
 const SearchForm = () => {
+	const dispatch = useDispatch();
 	const [loading, setLoading] = useState(true);
   const [result, setResult] = useState({ images: [] });
   const [query, setQuery] = useState("");
@@ -16,6 +19,12 @@ const SearchForm = () => {
 	useEffect(() => {
     setTimeout(() => setLoading(false), 1000);
   }, []);
+
+	useEffect(() => {
+    dispatch(user.actions.setUsername(localStorage.getItem("username")));
+    dispatch(user.actions.setUserId(localStorage.getItem("userId")));
+    dispatch(user.actions.setAccessToken(localStorage.getItem("accessToken")));
+  });
 
 
   const executeSearch = async (query, page) => {
@@ -73,9 +82,9 @@ const SearchForm = () => {
       </div>
     </ContainerSearch>
 		    ) : (
-					<Loading />
-					)}
-					</>	
+				<Loading />
+				)}
+				</>	
   );
 
 };

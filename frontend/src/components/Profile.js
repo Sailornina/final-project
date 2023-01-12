@@ -18,6 +18,7 @@ const Profile = () => {
     setTimeout(() => setLoading(false), 1000);
   }, []);
 
+
   const logout = () => {
     batch(() => {
       dispatch(user.actions.setUsername(null));
