@@ -1,5 +1,8 @@
 import express from "express";
 import axios from "axios";
+import Cache from "node-cache";
+
+const imageCache = new Cache({ stdTTL: 60 * 5 });
 
 const router = express.Router()
 
