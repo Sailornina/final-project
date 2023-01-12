@@ -55,6 +55,7 @@ const SearchForm = () => {
   return (
 		<>
 		{loading === false ? (
+
     <ContainerSearch className="search-container">
 			<Title>Start Investigate the Space with Us!</Title>
 				<CommunityImage>
@@ -70,7 +71,7 @@ const SearchForm = () => {
           />
           <ButtonSearch onClick={onClickSearch}>Search</ButtonSearch>
         </Form>
-        <ResultSearch className="result-search">
+      
           {result.images.length > 0 && (
             <Pagination
               count={totalPages}
@@ -80,15 +81,17 @@ const SearchForm = () => {
               sx={{ display: "flex", justifyContent: "center" }}
             />
           )}
+					  <ResultSearch className="result-search">
           {result.images.map((image) => (
             <ImageDetails key={image.id} image={image} />
           ))}
         </ResultSearch>
     </ContainerSearch>
-		    ) : (
-				<Loading />
-				)}
-				</>	
+		) : (
+			<Loading />
+			)}
+			</>	
+		
   );
 
 };
