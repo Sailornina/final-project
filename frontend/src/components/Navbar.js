@@ -14,21 +14,23 @@ import {
 import LogoImg from "../assets/Logo.png";
 
 const Navbar = () => {
+	// const auth = localStorage.getItem ('user')
   //represent the state of the button with boolean false
   const [extendNavbar, setExtendNavbar] = useState(false);
+
   return (
-    <NavbarContainer extendNavbar={extendNavbar}>
+    <NavbarContainer extendNavbar={extendNavbar} >
       <NavbarInnerContainer>
         <LeftContainer>
           <NavbarLinkContainer>
             <CustomLink to="/">Home</CustomLink>
             <CustomLink to="/about">About</CustomLink>
             <CustomLink to="/profile">
-              {" "}
+						{" "}
               <span role="img" aria-labelledby="alien">
                 👽
               </span>
-            </CustomLink>
+							</CustomLink>
             <OpenLinksButton
               onClick={() => {
                 setExtendNavbar((curr) => !curr);

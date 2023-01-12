@@ -82,10 +82,6 @@ export default SpaceCommunicate;
 
 export const CommunityImage = styled.div`
   z-index: -1;
-	@media (max-width: 667px) {
-    height: auto;
-		overflow: hidden;
-  }
 
 `;
 

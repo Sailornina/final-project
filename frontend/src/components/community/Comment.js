@@ -80,10 +80,6 @@ export const Main = styled.div`
   place-items: center;
   text-align: center;
   background-size: cover;
-	@media (max-width: 667px) {
-    justify-content: center;
-		overflow:hidden
-  }
 `;
 
 export const Container = styled.div`
@@ -118,6 +114,7 @@ export const Paragraph = styled.p`
   display: flex;
   justify-content: center;
   align-items: center;
+	font-size: small;
   text-align: center;
   color: rgb(84, 79, 76);
   @media (max-width: 667px) {
