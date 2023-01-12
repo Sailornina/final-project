@@ -52,7 +52,7 @@ const Comment = ({ comment, onCommentDeleted }) => {
   return (
     <Main>
       <Container>
-        <Title>{comment.author.username}</Title>
+        <Title>{comment.author.username}:</Title>
         <Paragraph>{comment.text}</Paragraph>
 				<Counter>{counter}</Counter>
         <Button
@@ -74,14 +74,13 @@ const Comment = ({ comment, onCommentDeleted }) => {
 
 export default Comment;
 
-
 export const Main = styled.div`
-  display: grid;
+  display: flex;
   justify-content: center;
   place-items: center;
   text-align: center;
   background-size: cover;
-  @media (max-width: 667px) {
+	@media (max-width: 667px) {
     justify-content: center;
 		overflow:hidden
   }
@@ -89,12 +88,12 @@ export const Main = styled.div`
 
 export const Container = styled.div`
   word-break: break-all;
-  width: 700px;
-  height: 200px;
+  width: 600px;
+  height: 150px;
   border-radius: 10px;
-  padding: 10px 30px;
-  margin-top: 10px;
-	box-shadow: -3px -3px 9px #aaa9a9a2, 3px 3px 7px rgba(147, 149, 151, 0.671);
+  padding: 60px 30px;
+  margin-top: 50px;
+  box-shadow: -3px -3px 9px #aaa9a9a2, 3px 3px 7px rgba(147, 149, 151, 0.671);
   @media (max-width: 667px) {
     width: 320px;
     height: 200px;
@@ -102,10 +101,28 @@ export const Container = styled.div`
   }
 `;
 
-export const Paragraph = styled.p`
-  color: rgb(84, 79, 76);
+export const Title = styled.h1`
+  color: #008080;
+  text-transform: capitalize;
+  font-size: small;
+  margin-top: -30px;
+  float: left;
   @media (max-width: 667px) {
     font-size: smaller;
+    margin-top: 10px;
+    margin-left: 5px;
+  }
+`;
+
+export const Paragraph = styled.p`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: rgb(84, 79, 76);
+  @media (max-width: 667px) {
+    font-size: small;
+		margin-top: 10px;
   }
 `;
 
@@ -116,30 +133,22 @@ export const Button = styled.button`
   border: 0;
   margin-right: 5px;
   float: left;
-`;
 
-export const Title = styled.p`
-  text-transform: capitalize;
-  color: #008080;
-	float: left;
-	font-weight: bold;
-  text-transform: capitalize;
-  font-size: small;
-`;
-
-export const Counter = styled.p`
-  float: left;
-  margin-top: 0px;
-  font-size: 10px;
+  @media (max-width: 667px) {
+  
+  }
 `;
 
 export const Moment = styled.p`
   float: right;
   font-size: 10px;
   margin-top: 5px;
-  @media (max-width: 667px) {
-    margin-left: auto;
-  }
+`;
+
+export const Counter = styled.p`
+  float: left;
+  margin-top: 0px;
+  font-size: 10px;
 `;
 
 
