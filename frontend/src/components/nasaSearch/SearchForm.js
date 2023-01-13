@@ -125,7 +125,7 @@ export const ContainerSearch = styled.div`
   width: 100%;
   height: 100px;
   display: block;
-  margin-top: 20px;
+  margin-top: 60px;
   @media (min-width: 1440px) {
     display: block;
     width: 100%;

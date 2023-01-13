@@ -52,8 +52,8 @@ const Comment = ({ comment, onCommentDeleted }) => {
   return (
     <Main>
       <Container>
-        <Title>{comment.author.username}:</Title>
-        <Paragraph>{comment.text}</Paragraph>
+			<Title>{comment.author.username}:</Title>
+			<Paragraph>{comment.text}</Paragraph>
 				<Counter>{counter}</Counter>
         <Button
           className={comment.likes}
@@ -105,7 +105,7 @@ export const Title = styled.h1`
   float: left;
   @media (max-width: 667px) {
     font-size: smaller;
-    margin-top: 10px;
+    margin-top: 5px;
     margin-left: 5px;
   }
 `;
@@ -119,7 +119,7 @@ export const Paragraph = styled.p`
   color: rgb(84, 79, 76);
   @media (max-width: 667px) {
     font-size: small;
-		margin-top: 10px;
+		margin-top: 30px;
   }
 `;
 
@@ -130,9 +130,8 @@ export const Button = styled.button`
   border: 0;
   margin-right: 5px;
   float: left;
-
   @media (max-width: 667px) {
-  
+  margin-top: 40px;
   }
 `;
 
@@ -140,12 +139,18 @@ export const Moment = styled.p`
   float: right;
   font-size: 10px;
   margin-top: 5px;
+	@media (max-width: 667px) {
+  margin-top: 40px;
+  }
 `;
 
 export const Counter = styled.p`
   float: left;
   margin-top: 0px;
   font-size: 10px;
+	@media (max-width: 667px) {
+  margin-top: 40px;
+  }
 `;
 
 
