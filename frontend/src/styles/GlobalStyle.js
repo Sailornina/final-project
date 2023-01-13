@@ -107,7 +107,6 @@ export const StartContainer = styled.div`
   margin-right: auto;
   margin-left: auto;
   padding: 0 50px;
-
   @media screen and (max-width: 960px) {
     padding: 0 30px;
   }
