@@ -2,7 +2,8 @@ import express from "express";
 import axios from "axios";
 import Cache from "node-cache";
 
-const imageCache = new Cache({ stdTTL: 60 * 5 });
+const imageCache = new Cache({ stdTTL: 60 * 60 * 24});
+const imageQueryCache = new Cache({ stdTTL: 60 * 60 * 1});
 
 const router = express.Router()
 
@@ -30,14 +31,30 @@ router.get('/search', async (req, res) => {
         res.status(400);
         return;
     }
+
+    if(imageQueryCache.has(JSON.stringify(query))) {
+        res.json(imageQueryCache.get(JSON.stringify(query)));
+        return;
+    }
+
     try {
         const response = await axios.get(`https://images-api.nasa.gov/search`, {
             params: query
         });
         const images = await Promise.all(response.data.collection.items.map(async (item) => {
-            const imageResponse = await axios.get(item.href);
+            let imageData = null;
 
-            const filterImage = imageResponse.data.find(size => size.includes("~small.jpg"))
+            if(imageCache.has(item.href)) {
+                imageData = imageCache.get(item.href)
+            } else {
+                const imageResponse = await axios.get(item.href);
+                imageData = imageResponse.data;
+                if (imageData) {
+                    imageCache.set(item.href, imageData)
+                }
+            }
+
+            const filterImage = imageData.find(size => size.includes("~small.jpg"))
 
             if(!filterImage) {
                 return null;
@@ -52,11 +69,15 @@ router.get('/search', async (req, res) => {
             }
         }));
 
-        res.json({
+        const queryResponse = {
             page: parseInt(query.page),
             total_pages: Math.min(Math.ceil(response.data.collection.metadata.total_hits / 100), 100),
             images: images.filter(image => image !== null)
-        });
+        };
+
+        imageQueryCache.set(JSON.stringify(query), queryResponse)
+
+        res.json(queryResponse);
     } catch (error) {
         console.error(error);
         res.status(500);
