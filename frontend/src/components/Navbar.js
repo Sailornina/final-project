@@ -18,18 +18,18 @@ const Navbar = () => {
   const [extendNavbar, setExtendNavbar] = useState(false);
 
   return (
-    <NavbarContainer extendNavbar={extendNavbar} >
+    <NavbarContainer extendNavbar={extendNavbar}>
       <NavbarInnerContainer>
         <LeftContainer>
           <NavbarLinkContainer>
             <CustomLink to="/">Home</CustomLink>
             <CustomLink to="/about">About</CustomLink>
             <CustomLink to="/profile">
-						{" "}
+              {" "}
               <span role="img" aria-labelledby="alien">
                 👽
               </span>
-							</CustomLink>
+            </CustomLink>
             <OpenLinksButton
               onClick={() => {
                 setExtendNavbar((curr) => !curr);
@@ -40,7 +40,7 @@ const Navbar = () => {
           </NavbarLinkContainer>
         </LeftContainer>
         <RightContainer>
-          <Logo src={LogoImg} alt= "logo"></Logo>
+          <Logo src={LogoImg} alt="logo"></Logo>
         </RightContainer>
       </NavbarInnerContainer>
       {extendNavbar && (

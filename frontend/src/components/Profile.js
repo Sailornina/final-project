@@ -18,7 +18,6 @@ const Profile = () => {
     setTimeout(() => setLoading(false), 1000);
   }, []);
 
-
   const logout = () => {
     batch(() => {
       dispatch(user.actions.setUsername(null));
@@ -43,7 +42,7 @@ const Profile = () => {
               <img src={background} alt="Img" />
             </ProfileImage>
             <SubHeading>
-             <CommunityLink to="/space-feed">Here</CommunityLink> you will Find
+              <CommunityLink to="/space-feed">Here</CommunityLink> you will Find
               your Favorite Community
             </SubHeading>
             <SubHeading>
@@ -67,7 +66,7 @@ export default Profile;
 export const ProfileImage = styled.div`
   position: fixed;
   text-align: center;
-	opacity: 70%;
+  opacity: 70%;
   z-index: -1;
   width: 390px;
   height: 526px;
@@ -105,5 +104,5 @@ export const CommunityLink = styled(Link)`
   color: white;
   text-decoration: none;
   cursor: pointer;
-	transform: rotate();
+  transform: rotate();
 `;

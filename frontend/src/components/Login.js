@@ -97,43 +97,45 @@ const Login = () => {
             <BackgroundImage>
               <img src={Image} alt="backgroundImg" />{" "}
             </BackgroundImage>
-            <Label htmlFor="login">Welcome Back!
-            <Paragraph>
-              To keep connected with us, please login with your personal
-              information!
-            </Paragraph>
-						<Imagewelcome>
-              <img src={ImageWelcome} alt="backgroundImg" />{" "}
-            </Imagewelcome>
-            <Input
-              type="hidden"
-              id="login"
-							required= 'required'
-              checked={mode === "login"}
-              onChange={() => setMode("login")}
-            />
-						</Label>
+            <Label htmlFor="login">
+              Welcome Back!
+              <Paragraph>
+                To keep connected with us, please login with your personal
+                information!
+              </Paragraph>
+              <Imagewelcome>
+                <img src={ImageWelcome} alt="backgroundImg" />{" "}
+              </Imagewelcome>
+              <Input
+                type="hidden"
+                id="login"
+                required="required"
+                checked={mode === "login"}
+                onChange={() => setMode("login")}
+              />
+            </Label>
             <Form onSubmit={onFormSubmit}>
               <Label htmlFor="username">
-              <Input
-                type="text"
-                id="username"
-                placeholder="username"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-              />
-							</Label>
+                <Input
+                  type="text"
+                  id="username"
+                  placeholder="username"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                />
+              </Label>
               <Label htmlFor="password">
-              <Input
-                type="password"
-                id="password"
-                placeholder="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-							</Label>
+                <Input
+                  type="password"
+                  id="password"
+                  placeholder="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+              </Label>
               <Anchor>
-                Forgot your password? Create a new   <ProfileLink to="/register">account!</ProfileLink>
+                Forgot your password? Create a new{" "}
+                <ProfileLink to="/register">account!</ProfileLink>
               </Anchor>
               <Button
                 type="submit"
@@ -166,7 +168,6 @@ export const Anchor = styled.a`
     line-height: 20px;
   }
 `;
-
 
 export const Imagewelcome = styled.div`
   text-align: center;

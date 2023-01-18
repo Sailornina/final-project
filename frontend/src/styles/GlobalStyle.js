@@ -72,7 +72,7 @@ export const Logo = styled.img`
   height: auto;
   padding: 3%;
   @media (max-width: 667px) {
-	 padding: 8%;
+    padding: 8%;
   }
 `;
 
@@ -99,7 +99,6 @@ export const NavbarExtendedContainer = styled.div`
   }
 `;
 
-
 //----StartScreen css----//
 export const StartContainer = styled.div`
   width: 100%;
@@ -124,7 +123,7 @@ export const HeroImage = styled.div`
   right: 0;
   top: 0;
   position: absolute;
-	opacity: 80%;
+  opacity: 80%;
   z-index: -1;
 `;
 
@@ -133,7 +132,7 @@ export const HeroText = styled.p`
   font-size: clamp(0.9rem, 1.5vw, 1.3rem);
   line-height: 24px;
   text-align: center;
-	font-weight: bold;
+  font-weight: bold;
   letter-spacing: 2px;
   color: #000000;
 `;
@@ -149,8 +148,8 @@ export const LinkWrapper = styled.div`
 
 export const StartLink = styled(Link)`
   color: black;
-  border: 10px solid #5F9EA0;
-  background-color: #5F9EA0;
+  border: 10px solid #5f9ea0;
+  background-color: #5f9ea0;
   font-size: clamp(0.5rem, 1vw, 1.3rem);
   line-height: 24px;
   font-weight: bold;
@@ -191,7 +190,6 @@ export const MainContainer = styled.div`
 export const MainHeading = styled.h1`
   font-size: clamp(2.3rem, 6vw, 4.5rem);
   margin-bottom: 2rem;
-  /* color: ${({ inverse }) => (inverse ? "$403ae3" : "#fff")}; */
   width: 100%;
   letter-spacing: 4px;
   text-align: center;
@@ -201,7 +199,7 @@ export const Title = styled.h1`
   display: flex;
   margin: 0 auto;
   font-size: 40px;
-  color: #2F4F4F;
+  color: #2f4f4f;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -267,7 +265,7 @@ export const Label = styled.h1`
   display: flex;
   color: #fff;
   font-size: 20px;
-	padding: 20px;
+  padding: 20px;
   margin: 0 auto;
   flex-direction: column;
   justify-content: center;
@@ -309,8 +307,6 @@ export const Button = styled.button`
   margin-bottom: 10%;
 `;
 
-
-
 //-----Footer Css-----//
 export const FooterText = styled.div`
   color: white;
@@ -326,7 +322,7 @@ export const FooterText = styled.div`
   @media (max-width: 700px) {
     margin-left: 0px;
     text-align: center;
-		margin-right: 1rem; 
+    margin-right: 1rem;
     margin: 0.4rem auto 0.4rem;
   }
 `;

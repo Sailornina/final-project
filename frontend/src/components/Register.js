@@ -42,14 +42,13 @@ const Register = () => {
 
   useEffect(() => {
     if (isUnavailable) {
-    
       Swal.fire({
         icon: "error",
         title: "Oops...",
         text:
           "Something went wrong! You already have an account in our community!",
       });
-  
+
       setIsUnavailable(false);
     }
   }, [isUnavailable, alert]);

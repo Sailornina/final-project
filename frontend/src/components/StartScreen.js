@@ -14,7 +14,7 @@ const StartScreen = () => {
   return (
     <HeroSection>
       <HeroImage>
-        <img alt="backgroundImg" src={backgroundImage}  />
+        <img alt="backgroundImg" src={backgroundImage} />
       </HeroImage>
       <StartContainer>
         <MainHeading>Welcome to Astronomy Community</MainHeading>
@@ -25,30 +25,36 @@ const StartScreen = () => {
         <HeroText>— Felix Baumgartner</HeroText>
         <LinkWrapper>
           <StartLink to="/register">Register</StartLink>
-					<a href="#section2"><ScrollImage className="scroll" src={scrollIcon} alt="scrollImg"></ScrollImage></a>
+          <a href="#section2">
+            <ScrollImage
+              className="scroll"
+              src={scrollIcon}
+              alt="scrollImg"
+            ></ScrollImage>
+          </a>
           <StartLink to="/login">Sign in</StartLink>
         </LinkWrapper>
-				<YouTubeHeading  id="section2">
-        <YouTubeParagraph>
-          Best Space Movies -{" "}
-          <a
-            href="https://www.marieclaire.com/culture/g31006874/best-space-movies/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            of All Time
-          </a>
-          <Paragraph>Interstellar Official Soundtrack</Paragraph>
-        </YouTubeParagraph>
-        <YouTubeWrapper>
-          <ReactPlayer
-            className="react-player"
-            url="http://www.youtube.com/watch?v=EOK6_cX35QM&list=RDYF1eYbfbH5k&index=13"
-            width="100%"
-            height="100%"
-          />
-        </YouTubeWrapper>
-      </YouTubeHeading>
+        <YouTubeHeading id="section2">
+          <YouTubeParagraph>
+            Best Space Movies -{" "}
+            <a
+              href="https://www.marieclaire.com/culture/g31006874/best-space-movies/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              of All Time
+            </a>
+            <Paragraph>Interstellar Official Soundtrack</Paragraph>
+          </YouTubeParagraph>
+          <YouTubeWrapper>
+            <ReactPlayer
+              className="react-player"
+              url="http://www.youtube.com/watch?v=EOK6_cX35QM&list=RDYF1eYbfbH5k&index=13"
+              width="100%"
+              height="100%"
+            />
+          </YouTubeWrapper>
+        </YouTubeHeading>
       </StartContainer>
       <Footer />
     </HeroSection>
@@ -57,39 +63,37 @@ const StartScreen = () => {
 
 export default StartScreen;
 
-
 export const YouTubeHeading = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   margin-top: 300px;
-	
+
   &.react-player {
     position: absolute;
     top: 0;
     left: 0;
-	}
+  }
 
-	#section2 {
-		scroll-behavior: smooth;
-	}
+  #section2 {
+    scroll-behavior: smooth;
+  }
 
-    @media (max-width: 667px) {
-      position: relative;
-      padding-top: 56.25%;
-			margin-top: 100px;
-    }
-
+  @media (max-width: 667px) {
+    position: relative;
+    padding-top: 56.25%;
+    margin-top: 100px;
+  }
 `;
 
 export const YouTubeWrapper = styled.div`
-   justify-content: center;
+  justify-content: center;
 `;
 
 export const YouTubeParagraph = styled.div`
   color: #ffffff;
-	padding: 20px;
+  padding: 20px;
   justify-content: center;
   align-items: center;
 
@@ -111,14 +115,12 @@ export const YoutubeLink = styled(Link)`
 `;
 
 export const ScrollImage = styled.img`
-    width: 40px;
-    justify-content: center;
-    flex-direction: column;
-    cursor: pointer;
+  width: 40px;
+  justify-content: center;
+  flex-direction: column;
+  cursor: pointer;
 
-		&.scroll:hover{
-			transform: scale(1.5); 
-		}
+  &.scroll:hover {
+    transform: scale(1.5);
+  }
 `;
-
-
