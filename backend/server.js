@@ -33,7 +33,7 @@ app.get("/", (req, res) => {
 			"/login": 'User login using an username, email and password but also an unique authentication',
 			"/posts/:id/{comment}": 'User can post a comment',
 			"/posts/:id/like": 'User can patch your like to a comment.',
-			"images/search": "User can search an image with description about astronomy",
+			"/images/search": "User can search an image with description about astronomy",
 			"/images/nasa-details/:id": "User can see an image with description about astronomy using an id"
 		}]
 	}

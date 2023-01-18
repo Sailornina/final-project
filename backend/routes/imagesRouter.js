@@ -2,8 +2,8 @@ import express from "express";
 import axios from "axios";
 import Cache from "node-cache";
 
-const imageCache = new Cache({ stdTTL: 60 * 60 * 24});
-const imageQueryCache = new Cache({ stdTTL: 60 * 60 * 1});
+const imageCache = new Cache({ stdTTL: 60 * 60 * 24 }); // Each property that remains in the cache will have a lifetime of 24h.
+const imageQueryCache = new Cache({ stdTTL: 60 * 60 * 1 }); // Each property that remains in the cache will have a lifetime of 1h.
 
 const router = express.Router()
 
@@ -32,7 +32,7 @@ router.get('/search', async (req, res) => {
         return;
     }
 
-    if(imageQueryCache.has(JSON.stringify(query))) {
+    if (imageQueryCache.has(JSON.stringify(query))) {
         res.json(imageQueryCache.get(JSON.stringify(query)));
         return;
     }
@@ -44,23 +44,23 @@ router.get('/search', async (req, res) => {
         const images = await Promise.all(response.data.collection.items.map(async (item) => {
             let imageData = null;
 
-            if(imageCache.has(item.href)) {
-                imageData = imageCache.get(item.href)
+            if (imageCache.has(item.href)) {
+                imageData = imageCache.get(item.href) // We get the images that will then be saved in the cache.
             } else {
                 const imageResponse = await axios.get(item.href);
                 imageData = imageResponse.data;
                 if (imageData) {
-                    imageCache.set(item.href, imageData)
+                    imageCache.set(item.href, imageData) // Images are stored in the cache.
                 }
             }
 
             const filterImage = imageData.find(size => size.includes("~small.jpg"))
 
-            if(!filterImage) {
+            if (!filterImage) {
                 return null;
             }
 
-            return {
+            return { // This is our own api.
                 "id": item.data[0].nasa_id,
                 "description": item.data[0].description,
                 "title": item.data[0].title,
@@ -75,7 +75,7 @@ router.get('/search', async (req, res) => {
             images: images.filter(image => image !== null)
         };
 
-        imageQueryCache.set(JSON.stringify(query), queryResponse)
+        imageQueryCache.set(JSON.stringify(query), queryResponse) // // All data is stored in the cache.
 
         res.json(queryResponse);
     } catch (error) {
