@@ -132,8 +132,8 @@ const Login = () => {
                 onChange={(e) => setPassword(e.target.value)}
               />
 							</Label>
-              <Anchor href="/register">
-                Forgot your password? Create a new account!
+              <Anchor>
+                Forgot your password? Create a new   <ProfileLink to="/register">account!</ProfileLink>
               </Anchor>
               <Button
                 type="submit"

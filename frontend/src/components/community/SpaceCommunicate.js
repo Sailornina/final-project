@@ -69,7 +69,7 @@ const SpaceCommunicate = ({ post, onPostDeleted }) => {
           </span>
         </Button>
         <Moment>{moment(post.createdAt).fromNow()}</Moment>
-        <Button onClick={() => onDeleteButtonClicked(post._id)}>
+        <Button type="button" onClick={() => onDeleteButtonClicked(post._id)}>
           <RemoveButton src={Icon} alt="remove" />
         </Button>
       </Container>
