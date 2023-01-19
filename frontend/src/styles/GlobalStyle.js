@@ -36,7 +36,7 @@ export const RightContainer = styled.div`
   flex: 30%;
   display: flex;
   justify-content: flex-end;
-  padding-right: 50px;
+  padding-right: 20px;
 `;
 
 export const NavbarInnerContainer = styled.div`
@@ -74,6 +74,10 @@ export const Logo = styled.img`
   @media (max-width: 667px) {
     padding: 11%;
   }
+	@media only screen  
+    and (device-height: 926px) {
+			width: 50px;
+		}
 `;
 
 export const OpenLinksButton = styled.button`
