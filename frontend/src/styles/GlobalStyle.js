@@ -72,7 +72,7 @@ export const Logo = styled.img`
   height: auto;
   padding: 3%;
   @media (max-width: 667px) {
-    padding: 8%;
+    padding: 11%;
   }
 `;
 
