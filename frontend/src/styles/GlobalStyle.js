@@ -77,6 +77,7 @@ export const Logo = styled.img`
 	@media only screen  
     and (device-height: 926px) {
 			width: 50px;
+			height: 50px;
 		}
 `;
 
