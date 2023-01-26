@@ -1,4 +1,5 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import Footer from "../components/Footer";
 import ReactPlayer from "react-player";
 import styled from "styled-components";
@@ -11,6 +12,8 @@ import { Link } from "react-router-dom";
 import { Paragraph } from "./About";
 
 const StartScreen = () => {
+	const accessToken = useSelector((store) => store.user.accessToken);
+	if (!accessToken) {
   return (
     <HeroSection>
       <HeroImage>
@@ -58,7 +61,50 @@ const StartScreen = () => {
       </StartContainer>
       <Footer />
     </HeroSection>
-  );
+  )}else {
+		return(
+			<HeroSection>
+      <HeroImage>
+        <img alt="backgroundImg" src={backgroundImage} />
+      </HeroImage>
+      <StartContainer>
+        <MainHeading>Welcome to Astronomy Community</MainHeading>
+        <LinkWrapper>
+				<StartLink to="/search-form">Search in space</StartLink>
+          <a href="#section2">
+            <ScrollImage
+              className="scroll"
+              src={scrollIcon}
+              alt="scrollImg"
+            ></ScrollImage>
+          </a>
+					<StartLink to="/space-feed">Your Community</StartLink>
+        </LinkWrapper>
+        <YouTubeHeading id="section2">
+          <YouTubeParagraph>
+            Best Space Movies -{" "}
+            <a
+              href="https://www.marieclaire.com/culture/g31006874/best-space-movies/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              of All Time
+            </a>
+            <Paragraph>Interstellar Official Soundtrack</Paragraph>
+          </YouTubeParagraph>
+          <YouTubeWrapper>
+            <ReactPlayer
+              className="react-player"
+              url="http://www.youtube.com/watch?v=EOK6_cX35QM&list=RDYF1eYbfbH5k&index=13"
+              width="100%"
+              height="100%"
+            />
+          </YouTubeWrapper>
+        </YouTubeHeading>
+      </StartContainer>
+      <Footer />
+    </HeroSection>
+		)}
 };
 
 export default StartScreen;
