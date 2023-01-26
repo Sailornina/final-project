@@ -18,8 +18,6 @@ const CommentForm = ({ onCommentSubmitted, postId }) => {
       body: JSON.stringify({ text: newComment }),
     };
 
-    console.log(`Comment: ${JSON.stringify(comment)}`);
-
     fetch(`https://final-project-w5otwao4va-lz.a.run.app/posts/${postId}/comment`, comment)
       .then((res) => {res.json()
       .then((postCommented) => onCommentSubmitted(postCommented))

@@ -41,7 +41,6 @@ const Comment = ({ comment, onCommentDeleted }) => {
     ).then((res) => {
       if (res.status === 200) {
         res.json().then((likedComment) => {
-          console.log(`Request successful: ${JSON.stringify(likedComment)}`);
           setCounter(likedComment.likes);
         });
       }

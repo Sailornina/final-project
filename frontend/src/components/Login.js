@@ -74,7 +74,6 @@ const Login = () => {
             localStorage.setItem("username", data.response.username);
           });
         } else {
-          console.log("Unsuccessful");
           batch(() => {
             dispatch(user.actions.setUsername(null));
             dispatch(user.actions.setUserId(null));
@@ -85,7 +84,6 @@ const Login = () => {
         }
       })
       .catch((error) => {
-        console.log("Catch");
         setIsUnavailable(true);
       });
   };

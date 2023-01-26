@@ -30,7 +30,6 @@ const SearchForm = () => {
 
   const executeSearch = async (query, page) => {
     const imagesDetails = await searchNasaImagesByPage(query, page);
-    console.log(`Result: ${JSON.stringify(imagesDetails)}`);
     setResult(imagesDetails);
     setTotalPages(imagesDetails.total_pages);
   };

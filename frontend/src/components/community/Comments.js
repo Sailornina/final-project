@@ -20,7 +20,6 @@ const Comments = ({ postId, commentList }) => {
         postId={postId}
         onCommentSubmitted={(newComment) => { //Callback
           setComments([newComment, ...comments]); // Updating the state.
-          console.log("onCommentSubmitted: " + JSON.stringify(newComment));
         }}
       />
       {comments.map((comment) => (

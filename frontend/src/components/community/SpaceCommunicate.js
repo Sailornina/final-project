@@ -41,7 +41,6 @@ const SpaceCommunicate = ({ post, onPostDeleted }) => {
     ).then((res) => {
       if (res.status === 200) {
         res.json().then((likedPost) => {
-          console.log(`Request successful: ${JSON.stringify(likedPost)}`);
           setCounter(likedPost.likes);
         });
       }

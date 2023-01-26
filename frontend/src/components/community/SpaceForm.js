@@ -19,8 +19,6 @@ const SpaceForm = ({ onPostSubmitted }) => {
       body: JSON.stringify({ text: newPost, title: newTitle }),
     };
 
-    console.log(`Message: ${JSON.stringify(message)}`);
-
     fetch("https://final-project-w5otwao4va-lz.a.run.app/posts", message)
       .then((res) => {
         res.json()

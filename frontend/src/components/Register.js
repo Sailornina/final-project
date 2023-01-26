@@ -79,7 +79,6 @@ const Register = () => {
             dispatch(user.actions.setError(null));
           });
         } else {
-          console.log("Unsuccessful");
           batch(() => {
             dispatch(user.actions.setUsername(null));
             dispatch(user.actions.setUserId(null));
@@ -90,7 +89,6 @@ const Register = () => {
         }
       })
       .catch((error) => {
-        console.log("Catch");
         setIsUnavailable(true);
       });
   };
