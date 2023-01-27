@@ -83,11 +83,9 @@ router.post("/:id/comment", isAuthenticated, async (req, res) => {
 			if (!result) {
 				throw new Error(`Couldn't find Post with id: ${id}`);
 			}
-			console.log("Result: " + result);
 			res.status(200).json(comment);
 		});
 	} catch (error) {
-		console.log(error);
 		res.status(400).json({ message: `Couldn't comment. Reason: [${error}]` })
 	} finally {
 		await session.endSession();

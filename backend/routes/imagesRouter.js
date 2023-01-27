@@ -90,7 +90,6 @@ router.get('/nasa-details/:id', async (req, res) => {
         const response = await axios.get(`https://images-api.nasa.gov/search?nasa_id=${nasaId}`);
         res.json(response.data);
     } catch (error) {
-        console.log(error)
         res.status(500)
     }
 });
